@@ -1,6 +1,11 @@
-﻿using System;
+﻿// <copyright file="Vehicle.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,6 +27,9 @@ namespace Logistic.ConsoleClient.Models
 
         public List<Cargo>? Cargoes { get; set; }
 
+        // Magic numbers
+        private const float KoefKgToLbs = 2.2046f;
+
         // Class Constructors
         public Vehicle(VehicleType type, int maxCargoWeightKg, float maxCargoVolume)
         {
@@ -29,17 +37,22 @@ namespace Logistic.ConsoleClient.Models
             MaxCargoWeightKg = maxCargoWeightKg;
             MaxCargoVolume = maxCargoVolume;
             Cargoes = new List<Cargo>(100);
-            MaxCargoWeightLbs = MaxCargoWeightKg * 2.2046f;
+            MaxCargoWeightLbs = MaxCargoWeightKg * KoefKgToLbs;
+        }
+
+        public float GetCargoWeightCurrent()
+        {
+            return GetCargoWeightCurrent(Cargoes);
         }
 
         // Class Methods
 
         // Cargoes Weight methods
         // Реалізував методи поетапно, оскільки потім їх використовую і в інших функціях
-        public float GetCargoWeightCurrent()
+        public float GetCargoWeightCurrent(List<Cargo>? cargoes)
         {
             float cargoWeight = 0;
-            foreach (var cargo in Cargoes)
+            foreach (var cargo in cargoes)
             {
                 cargoWeight += cargo.Weight;
             }
@@ -54,17 +67,23 @@ namespace Logistic.ConsoleClient.Models
         }
 
         public string GetCargoWeightLeftInformation()
+
         // В завданні ця функція називалась GetCargoWeightLeft(), очікувалось щоб вона виводила інформацію,
         // проте для універсальності методів GetCargoWeightLeft() виводить числове значення, а повідомлення - GetCargoWeightLeftInformation()
         {
             return $"Vehicle has {GetCargoWeightLeft()} kg. space";
         }
 
-        // Cargoes Volumes methods
         public float GetCargoVolumeCurrent()
         {
+            return GetCargoVolumeCurrent(Cargoes);
+        }
+
+        // Cargoes Volumes methods
+        public float GetCargoVolumeCurrent(List<Cargo>? cargoes)
+        {
             float cargoVolume = 0;
-            foreach (var cargo in Cargoes)
+            foreach (var cargo in cargoes)
             {
                 cargoVolume += cargo.Volume;
             }
@@ -93,7 +112,6 @@ namespace Logistic.ConsoleClient.Models
             s += $"Max. volume:  {MaxCargoVolume} cub. m.\n";
             s += new string('.', 20 + 12 + 20) + '\n';
             s += new string(' ', 15) + "Loaded cargoes info:\n";
-            //s += new string('.', 20 + 12 + 20) + '\n';
             s += $"Cargoes number: {Cargoes.Count} u.\n";
             s += $"Summary weight: {GetCargoWeightCurrent()} kg.\n";
             s += $"Summary volume: {GetCargoVolumeCurrent()} cub. m.\n";
@@ -109,15 +127,13 @@ namespace Logistic.ConsoleClient.Models
             {
                 throw new Exception("[Exception!]\tCargo's too heavy. [ " + cargo.GetInformation() + " ]\n" + GetInformation());
             }
-            else if (cargo.Volume > GetCargoVolumeLeft())
+
+            if (cargo.Volume > GetCargoVolumeLeft())
             {
                 throw new Exception("[Exception!]\tCargo's too voluminous. [ " + cargo.GetInformation() + " ]\n" + GetInformation());
             }
-            else
-            {
-                // If cargo doesn't overload vehicle, It is added to vehicle storage
-                Cargoes.Add(cargo);
-            }
+
+            Cargoes.Add(cargo);
         }
     }
 }

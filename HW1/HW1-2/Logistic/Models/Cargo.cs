@@ -19,11 +19,6 @@ namespace Logistic.ConsoleClient.Models
         public string Code { get; set; }
 
         // Class Constuctors
-        public Cargo()
-        {
-
-        }
-
         public Cargo(int weight, float volume, string code)
         {
             Volume = volume;

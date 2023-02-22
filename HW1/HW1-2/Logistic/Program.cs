@@ -3,10 +3,10 @@ using Logistic.ConsoleClient.Models;
 
 Console.WriteLine("\t\tVehicle Loading application");
 
-main();
+Main();
 
 // Functions:
-void main()
+void Main()
 {
     // Тут обидві функції перевіряються на можливість виконання, одна з яких успішно виконається,
     // а іншу відловить обробник помилок та виведе відповідне повідомлення помилки
@@ -15,7 +15,7 @@ void main()
         SuccessScenario();
         ExceptionScenario();
     }
-    catch(Exception e)
+    catch (Exception e)
     {
         Console.WriteLine(e.Message);
     }
@@ -26,8 +26,10 @@ void SuccessScenario()
     Console.WriteLine("Success Scenario:");
 
     // I    Створіть транспортний засіб Vehicle (дані на ваш розсуд)
-    var vehicle = new Vehicle(VehicleType.Car, 1000, 2999.99f);
-    vehicle.Number = "BC 7777 BO";
+    var vehicle = new Vehicle(VehicleType.Car, 1000, 2999.99f)
+    {
+        Number = "BC 7777 BO"
+    };
 
     // II   Виведіть інформацію GetInformation по транспортному засобу на консоль
     Console.WriteLine("Vehicle before loading:");
@@ -44,7 +46,7 @@ void SuccessScenario()
     };
 
     // IV   У циклі додайте усі Cargo з массиву cargos до Vehicle за допомогою методу LoadCargo (Без переповнення)
-    foreach(var cargo in cargoes)
+    foreach (var cargo in cargoes)
     {
         vehicle.LoadCargo(cargo);
     }
@@ -84,8 +86,8 @@ void ExceptionScenario()
     }
 
     // V    Виведіть інформацію GetInformation по Vehicle на консоль
-    // ПІСЛЯ ЗАВАНТАЖЕННЯ ОСТАННЬОГО ГРУЗУ ФУНКЦІЯ ВИКИНЕ ПОМИЛКУ, ТОМУ ЇЇ ВИКОНАННЯ ПРИПИНЕТЬСЯ
-    // (ТОМУ ІНФО. ПРО НАВАНТАЖЕННЯ ТРАНСПОРТУ ПЕРЕНІС В САМЕ ПОВІДОМЛЕННЯ ПРО ПОМИЛКУ)
+    // після завантаження останнього грузу функція викине помилку, тому її виконання припинеться
+    // (тому інфо. про перенавантаження транспорту переніс в саме повідомлення про помилку)
     Console.WriteLine("Vehicle after loading:");
     Console.WriteLine(vehicle.GetInformation());
 }

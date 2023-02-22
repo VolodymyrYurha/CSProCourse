@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 namespace Logistic.ConsoleClient.Models
 {
     // Types of vehicle enum class
-    enum VehicleType 
+    internal enum VehicleType
     {
         Car,
         Ship,
         Plane,
-        Train
+        Train,
     }
 }
