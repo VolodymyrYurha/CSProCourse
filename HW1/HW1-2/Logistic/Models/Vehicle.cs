@@ -35,6 +35,7 @@ namespace Logistic.ConsoleClient.Models
         // Class Methods
 
         // Cargoes Weight methods
+        // Реалізував методи поетапно, оскільки потім їх використовую і в інших функціях
         public float GetCargoWeightCurrent()
         {
             float cargoWeight = 0;
@@ -53,16 +54,17 @@ namespace Logistic.ConsoleClient.Models
         }
 
         public string GetCargoWeightLeftInformation()
+        // В завданні ця функція називалась GetCargoWeightLeft(), очікувалось щоб вона виводила інформацію,
+        // проте для універсальності методів GetCargoWeightLeft() виводить числове значення, а повідомлення - GetCargoWeightLeftInformation()
         {
-            var WeightLeft = GetCargoWeightLeft();
-            return $"Vehicle has {WeightLeft} kg space";
+            return $"Vehicle has {GetCargoWeightLeft()} kg. space";
         }
 
         // Cargoes Volumes methods
         public float GetCargoVolumeCurrent()
         {
             float cargoVolume = 0;
-            foreach(var cargo in Cargoes)
+            foreach (var cargo in Cargoes)
             {
                 cargoVolume += cargo.Volume;
             }
@@ -77,21 +79,45 @@ namespace Logistic.ConsoleClient.Models
 
         public string GetCargoVolumeLeftInformation()
         {
-            return "Vehicle has ... m³ volume space";
+            return $"Vehicle has {GetCargoVolumeLeft()} cub. m. volume space";
         }
 
         // Vehicle Information
         public string GetInformation()
         {
-            string s = new string(' ', 20) + "Vehicle info" + new string(' ', 20) + '\n';
-            s += new string('-', 20 + 12 + 20) + '\n';
-            s += $"Vehicle type: {Type}\t Number: {Number}\t .........."; //Have to add all info
+            string s = new string('_', 20 + 12 + 20) + '\n';
+            s += new string(' ', 20) + "Vehicle info" + new string(' ', 20) + '\n';
+            s += new string('.', 20 + 12 + 20) + '\n';
+            s += $"Vehicle type: {Type}\t Number: {Number}\n";
+            s += $"Max. weight:  {MaxCargoWeightKg} kg.   ( {MaxCargoWeightLbs} lbs. )\n";
+            s += $"Max. volume:  {MaxCargoVolume} cub. m.\n";
+            s += new string('.', 20 + 12 + 20) + '\n';
+            s += new string(' ', 15) + "Loaded cargoes info:\n";
+            //s += new string('.', 20 + 12 + 20) + '\n';
+            s += $"Cargoes number: {Cargoes.Count} u.\n";
+            s += $"Summary weight: {GetCargoWeightCurrent()} kg.\n";
+            s += $"Summary volume: {GetCargoVolumeCurrent()} cub. m.\n";
+            s += new string('_', 20 + 12 + 20) + '\n';
             return s;
         }
 
+        // Here I load a new one cargo
         public void LoadCargo(Cargo cargo)
         {
-            // Here I'll load a new one cargo
+            // Exceptions displays what cargo can't be loaded & Vehicle loading state
+            if (cargo.Weight > GetCargoWeightLeft())
+            {
+                throw new Exception("[Exception!]\tCargo's too heavy. [ " + cargo.GetInformation() + " ]\n" + GetInformation());
+            }
+            else if (cargo.Volume > GetCargoVolumeLeft())
+            {
+                throw new Exception("[Exception!]\tCargo's too voluminous. [ " + cargo.GetInformation() + " ]\n" + GetInformation());
+            }
+            else
+            {
+                // If cargo doesn't overload vehicle, It is added to vehicle storage
+                Cargoes.Add(cargo);
+            }
         }
     }
 }

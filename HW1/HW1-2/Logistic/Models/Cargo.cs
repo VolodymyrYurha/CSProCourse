@@ -9,11 +9,11 @@ namespace Logistic.ConsoleClient.Models
     // Cargo class for all cargo's properties
     internal class Cargo
     {
-        // Volume in Cubic meters
-        public float Volume { get; set; }
-
         // Weight in KG
         public int Weight { get; set; }
+
+        // Volume in Cubic meters
+        public float Volume { get; set; }
 
         // Cargo's code
         public string Code { get; set; }
@@ -24,11 +24,17 @@ namespace Logistic.ConsoleClient.Models
 
         }
 
-        public Cargo(float volume, int weight, string code)
+        public Cargo(int weight, float volume, string code)
         {
             Volume = volume;
             Weight = weight;
             Code = code;
+        }
+
+        // Class methods
+        public string GetInformation()
+        {
+            return $"Cargo's ( {Code} ) measures: {Weight} kg. {Volume} cub. m.";
         }
     }
 }
