@@ -54,14 +54,9 @@ namespace Logistic.ConsoleClient.Models
         // Реалізував методи поетапно, оскільки потім їх використовую і в інших функціях
 
         // Returns Weight in KG
-        public float GetCargoWeightCurrent()
-        {
-            return CargoWeightCurrent;
-        }
-
         public float GetCargoWeightLeft()
         {
-            return MaxCargoWeightKg - GetCargoWeightCurrent();
+            return MaxCargoWeightKg - CargoWeightCurrent;
         }
 
         public string GetCargoWeightLeftInformation()
@@ -73,14 +68,9 @@ namespace Logistic.ConsoleClient.Models
         }
 
         // Cargoes Volumes methods
-        public float GetCargoVolumeCurrent()
-        {
-            return CargoVolumeCurrent;
-        }
-
         public float GetCargoVolumeLeft()
         {
-            return MaxCargoVolume - GetCargoVolumeCurrent();
+            return MaxCargoVolume - CargoVolumeCurrent;
         }
 
         public string GetCargoVolumeLeftInformation()
@@ -99,8 +89,8 @@ namespace Logistic.ConsoleClient.Models
             s += new string('.', 20 + 12 + 20) + '\n';
             s += new string(' ', 15) + "Loaded cargoes info:\n";
             s += $"Cargoes number: {Cargoes.Count} u.\n";
-            s += $"Summary weight: {GetCargoWeightCurrent()} kg.\n";
-            s += $"Summary volume: {GetCargoVolumeCurrent()} cub. m.\n";
+            s += $"Summary weight: {CargoWeightCurrent} kg.\n";
+            s += $"Summary volume: {CargoVolumeCurrent} cub. m.\n";
             s += new string('_', 20 + 12 + 20) + '\n';
             return s;
         }
@@ -119,11 +109,6 @@ namespace Logistic.ConsoleClient.Models
                 throw new Exception("[Exception!]\tCargo's too voluminous. [ " + cargo.GetInformation() + " ]\n" + GetInformation());
             }
 
-            AddCargo(cargo);
-        }
-
-        private void AddCargo(Cargo cargo)
-        {
             Cargoes.Add(cargo);
             CargoWeightCurrent += cargo.Weight;
             CargoVolumeCurrent += cargo.Volume;
