@@ -26,10 +26,7 @@ void SuccessScenario()
     Console.WriteLine("Success Scenario:");
 
     // I    Створіть транспортний засіб Vehicle (дані на ваш розсуд)
-    var vehicle = new Vehicle(VehicleType.Car, 1000, 2999.99f)
-    {
-        Number = "BC 7777 BO"
-    };
+    var vehicle = new Vehicle(VehicleType.Car, 1000, 2999.99f, "BC 7777 BO");
 
     // II   Виведіть інформацію GetInformation по транспортному засобу на консоль
     Console.WriteLine("Vehicle before loading:");
@@ -61,8 +58,7 @@ void ExceptionScenario()
     Console.WriteLine("Exception Scenario:");
 
     // I    Створіть транспортний засіб Vehicle (дані на ваш розсуд)
-    var vehicle = new Vehicle(VehicleType.Train, 100_000, 500_000.00f);
-    vehicle.Number = "BC 0666 BO";
+    var vehicle = new Vehicle(VehicleType.Train, 100_000, 500_000.00f, "BC 0666 BO");
 
     // II   Виведіть інформацію GetInformation по транспортному засобу на консоль
     Console.WriteLine("Vehicle before loading:");

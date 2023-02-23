@@ -27,40 +27,38 @@ namespace Logistic.ConsoleClient.Models
 
         public List<Cargo>? Cargoes { get; set; }
 
+        // Private measures
+        private float CargoWeightCurrent { get; set; }
+
+        private float CargoVolumeCurrent { get; set; }
+
         // Magic numbers
         private const float KoefKgToLbs = 2.2046f;
 
         // Class Constructors
-        public Vehicle(VehicleType type, int maxCargoWeightKg, float maxCargoVolume)
+        public Vehicle(VehicleType type, int maxCargoWeightKg, float maxCargoVolume, string number)
         {
             Type = type;
             MaxCargoWeightKg = maxCargoWeightKg;
             MaxCargoVolume = maxCargoVolume;
-            Cargoes = new List<Cargo>(100);
+            Cargoes = new List<Cargo>();
             MaxCargoWeightLbs = MaxCargoWeightKg * KoefKgToLbs;
-        }
-
-        public float GetCargoWeightCurrent()
-        {
-            return GetCargoWeightCurrent(Cargoes);
+            Number = number;
+            CargoWeightCurrent = 0;
+            CargoVolumeCurrent = 0;
         }
 
         // Class Methods
 
         // Cargoes Weight methods
         // Реалізував методи поетапно, оскільки потім їх використовую і в інших функціях
-        public float GetCargoWeightCurrent(List<Cargo>? cargoes)
-        {
-            float cargoWeight = 0;
-            foreach (var cargo in cargoes)
-            {
-                cargoWeight += cargo.Weight;
-            }
-
-            return cargoWeight;
-        }
 
         // Returns Weight in KG
+        public float GetCargoWeightCurrent()
+        {
+            return CargoWeightCurrent;
+        }
+
         public float GetCargoWeightLeft()
         {
             return MaxCargoWeightKg - GetCargoWeightCurrent();
@@ -74,21 +72,10 @@ namespace Logistic.ConsoleClient.Models
             return $"Vehicle has {GetCargoWeightLeft()} kg. space";
         }
 
+        // Cargoes Volumes methods
         public float GetCargoVolumeCurrent()
         {
-            return GetCargoVolumeCurrent(Cargoes);
-        }
-
-        // Cargoes Volumes methods
-        public float GetCargoVolumeCurrent(List<Cargo>? cargoes)
-        {
-            float cargoVolume = 0;
-            foreach (var cargo in cargoes)
-            {
-                cargoVolume += cargo.Volume;
-            }
-
-            return cargoVolume;
+            return CargoVolumeCurrent;
         }
 
         public float GetCargoVolumeLeft()
@@ -106,7 +93,6 @@ namespace Logistic.ConsoleClient.Models
         {
             string s = new string('_', 20 + 12 + 20) + '\n';
             s += new string(' ', 20) + "Vehicle info" + new string(' ', 20) + '\n';
-            s += new string('.', 20 + 12 + 20) + '\n';
             s += $"Vehicle type: {Type}\t Number: {Number}\n";
             s += $"Max. weight:  {MaxCargoWeightKg} kg.   ( {MaxCargoWeightLbs} lbs. )\n";
             s += $"Max. volume:  {MaxCargoVolume} cub. m.\n";
@@ -133,7 +119,14 @@ namespace Logistic.ConsoleClient.Models
                 throw new Exception("[Exception!]\tCargo's too voluminous. [ " + cargo.GetInformation() + " ]\n" + GetInformation());
             }
 
+            AddCargo(cargo);
+        }
+
+        private void AddCargo(Cargo cargo)
+        {
             Cargoes.Add(cargo);
+            CargoWeightCurrent += cargo.Weight;
+            CargoVolumeCurrent += cargo.Volume;
         }
     }
 }
