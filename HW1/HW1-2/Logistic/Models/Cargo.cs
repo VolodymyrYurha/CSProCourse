@@ -25,6 +25,7 @@ namespace Logistic.ConsoleClient.Models
         // Class Constuctors
         public Cargo(int weight, float volume, string code)
         {
+            Id = Guid.NewGuid();
             Volume = volume;
             Weight = weight;
             Code = code;

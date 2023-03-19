@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Logistic.ConsoleClient.Models;
+using Logistic.ConsoleClient.Repositories;
 
 Console.WriteLine("\t\tVehicle Loading application");
 
@@ -13,7 +14,16 @@ void Main()
     try
     {
         SuccessScenario();
-        ExceptionScenario();
+        //ExceptionScenario();
+
+        var cargoes = new List<Cargo>();
+        cargoes.Add(new Cargo(10000, 150, "111s"));
+        cargoes.Add(new Cargo(20000, 250, "222ss"));
+        cargoes.Add(new Cargo(30000, 350, "333sss"));
+        var repo = new JsonRepository<Cargo>();
+        repo.Create(cargoes);
+        var cargoesRead = repo.Read("Cargo_2023-03-19_22-19-09.json");
+        ;
     }
     catch (Exception e)
     {
