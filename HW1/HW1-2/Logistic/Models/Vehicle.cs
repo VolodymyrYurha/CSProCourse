@@ -1,8 +1,4 @@
-﻿// <copyright file="Vehicle.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
-// </copyright>
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.ConstrainedExecution;
@@ -14,6 +10,8 @@ namespace Logistic.ConsoleClient.Models
     // Vehicle class with all its properties and methods
     internal class Vehicle
     {
+        public int Id { get; set; }
+
         public VehicleType Type { get; set; }
 
         public string? Number { get; set; }

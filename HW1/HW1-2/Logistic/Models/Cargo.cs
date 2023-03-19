@@ -9,6 +9,8 @@ namespace Logistic.ConsoleClient.Models
     // Cargo class for all cargo's properties
     internal class Cargo
     {
+        public Guid Id { get; set; }
+
         // Weight in KG
         public int Weight { get; set; }
 
@@ -17,6 +19,8 @@ namespace Logistic.ConsoleClient.Models
 
         // Cargo's code
         public string Code { get; set; }
+
+        public Invoice? Invoice { get; set; }
 
         // Class Constuctors
         public Cargo(int weight, float volume, string code)
