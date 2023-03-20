@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logistic.ConsoleClient.Repositories
 {
-    internal interface IRepository<TEntity>
+    public interface IRepository<TEntity>
         where TEntity : class
     {
         void Create(List<TEntity> entities);

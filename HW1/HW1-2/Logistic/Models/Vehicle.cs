@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Logistic.ConsoleClient.Models
 {
     // Vehicle class with all its properties and methods
-    internal class Vehicle
+    public class Vehicle
     {
         public int Id { get; set; }
 
@@ -34,6 +34,10 @@ namespace Logistic.ConsoleClient.Models
         private const float KoefKgToLbs = 2.2046f;
 
         // Class Constructors
+        public Vehicle()
+        {
+        }
+
         public Vehicle(VehicleType type, int maxCargoWeightKg, float maxCargoVolume, string number)
         {
             Type = type;

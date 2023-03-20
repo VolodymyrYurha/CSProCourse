@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logistic.ConsoleClient.Models
 {
-    internal class Warehouse
+    public class Warehouse
     {
         public int Id { get; set; }
 

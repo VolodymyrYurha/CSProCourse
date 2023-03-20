@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace Logistic.ConsoleClient.Repositories
 {
-    internal class JsonRepository<TEntity> : IRepository<TEntity>
+    public class JsonRepository<TEntity> : IRepository<TEntity>
         where TEntity : class
     {
         private string path;

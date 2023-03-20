@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Logistic.ConsoleClient.Models
 {
     // Cargo class for all cargo's properties
-    internal class Cargo
+    public class Cargo
     {
         public Guid Id { get; set; }
 
@@ -23,6 +23,10 @@ namespace Logistic.ConsoleClient.Models
         public Invoice? Invoice { get; set; }
 
         // Class Constuctors
+        public Cargo()
+        {
+        }
+
         public Cargo(int weight, float volume, string code)
         {
             Id = Guid.NewGuid();

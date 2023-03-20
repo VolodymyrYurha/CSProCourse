@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Logistic.ConsoleClient.Models
 {
     // Types of vehicle enum class
-    internal enum VehicleType
+    public enum VehicleType
     {
         Car,
         Ship,

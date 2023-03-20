@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logistic.ConsoleClient.Models
 {
-    internal class Invoice
+    public class Invoice
     {
         public Guid Id { get; set; }
 

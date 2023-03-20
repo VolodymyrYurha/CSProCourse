@@ -1,0 +1,23 @@
+[
+  {
+    "Id": "5e1da3e8-fcf6-43bd-a0aa-c0d442fe52f5",
+    "Weight": 10000,
+    "Volume": 150.0,
+    "Code": "111s",
+    "Invoice": null
+  },
+  {
+    "Id": "2497b9e7-f5f2-4233-a10f-81216533d911",
+    "Weight": 20000,
+    "Volume": 250.0,
+    "Code": "222ss",
+    "Invoice": null
+  },
+  {
+    "Id": "f618bc5d-b86d-4d36-a6be-5facff33e66e",
+    "Weight": 30000,
+    "Volume": 350.0,
+    "Code": "333sss",
+    "Invoice": null
+  }
+]

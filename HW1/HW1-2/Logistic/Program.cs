@@ -21,8 +21,12 @@ void Main()
         cargoes.Add(new Cargo(20000, 250, "222ss"));
         cargoes.Add(new Cargo(30000, 350, "333sss"));
         var repo = new JsonRepository<Cargo>();
-        repo.Create(cargoes);
-        var cargoesRead = repo.Read("Cargo_2023-03-19_22-19-09.json");
+        //repo.Create(cargoes);
+        //var cargoesRead = repo.Read("Cargo_2023-03-19_22-19-09.json");
+
+        var repoXml = new XmlRepository<Cargo>();
+        repoXml.Create(cargoes);
+        var cargoesReadXml = repoXml.Read("Cargo_2023-03-20_11-52-26.xml");
         ;
     }
     catch (Exception e)
