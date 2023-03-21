@@ -16,7 +16,7 @@ namespace Logistic.ConsoleClient.Repositories.Interfaces
 
         TEntity Read(int id);
 
-        void Update(int id);
+        void Update(int id, TEntity updateTo);
 
         void Delete(int id);
     }

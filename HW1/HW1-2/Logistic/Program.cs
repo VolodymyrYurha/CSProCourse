@@ -15,29 +15,19 @@ void Main()
     {
         //SuccessScenario();
         //ExceptionScenario();
-
-        //var cargoes = new List<Cargo>();
-        //cargoes.Add(new Cargo(10000, 150, "111s"));
-        //cargoes.Add(new Cargo(20000, 250, "222ss"));
-        //cargoes.Add(new Cargo(30000, 350, "333sss"));
-        //var repo = new JsonRepository<Cargo>();
-        //repo.Create(cargoes);
-        //var cargoesRead = repo.Read("Cargo_2023-03-19_22-19-09.json");
-
-        //var repoXml = new XmlRepository<Cargo>();
-        //repoXml.Create(cargoes);
-        //var cargoesReadXml = repoXml.Read("Cargo_2023-03-20_11-52-26.xml");
-
-        //var vehicles = new List<Vehicle>();
-        //vehicles.Add(new Vehicle(VehicleType.Ship, 1_000_000, 1_000_000, "Ship 777"));
-        //vehicles.Add(new Vehicle(VehicleType.Train, 500_000, 500_000, "Train 777"));
-        //vehicles.Add(new Vehicle(VehicleType.Plane, 100_000, 100_000, "Plane 777"));
-        //vehicles.Add(new Vehicle(VehicleType.Car, 300, 200, "Car 777"));
         var repoXmlVehicle = new XmlRepository<Vehicle>();
         var vehiclesDeserialized = repoXmlVehicle.Read("Vehicle_2023-03-21_12-53-40.xml");
         var repoInMemoryVehicle = new InMemoryRepository<Vehicle>(vehiclesDeserialized);
         repoInMemoryVehicle.Create(new Vehicle(VehicleType.Car, 404, 404, "Car 404"));
-        var vehicleRead = repoInMemoryVehicle.ReadAll();
+        var addedVehicleState = repoInMemoryVehicle.ReadAll();
+        var vehicleSearch1 = repoInMemoryVehicle.Read(5);
+        var vehicleToUpdate = new Vehicle(VehicleType.Car, 444, 000, "Car ??? Updated");
+        repoInMemoryVehicle.Update(5, vehicleToUpdate);
+        var updatedVehicle = repoInMemoryVehicle.Read(5);
+        repoInMemoryVehicle.Delete(5);
+        var finalRepoState = repoInMemoryVehicle.ReadAll();
+
+        //var vehicleSearch2 = repoInMemoryVehicle.Read(6);
         //repoXmlVehicle.Create(vehicleRead);
         ;
     }
