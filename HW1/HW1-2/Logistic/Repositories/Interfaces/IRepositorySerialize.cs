@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Logistic.ConsoleClient.Repositories
+namespace Logistic.ConsoleClient.Repositories.Interfaces
 {
-    public interface IRepository<TEntity>
+    public interface IRepositorySerialize<TEntity>
         where TEntity : class
     {
         void Create(List<TEntity> entities);

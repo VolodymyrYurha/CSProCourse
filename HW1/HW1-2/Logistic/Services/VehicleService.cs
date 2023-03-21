@@ -1,5 +1,6 @@
 ﻿using Logistic.ConsoleClient.Models;
-using Logistic.ConsoleClient.Repositories;
+using Logistic.ConsoleClient.Repositories.Interfaces;
+using Logistic.ConsoleClient.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Logistic.ConsoleClient.Services
 {
-    internal class VehicleService
+    internal class VehicleService : IVehicleService
     {
-        private IRepository<Vehicle> repository;
+        private IRepositorySerialize<Vehicle> repository;
 
-        public VehicleService(IRepository<Vehicle> repository)
+        public VehicleService(IRepositorySerialize<Vehicle> repository)
         {
             this.repository = repository;
         }

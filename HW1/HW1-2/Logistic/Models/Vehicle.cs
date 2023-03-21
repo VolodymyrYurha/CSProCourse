@@ -4,11 +4,12 @@ using System.Linq;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
+using Logistic.ConsoleClient.Models.Interfaces;
 
 namespace Logistic.ConsoleClient.Models
 {
     // Vehicle class with all its properties and methods
-    public class Vehicle
+    public class Vehicle : IEntity
     {
         public int Id { get; set; }
 

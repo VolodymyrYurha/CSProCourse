@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
+using Logistic.ConsoleClient.Repositories.Interfaces;
 
 namespace Logistic.ConsoleClient.Repositories
 {
-    public class XmlRepository<TEntity> : IRepository<TEntity>
+    public class XmlRepository<TEntity> : IRepositorySerialize<TEntity>
         where TEntity : class
     {
         private string path;

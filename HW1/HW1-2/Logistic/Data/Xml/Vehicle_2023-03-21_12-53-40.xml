@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfVehicle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Vehicle>
+		<Id>0</Id>
+		<Type>Ship</Type>
+		<Number>Ship 777</Number>
+		<MaxCargoWeightKg>1000000</MaxCargoWeightKg>
+		<MaxCargoWeightLbs>2204600</MaxCargoWeightLbs>
+		<MaxCargoVolume>1000000</MaxCargoVolume>
+		<Cargoes />
+	</Vehicle>
+	<Vehicle>
+		<Id>0</Id>
+		<Type>Train</Type>
+		<Number>Train 777</Number>
+		<MaxCargoWeightKg>500000</MaxCargoWeightKg>
+		<MaxCargoWeightLbs>1102300</MaxCargoWeightLbs>
+		<MaxCargoVolume>500000</MaxCargoVolume>
+		<Cargoes />
+	</Vehicle>
+	<Vehicle>
+		<Id>0</Id>
+		<Type>Plane</Type>
+		<Number>Plane 777</Number>
+		<MaxCargoWeightKg>100000</MaxCargoWeightKg>
+		<MaxCargoWeightLbs>220460.02</MaxCargoWeightLbs>
+		<MaxCargoVolume>100000</MaxCargoVolume>
+		<Cargoes />
+	</Vehicle>
+	<Vehicle>
+		<Id>0</Id>
+		<Type>Car</Type>
+		<Number>Car 777</Number>
+		<MaxCargoWeightKg>300</MaxCargoWeightKg>
+		<MaxCargoWeightLbs>661.38</MaxCargoWeightLbs>
+		<MaxCargoVolume>200</MaxCargoVolume>
+		<Cargoes />
+	</Vehicle>
+</ArrayOfVehicle>
