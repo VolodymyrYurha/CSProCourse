@@ -24,12 +24,14 @@ namespace Logistic.ConsoleClient.Models
         // Max cargo volume in Cubic meters
         public float MaxCargoVolume { get; set; }
 
-        public List<Cargo>? Cargoes { get; set; }
+        public List<Cargo>? Cargoes { get; set; } = null;
 
         // Private measures
-        private float CargoWeightCurrent { get; set; }
+        // private float CargoWeightCurrent = 0;
+        // private float CargoVolumeCurrent = 0;
+        public float CargoWeightCurrent { get; set; } = 0;
 
-        private float CargoVolumeCurrent { get; set; }
+        public float CargoVolumeCurrent { get; set; } = 0;
 
         // Magic numbers
         private const float KoefKgToLbs = 2.2046f;

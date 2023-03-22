@@ -30,7 +30,10 @@ namespace Logistic.ConsoleClient.Repositories
             this.entities = MapEntityList(entities);
             foreach (var entity in this.entities)
             {
-                entity.Id = NextId();
+                if (entity.Id == 0)
+                {
+                    entity.Id = NextId();
+                }
             }
         }
 

@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfVehicle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Vehicle>
+		<Id>1</Id>
+		<Type>Ship</Type>
+		<Number>Ship 777</Number>
+		<MaxCargoWeightKg>1000000</MaxCargoWeightKg>
+		<MaxCargoWeightLbs>2204600</MaxCargoWeightLbs>
+		<MaxCargoVolume>1000000</MaxCargoVolume>
+		<Cargoes />
+		<CargoWeightCurrent>0</CargoWeightCurrent>
+		<CargoVolumeCurrent>0</CargoVolumeCurrent>
+	</Vehicle>
+	<Vehicle>
+		<Id>2</Id>
+		<Type>Train</Type>
+		<Number>Train 777</Number>
+		<MaxCargoWeightKg>500000</MaxCargoWeightKg>
+		<MaxCargoWeightLbs>1102300</MaxCargoWeightLbs>
+		<MaxCargoVolume>500000</MaxCargoVolume>
+		<Cargoes />
+		<CargoWeightCurrent>0</CargoWeightCurrent>
+		<CargoVolumeCurrent>0</CargoVolumeCurrent>
+	</Vehicle>
+	<Vehicle>
+		<Id>3</Id>
+		<Type>Plane</Type>
+		<Number>Plane 777</Number>
+		<MaxCargoWeightKg>100000</MaxCargoWeightKg>
+		<MaxCargoWeightLbs>220460.02</MaxCargoWeightLbs>
+		<MaxCargoVolume>100000</MaxCargoVolume>
+		<Cargoes />
+		<CargoWeightCurrent>0</CargoWeightCurrent>
+		<CargoVolumeCurrent>0</CargoVolumeCurrent>
+	</Vehicle>
+	<Vehicle>
+		<Id>4</Id>
+		<Type>Car</Type>
+		<Number>Car 777</Number>
+		<MaxCargoWeightKg>300</MaxCargoWeightKg>
+		<MaxCargoWeightLbs>661.38</MaxCargoWeightLbs>
+		<MaxCargoVolume>200</MaxCargoVolume>
+		<Cargoes />
+		<CargoWeightCurrent>0</CargoWeightCurrent>
+		<CargoVolumeCurrent>0</CargoVolumeCurrent>
+	</Vehicle>
+	<Vehicle>
+		<Id>5</Id>
+		<Type>Ship</Type>
+		<Number>Service ship #0000</Number>
+		<MaxCargoWeightKg>100000</MaxCargoWeightKg>
+		<MaxCargoWeightLbs>220460.02</MaxCargoWeightLbs>
+		<MaxCargoVolume>200000</MaxCargoVolume>
+		<Cargoes>
+			<Cargo>
+				<Id>d78b93f9-cd98-427c-bcec-b2b7a7d65ee7</Id>
+				<Weight>100</Weight>
+				<Volume>100</Volume>
+				<Code>cargo #0000</Code>
+			</Cargo>
+			<Cargo>
+				<Id>b6dee030-8a7b-43f7-a4a5-eb0b1b539199</Id>
+				<Weight>200</Weight>
+				<Volume>150</Volume>
+				<Code>cargo #1111</Code>
+			</Cargo>
+			<Cargo>
+				<Id>b6bc6b10-d7c3-4040-9be3-7ae24c509fcd</Id>
+				<Weight>300</Weight>
+				<Volume>200</Volume>
+				<Code>cargo #2222</Code>
+			</Cargo>
+		</Cargoes>
+		<CargoWeightCurrent>600</CargoWeightCurrent>
+		<CargoVolumeCurrent>450</CargoVolumeCurrent>
+	</Vehicle>
+	<Vehicle>
+		<Id>6</Id>
+		<Type>Ship</Type>
+		<Number>Service ship #9999</Number>
+		<MaxCargoWeightKg>200000</MaxCargoWeightKg>
+		<MaxCargoWeightLbs>440920.03</MaxCargoWeightLbs>
+		<MaxCargoVolume>100000</MaxCargoVolume>
+		<Cargoes />
+		<CargoWeightCurrent>0</CargoWeightCurrent>
+		<CargoVolumeCurrent>0</CargoVolumeCurrent>
+	</Vehicle>
+</ArrayOfVehicle>
