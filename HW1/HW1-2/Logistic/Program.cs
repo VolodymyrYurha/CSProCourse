@@ -1,4 +1,5 @@
 ﻿using Logistic.ConsoleClient.Models;
+using Logistic.ConsoleClient.Models.Enums;
 using Logistic.ConsoleClient.Repositories;
 using Logistic.ConsoleClient.Services;
 
@@ -11,32 +12,22 @@ void Main()
     try
     {
         var repoJsonWarehouse = new JsonRepository<Warehouse>();
+        var repoXmlWarehouse = new XmlRepository<Warehouse>();
 
-        var repoDeserialized = repoJsonWarehouse.Read("Warehouse_2023-03-22_15-57-04.json");
-        var repoInMemoryWarehouse = new InMemoryRepository<Warehouse>(repoDeserialized);
-        var warehouseService = new WarehouseService(repoInMemoryWarehouse);
-        var allWarehouses = warehouseService.GetAll();
+        var serviceReportWarehouse = new ReportService<Warehouse>(repoJsonWarehouse, repoXmlWarehouse);
 
-        //warehouseService.Create(new Warehouse());
-        //warehouseService.Create(new Warehouse());
-        //warehouseService.Create(new Warehouse());
+        var warehouseFromJson = serviceReportWarehouse.LoadReport("Warehouse_2023-03-22_15-57-04.json");
+        //serviceReportWarehouse.CreateReport(ReportType.Xml, warehouseFromJson);
 
-        //warehouseService.LoadCargo(new Cargo(100, 100, "#1001"), 1);
-        //warehouseService.LoadCargo(new Cargo(200, 200, "#1002"), 1);
-        //warehouseService.LoadCargo(new Cargo(300, 300, "#1003"), 1);
+        var warehouseFromXml = serviceReportWarehouse.LoadReport("Warehouse_2023-03-22_17-37-09.xml");
 
-        //warehouseService.LoadCargo(new Cargo(50, 50, "#2001"), 2);
-        //warehouseService.LoadCargo(new Cargo(100, 100, "#2002"), 2);
-        //warehouseService.LoadCargo(new Cargo(150, 150, "#2003"), 2);
+        //var inMemoryRepo = new InMemoryRepository<Warehouse>(warehouseFromXml);
 
-        //warehouseService.LoadCargo(new Cargo(100, 200, "#3001"), 3);
-        //warehouseService.LoadCargo(new Cargo(200, 400, "#3002"), 3);
-        //warehouseService.LoadCargo(new Cargo(300, 600, "#3003"), 3);
-        //warehouseService.LoadCargo(new Cargo(1000000, 6000000, "This will be deleted"), 3);
-        warehouseService.UnloadCargo(Guid.Parse("d05de88b-d56a-4a43-9601-2be71708631a"), 3);
-        allWarehouses = warehouseService.GetAll();
-        //repoJsonWarehouse.Create(allWarehouses);
-        ;
+        //var repoDeserialized = repoJsonWarehouse.Read("Warehouse_2023-03-22_15-57-04.json");
+        //var repoInMemoryWarehouse = new InMemoryRepository<Warehouse>(repoDeserialized);
+        //var warehouseService = new WarehouseService(repoInMemoryWarehouse);
+        //var allWarehouses = warehouseService.GetAll();
+
     }
     catch (Exception e)
     {
