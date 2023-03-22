@@ -1,5 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-using Logistic.ConsoleClient.Models;
+﻿using Logistic.ConsoleClient.Models;
 using Logistic.ConsoleClient.Repositories;
 using Logistic.ConsoleClient.Services;
 
@@ -7,31 +6,36 @@ Console.WriteLine("\t\tVehicle Loading application");
 
 Main();
 
-// Functions:
 void Main()
 {
-    // Тут обидві функції перевіряються на можливість виконання, одна з яких успішно виконається,
-    // а іншу відловить обробник помилок та виведе відповідне повідомлення помилки
     try
     {
-        var repoXmlVehicle = new XmlRepository<Vehicle>();
-        var vehiclesDeserialized = repoXmlVehicle.Read("Vehicle_2023-03-22_14-53-26.xml");
-        var repoInMemoryVehicle = new InMemoryRepository<Vehicle>(vehiclesDeserialized);
+        var repoJsonWarehouse = new JsonRepository<Warehouse>();
 
-        var vehicleService = new VehicleService(repoInMemoryVehicle);
-        //vehicleService.Create(new Vehicle(VehicleType.Ship, 100_000, 200_000, "Service ship #0000"));
-        //vehicleService.Create(new Vehicle(VehicleType.Ship, 200_000, 100_000, "Service ship #9999"));
-        var serviceAllVehicles = vehicleService.GetAll();
-        //vehicleService.LoadCargo(new Cargo(100, 100, "cargo #0000"), 5);
-        //vehicleService.LoadCargo(new Cargo(200, 150, "cargo #1111"), 5);
-        //vehicleService.LoadCargo(new Cargo(300, 200, "cargo #2222"), 5);
-        //serviceAllVehicles = vehicleService.GetAll();
-        vehicleService.UnloadCargo(Guid.Parse("b6dee030-8a7b-43f7-a4a5-eb0b1b539199"), 5);
-        serviceAllVehicles = vehicleService.GetAll();
-        //repoXmlVehicle.Create(serviceAllVehicles);
+        var repoDeserialized = repoJsonWarehouse.Read("Warehouse_2023-03-22_15-57-04.json");
+        var repoInMemoryWarehouse = new InMemoryRepository<Warehouse>(repoDeserialized);
+        var warehouseService = new WarehouseService(repoInMemoryWarehouse);
+        var allWarehouses = warehouseService.GetAll();
 
-        //var vehicleSearch2 = repoInMemoryVehicle.Read(6);
-        //repoXmlVehicle.Create(vehicleRead);
+        //warehouseService.Create(new Warehouse());
+        //warehouseService.Create(new Warehouse());
+        //warehouseService.Create(new Warehouse());
+
+        //warehouseService.LoadCargo(new Cargo(100, 100, "#1001"), 1);
+        //warehouseService.LoadCargo(new Cargo(200, 200, "#1002"), 1);
+        //warehouseService.LoadCargo(new Cargo(300, 300, "#1003"), 1);
+
+        //warehouseService.LoadCargo(new Cargo(50, 50, "#2001"), 2);
+        //warehouseService.LoadCargo(new Cargo(100, 100, "#2002"), 2);
+        //warehouseService.LoadCargo(new Cargo(150, 150, "#2003"), 2);
+
+        //warehouseService.LoadCargo(new Cargo(100, 200, "#3001"), 3);
+        //warehouseService.LoadCargo(new Cargo(200, 400, "#3002"), 3);
+        //warehouseService.LoadCargo(new Cargo(300, 600, "#3003"), 3);
+        //warehouseService.LoadCargo(new Cargo(1000000, 6000000, "This will be deleted"), 3);
+        warehouseService.UnloadCargo(Guid.Parse("d05de88b-d56a-4a43-9601-2be71708631a"), 3);
+        allWarehouses = warehouseService.GetAll();
+        //repoJsonWarehouse.Create(allWarehouses);
         ;
     }
     catch (Exception e)

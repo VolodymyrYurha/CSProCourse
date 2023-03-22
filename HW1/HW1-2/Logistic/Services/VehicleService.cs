@@ -83,7 +83,7 @@ namespace Logistic.ConsoleClient.Services
 
             if (cargoToDelete == null)
             {
-                throw new Exception($"There is no cargo with id {guidCargo}");
+                throw new Exception($"There is no cargo with id  [ {guidCargo} ] in vehicle with id {vehicleToUnload.Id}");
             }
 
             vehicleToUnload.Cargoes.Remove(cargoToDelete);
