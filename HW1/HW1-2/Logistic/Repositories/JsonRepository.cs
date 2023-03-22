@@ -11,17 +11,14 @@ namespace Logistic.ConsoleClient.Repositories
 {
     public class JsonRepository<TEntity> : IRepositorySerialize<TEntity>
         where TEntity : class
-        //where TEntity : class, IEntity
     {
         private string path;
         private string entityType;
-        private List<TEntity> entitiesList;
 
         public JsonRepository()
         {
             path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
             path += "\\Data\\Json\\";
-            //entitiesList.First(x => x.Id == 1);
             entityType = typeof(TEntity).Name;
         }
 
@@ -42,10 +39,6 @@ namespace Logistic.ConsoleClient.Repositories
 
         public List<TEntity> Read(string filename)
         {
-            // if (!filename.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
-            // {
-            //     filename += ".json";
-            // }
             string readPath = path + filename;
 
             using (StreamReader sr = new StreamReader(readPath))
