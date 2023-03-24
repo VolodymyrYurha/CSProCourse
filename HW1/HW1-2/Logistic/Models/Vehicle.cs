@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.ConstrainedExecution;
@@ -16,7 +17,7 @@ namespace Logistic.ConsoleClient.Models
 
         public VehicleType Type { get; set; }
 
-        public string? Number { get; set; }
+        public string Number { get; set; } = string.Empty;
 
         public int MaxCargoWeightKg { get; set; }
 
@@ -52,6 +53,30 @@ namespace Logistic.ConsoleClient.Models
             Number = number;
             CargoWeightCurrent = 0;
             CargoVolumeCurrent = 0;
+        }
+
+        public override string ToString()
+        {
+            string outputString = new string('_', 20 + 12 + 20) + '\n';
+            outputString += new string(' ', 20) + "Vehicle info" + new string(' ', 20) + '\n';
+            outputString += $"Vehicle type: {Type}\t ID: {Id}\n";
+            outputString += $"Number: {Number}\n";
+            outputString += $"Max. weight:  {MaxCargoWeightKg} kg.   ( {MaxCargoWeightLbs} lbs. )\n";
+            outputString += $"Max. volume:  {MaxCargoVolume} cub. m.\n";
+            outputString += new string('.', 20 + 12 + 20) + '\n';
+            outputString += new string(' ', 15) + "Loaded cargoes info:\n";
+
+            if (Cargoes.Count() == 0)
+            {
+                outputString += "there are no cargoes";
+            }
+
+            foreach (var cargo in Cargoes)
+            {
+                outputString += cargo.ToString() + "\n";
+            }
+
+            return outputString;
         }
     }
 }

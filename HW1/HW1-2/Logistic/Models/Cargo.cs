@@ -40,5 +40,14 @@ namespace Logistic.ConsoleClient.Models
         {
             return $"Cargo's ( {Code} ) measures: {Weight} kg. {Volume} cub. m.";
         }
+
+        public override string ToString()
+        {
+            string outputString = new string('.', 20 + 12 + 20) + '\n';
+            outputString += "Cargo id:\t" + Id.ToString() + "\n";
+            outputString += $"Weight:  {Weight} kg. | Volume:  {Volume} cub. m. | Code:  {Code}\n";
+            outputString += new string('.', 20 + 12 + 20) + '\n';
+            return outputString;
+        }
     }
 }
