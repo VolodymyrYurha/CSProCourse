@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Logistic.ConsoleClient.Models;
 using Logistic.ConsoleClient.Models.Enums;
+using Logistic.ConsoleClient.Models.Interfaces;
 using Logistic.ConsoleClient.Repositories;
 using Logistic.ConsoleClient.Services;
 
@@ -92,6 +94,24 @@ namespace Logistic.ConsoleClient
                         break;
                     }
 
+                case "unload-cargo":
+                    {
+                        CommandUnloadCargo(atributes);
+                        break;
+                    }
+
+                case "create-report":
+                    {
+                        CommandCreateReport(atributes);
+                        break;
+                    }
+
+                case "load-report":
+                    {
+                        CommandLoadReport(atributes);
+                        break;
+                    }
+
                 default:
                     throw new Exception($"Uknown command \'{commandDeterminant}\'");
             }
@@ -175,6 +195,120 @@ namespace Logistic.ConsoleClient
 
                 default:
                     throw new Exception($"Uknown entity type \'{entityTypeToLoad}\'");
+            }
+        }
+
+        private void CommandUnloadCargo(List<string> atributes)
+        {
+            var atributesCount = atributes.Count;
+            if (atributesCount != 3 && atributesCount != 4)
+            {
+                throw exceptionNumberAtributes;
+            }
+
+            string entityTypeToLoad = atributes[1];
+            int entityIdToUnload = int.Parse(atributes[2]);
+
+            // command view example: unload-cargo vehicle 1
+            // this code will delete the last one cargo in the entity
+            if (atributesCount == 3)
+            {
+                switch (entityTypeToLoad)
+                {
+                    case "vehicle":
+                        serviceVehicle.UnloadLastCargo(entityIdToUnload);
+                        Console.WriteLine("Cargo is successfully unloaded from the vehicle");
+                        break;
+
+                    case "warehouse":
+                        serviceWarehouse.UnloadLastCargo(entityIdToUnload);
+                        Console.WriteLine("Cargo is successfully unloaded from the warehouse");
+                        break;
+
+                    default:
+                        throw new Exception($"Uknown entity type \'{entityTypeToLoad}\'");
+                }
+            }
+
+            // command view example: unload-cargo vehicle 1 77c15a38-b420-45cd-a706-bef2ae31948e
+            // this code will delete the chosen one cargo by its Guid in the entity
+            if (atributesCount == 4)
+            {
+                Guid guid = Guid.Parse(atributes[3]);
+                switch (entityTypeToLoad)
+                {
+                    case "vehicle":
+                        serviceVehicle.UnloadCargo(guid, entityIdToUnload);
+                        Console.WriteLine("Cargo is successfully unloaded from the vehicle");
+                        break;
+
+                    case "warehouse":
+                        serviceWarehouse.UnloadCargo(guid, entityIdToUnload);
+                        Console.WriteLine("Cargo is successfully unloaded from the warehouse");
+                        break;
+
+                    default:
+                        throw new Exception($"Uknown entity type \'{entityTypeToLoad}\'");
+                }
+            }
+        }
+
+        private void CommandCreateReport(List<string> atributes)
+        {
+            if (atributes.Count != 3)
+            {
+                throw exceptionNumberAtributes;
+            }
+            string entityTypeToReport = atributes[1];
+            ReportType serializingTypeToReport;
+            switch (atributes[2])
+            {
+                case "json":
+                    serializingTypeToReport = ReportType.Json;
+                    break;
+
+                case "xml":
+                    serializingTypeToReport = ReportType.Xml;
+                    break;
+
+                default:
+                    throw new Exception($"Uknown serialing type: {atributes[2]}");
+            }
+
+            switch (entityTypeToReport)
+            {
+                case "vehicle":
+                    serviceReportVehicle.CreateReport(serializingTypeToReport, serviceVehicle.GetAll());
+                    Console.WriteLine("Vehicles report successfully saved");
+                    break;
+
+                case "warehouse":
+                    serviceReportWarehouse.CreateReport(serializingTypeToReport, serviceWarehouse.GetAll());
+                    Console.WriteLine("Warehouses report successfully saved");
+                    break;
+
+                default:
+                    throw new Exception($"Uknown entity type \'{entityTypeToReport}\'");
+            }
+        }
+
+        private void CommandLoadReport(List<string> atributes)
+        {
+            if (atributes.Count != 2)
+            {
+                throw exceptionNumberAtributes;
+            }
+
+            string filename = atributes[1];
+
+            if (filename.StartsWith("Vehicle"))
+            {
+                PrintVehicles(serviceReportVehicle.LoadReport(filename));
+            }
+
+            if (filename.StartsWith("Warehouse"))
+            {
+                PrintWarehouses(serviceReportWarehouse.LoadReport(filename));
             }
         }
 

@@ -58,5 +58,18 @@ namespace Logistic.ConsoleClient.Services
             warehouseToUnload.Stock.Remove(cargoToDelete);
             repository.Update(idWarehouse, warehouseToUnload);
         }
+
+        public void UnloadLastCargo(int idWarehouse)
+        {
+            var warehouseToUnload = repository.Read(idWarehouse);
+            if (!(warehouseToUnload.Stock.Count > 0))
+            {
+                throw new Exception($"There isn't any cargo in warehouse with id {warehouseToUnload.Id}");
+            }
+
+            var cargoToDelete = warehouseToUnload.Stock[warehouseToUnload.Stock.Count - 1];
+            warehouseToUnload.Stock.Remove(cargoToDelete);
+            repository.Update(idWarehouse, warehouseToUnload);
+        }
     }
 }

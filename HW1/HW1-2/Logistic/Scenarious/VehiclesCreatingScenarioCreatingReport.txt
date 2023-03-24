@@ -1,0 +1,40 @@
+add vehicle
+Car
+4444
+1000
+1000
+get-all vehicle
+load-cargo vehicle 1
+100
+100
+111
+n
+load-cargo vehicle 1
+200
+200
+222
+n
+add vehicle
+Train
+1002
+2000
+2000
+load-cargo vehicle 2
+102
+102
+112
+n
+load-cargo vehicle 2
+202
+202
+202
+n
+load-cargo vehicle 2
+302
+302
+302
+n
+get-all vehicle
+create-report vehicle xml
+create-report vehicle json
+

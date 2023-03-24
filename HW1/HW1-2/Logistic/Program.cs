@@ -12,11 +12,4 @@ void Main()
 {
     var appInfrastructure = new AppInfrastructureBuilder();
     appInfrastructure.CommandReader();
-    //try
-    //{
-    //}
-    //catch (Exception e)
-    //{
-    //    Console.WriteLine(e.Message);
-    //}
 }

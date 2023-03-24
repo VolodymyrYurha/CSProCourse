@@ -92,6 +92,21 @@ namespace Logistic.ConsoleClient.Services
             repository.Update(idVehicle, vehicleToUnload);
         }
 
+        public void UnloadLastCargo(int idVehicle)
+        {
+            var vehicleToUnload = repository.Read(idVehicle);
+            if (!(vehicleToUnload.Cargoes.Count > 0))
+            {
+                throw new Exception($"There isn't any cargo in vehicle with id {vehicleToUnload.Id}");
+            }
+
+            var cargoToDelete = vehicleToUnload.Cargoes[vehicleToUnload.Cargoes.Count - 1];
+            vehicleToUnload.Cargoes.Remove(cargoToDelete);
+            vehicleToUnload.CargoWeightCurrent -= cargoToDelete.Weight;
+            vehicleToUnload.CargoVolumeCurrent -= cargoToDelete.Volume;
+            repository.Update(idVehicle, vehicleToUnload);
+        }
+
         // Private methods
         // Methods for getting info about certain vehicle by its id
         private float GetCargoWeightLeft(int id)
