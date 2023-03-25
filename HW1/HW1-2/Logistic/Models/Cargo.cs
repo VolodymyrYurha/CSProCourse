@@ -6,23 +6,18 @@ using System.Threading.Tasks;
 
 namespace Logistic.ConsoleClient.Models
 {
-    // Cargo class for all cargo's properties
     public class Cargo
     {
         public Guid Id { get; set; }
 
-        // Weight in KG
         public int Weight { get; set; }
 
-        // Volume in Cubic meters
         public float Volume { get; set; }
 
-        // Cargo's code
         public string Code { get; set; }
 
         public Invoice? Invoice { get; set; }
 
-        // Class Constuctors
         public Cargo()
         {
         }
@@ -35,19 +30,15 @@ namespace Logistic.ConsoleClient.Models
             Code = code;
         }
 
-        // Class methods
-        public string GetInformation()
-        {
-            return $"Cargo's ( {Code} ) measures: {Weight} kg. {Volume} cub. m.";
-        }
-
         public override string ToString()
         {
-            string outputString = new string('.', 20 + 12 + 20) + '\n';
-            outputString += "Cargo id:\t" + Id.ToString() + "\n";
-            outputString += $"Weight:  {Weight} kg. | Volume:  {Volume} cub. m. | Code:  {Code}\n";
-            outputString += new string('.', 20 + 12 + 20) + '\n';
-            return outputString;
+            string dots52 = new string('.', 52);
+
+            StringBuilder outputString = new StringBuilder(dots52 + '\n');
+            outputString.Append("Cargo id:\t" + Id.ToString() + "\n");
+            outputString.Append( $"Weight:  {Weight} kg. | Volume:  {Volume} cub. m. | Code:  {Code}\n");
+            outputString.Append(dots52 + '\n');
+            return outputString.ToString();
         }
     }
 }

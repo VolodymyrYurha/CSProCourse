@@ -9,7 +9,7 @@ using Logistic.ConsoleClient.Repositories.Interfaces;
 
 namespace Logistic.ConsoleClient.Repositories
 {
-    public class XmlRepository<TEntity> : IRepositorySerialize<TEntity>
+    public class XmlRepository<TEntity> : ISerializeRepository<TEntity>
         where TEntity : class
     {
         private string path;
@@ -32,11 +32,6 @@ namespace Logistic.ConsoleClient.Repositories
 
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<TEntity>));
 
-            // using (FileStream fs = new FileStream(savePath, FileMode.OpenOrCreate))
-            // {
-            //    xmlSerializer.Serialize(fs, entities);
-            //    Console.WriteLine("Object has been serialized");
-            // }
             var settings = new XmlWriterSettings
             {
                 Indent = true,
@@ -51,11 +46,8 @@ namespace Logistic.ConsoleClient.Repositories
         public List<TEntity> Read(string filename)
         {
             var serializer = new XmlSerializer(typeof(List<TEntity>));
-
-            // read the XML from a file
             using var stream = new FileStream(path + filename, FileMode.Open);
             return (List<TEntity>)serializer.Deserialize(stream);
-            // return returnList;
         }
     }
 }

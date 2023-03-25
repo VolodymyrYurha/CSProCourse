@@ -11,7 +11,7 @@ using Logistic.ConsoleClient.Repositories.Interfaces;
 
 namespace Logistic.ConsoleClient.Repositories
 {
-    public class InMemoryRepository<TEntity> : IRepositoryInMemory<TEntity>
+    public class InMemoryRepository<TEntity> : IInMemoryRepository<TEntity>
         where TEntity : class, IEntity
     {
         private readonly string notFoundIdExceptionMessage = $"{typeof(TEntity).Name} entity with this Id doesn't exist";

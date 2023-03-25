@@ -7,7 +7,7 @@ using Logistic.ConsoleClient.Models.Interfaces;
 
 namespace Logistic.ConsoleClient.Repositories.Interfaces
 {
-    public interface IRepositoryInMemory<TEntity>
+    public interface IInMemoryRepository<TEntity>
         where TEntity : class, IEntity
     {
         void Create(TEntity entity);

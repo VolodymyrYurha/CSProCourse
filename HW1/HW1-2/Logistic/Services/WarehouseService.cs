@@ -11,9 +11,9 @@ namespace Logistic.ConsoleClient.Services
 {
     public class WarehouseService : IServiceLoading<Warehouse>
     {
-        private IRepositoryInMemory<Warehouse> repository;
+        private IInMemoryRepository<Warehouse> repository;
 
-        public WarehouseService(IRepositoryInMemory<Warehouse> repository)
+        public WarehouseService(IInMemoryRepository<Warehouse> repository)
         {
             this.repository = repository;
         }

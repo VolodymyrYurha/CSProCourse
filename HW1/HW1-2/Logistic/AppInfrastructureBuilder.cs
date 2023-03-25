@@ -14,33 +14,31 @@ namespace Logistic.ConsoleClient
 {
     public class AppInfrastructureBuilder
     {
-        // Repositories
-        private JsonRepository<Vehicle> repoJsonVehicle;
-        private JsonRepository<Warehouse> repoJsonWarehouse;
-        private XmlRepository<Vehicle> repoXmlVehicle;
-        private XmlRepository<Warehouse> repoXmlWarehouse;
-        private InMemoryRepository<Vehicle> repoIMVehicle;
-        private InMemoryRepository<Warehouse> repoIMWarehouse;
+        private JsonRepository<Vehicle> jsonVehicleRepository;
+        private JsonRepository<Warehouse> jsonWarehouseRepository;
+        private XmlRepository<Vehicle> xmlVehicleRepository;
+        private XmlRepository<Warehouse> xmlWarehouseRepository;
+        private InMemoryRepository<Vehicle> inMemoryVehicleRepository;
+        private InMemoryRepository<Warehouse> inMemoryWarehouseRepository;
 
-        // Services
-        private VehicleService serviceVehicle;
-        private WarehouseService serviceWarehouse;
-        private ReportService<Vehicle> serviceReportVehicle;
-        private ReportService<Warehouse> serviceReportWarehouse;
+        private VehicleService vehicleService;
+        private WarehouseService warehouseService;
+        private ReportService<Vehicle> reportVehicleService;
+        private ReportService<Warehouse> reportWarehouseService;
 
         public AppInfrastructureBuilder()
         {
-            repoJsonVehicle = new JsonRepository<Vehicle>();
-            repoJsonWarehouse = new JsonRepository<Warehouse>();
-            repoXmlVehicle = new XmlRepository<Vehicle>();
-            repoXmlWarehouse = new XmlRepository<Warehouse>();
-            repoIMVehicle = new InMemoryRepository<Vehicle>();
-            repoIMWarehouse = new InMemoryRepository<Warehouse>();
+            jsonVehicleRepository = new JsonRepository<Vehicle>();
+            jsonWarehouseRepository = new JsonRepository<Warehouse>();
+            xmlVehicleRepository = new XmlRepository<Vehicle>();
+            xmlWarehouseRepository = new XmlRepository<Warehouse>();
+            inMemoryVehicleRepository = new InMemoryRepository<Vehicle>();
+            inMemoryWarehouseRepository = new InMemoryRepository<Warehouse>();
 
-            serviceVehicle = new VehicleService(repoIMVehicle);
-            serviceWarehouse = new WarehouseService(repoIMWarehouse);
-            serviceReportVehicle = new ReportService<Vehicle>(repoJsonVehicle, repoXmlVehicle);
-            serviceReportWarehouse = new ReportService<Warehouse>(repoJsonWarehouse, repoXmlWarehouse);
+            vehicleService = new VehicleService(inMemoryVehicleRepository);
+            warehouseService = new WarehouseService(inMemoryWarehouseRepository);
+            reportVehicleService = new ReportService<Vehicle>(jsonVehicleRepository, xmlVehicleRepository);
+            reportWarehouseService = new ReportService<Warehouse>(jsonWarehouseRepository, xmlWarehouseRepository);
         }
 
         public void CommandReader()
@@ -118,7 +116,7 @@ namespace Logistic.ConsoleClient
         }
 
         // Commands implementators typical Exceptions
-        private Exception exceptionNumberAtributes = new Exception("Incorrect atributes number");
+        private ArgumentException exceptionNumberAtributes = new ArgumentException("Incorrect atributes number");
 
         // Commands implementators
         private void CommandAdd(List<string> atributes)
@@ -133,12 +131,12 @@ namespace Logistic.ConsoleClient
             switch (entityTypeToAdd)
             {
                 case "vehicle":
-                    serviceVehicle.Create(VehicleFiller());
+                    vehicleService.Create(VehicleFiller());
                     Console.WriteLine("New vehicle is successfully added in memory");
                     break;
 
                 case "warehouse":
-                    serviceWarehouse.Create(new Warehouse());
+                    warehouseService.Create(new Warehouse());
                     Console.WriteLine("New warehouse is successfully added in memory");
                     break;
 
@@ -159,11 +157,11 @@ namespace Logistic.ConsoleClient
             switch (entityTypeToGet)
             {
                 case "vehicle":
-                    PrintVehicles(serviceVehicle.GetAll());
+                    PrintVehicles(vehicleService.GetAll());
                     break;
 
                 case "warehouse":
-                    PrintWarehouses(serviceWarehouse.GetAll());
+                    PrintWarehouses(warehouseService.GetAll());
                     break;
 
                 default:
@@ -184,12 +182,12 @@ namespace Logistic.ConsoleClient
             switch (entityTypeToLoad)
             {
                 case "vehicle":
-                    serviceVehicle.LoadCargo(CargoFiller(), entityIdToLoad);
+                    vehicleService.LoadCargo(CargoFiller(), entityIdToLoad);
                     Console.WriteLine("Cargo is successfully loaded to vehicle");
                     break;
 
                 case "warehouse":
-                    serviceWarehouse.LoadCargo(CargoFiller(), entityIdToLoad);
+                    warehouseService.LoadCargo(CargoFiller(), entityIdToLoad);
                     Console.WriteLine("Cargo is successfully loaded to warehouse");
                     break;
 
@@ -209,19 +207,17 @@ namespace Logistic.ConsoleClient
             string entityTypeToLoad = atributes[1];
             int entityIdToUnload = int.Parse(atributes[2]);
 
-            // command view example: unload-cargo vehicle 1
-            // this code will delete the last one cargo in the entity
             if (atributesCount == 3)
             {
                 switch (entityTypeToLoad)
                 {
                     case "vehicle":
-                        serviceVehicle.UnloadLastCargo(entityIdToUnload);
+                        vehicleService.UnloadLastCargo(entityIdToUnload);
                         Console.WriteLine("Cargo is successfully unloaded from the vehicle");
                         break;
 
                     case "warehouse":
-                        serviceWarehouse.UnloadLastCargo(entityIdToUnload);
+                        warehouseService.UnloadLastCargo(entityIdToUnload);
                         Console.WriteLine("Cargo is successfully unloaded from the warehouse");
                         break;
 
@@ -230,20 +226,18 @@ namespace Logistic.ConsoleClient
                 }
             }
 
-            // command view example: unload-cargo vehicle 1 77c15a38-b420-45cd-a706-bef2ae31948e
-            // this code will delete the chosen one cargo by its Guid in the entity
             if (atributesCount == 4)
             {
-                Guid guid = Guid.Parse(atributes[3]);
+                Guid cargoGuidToUnload = Guid.Parse(atributes[3]);
                 switch (entityTypeToLoad)
                 {
                     case "vehicle":
-                        serviceVehicle.UnloadCargo(guid, entityIdToUnload);
+                        vehicleService.UnloadCargo(cargoGuidToUnload, entityIdToUnload);
                         Console.WriteLine("Cargo is successfully unloaded from the vehicle");
                         break;
 
                     case "warehouse":
-                        serviceWarehouse.UnloadCargo(guid, entityIdToUnload);
+                        warehouseService.UnloadCargo(cargoGuidToUnload, entityIdToUnload);
                         Console.WriteLine("Cargo is successfully unloaded from the warehouse");
                         break;
 
@@ -278,12 +272,12 @@ namespace Logistic.ConsoleClient
             switch (entityTypeToReport)
             {
                 case "vehicle":
-                    serviceReportVehicle.CreateReport(serializingTypeToReport, serviceVehicle.GetAll());
+                    reportVehicleService.CreateReport(serializingTypeToReport, vehicleService.GetAll());
                     Console.WriteLine("Vehicles report successfully saved");
                     break;
 
                 case "warehouse":
-                    serviceReportWarehouse.CreateReport(serializingTypeToReport, serviceWarehouse.GetAll());
+                    reportWarehouseService.CreateReport(serializingTypeToReport, warehouseService.GetAll());
                     Console.WriteLine("Warehouses report successfully saved");
                     break;
 
@@ -303,12 +297,12 @@ namespace Logistic.ConsoleClient
 
             if (filename.StartsWith("Vehicle"))
             {
-                PrintVehicles(serviceReportVehicle.LoadReport(filename));
+                PrintVehicles(reportVehicleService.LoadReport(filename));
             }
 
             if (filename.StartsWith("Warehouse"))
             {
-                PrintWarehouses(serviceReportWarehouse.LoadReport(filename));
+                PrintWarehouses(reportWarehouseService.LoadReport(filename));
             }
         }
 
@@ -359,28 +353,7 @@ namespace Logistic.ConsoleClient
 
             Console.WriteLine("Type (Car/Ship/Plane/Train):");
             string stringVehicleType = Console.ReadLine();
-            VehicleType vehicleType;
-            switch (stringVehicleType)
-            {
-                case "Car":
-                    vehicleType = VehicleType.Car;
-                    break;
-
-                case "Ship":
-                    vehicleType = VehicleType.Ship;
-                    break;
-
-                case "Plane":
-                    vehicleType = VehicleType.Plane;
-                    break;
-
-                case "Train":
-                    vehicleType = VehicleType.Train;
-                    break;
-
-                default:
-                    throw new Exception("Uknown vehicle type");
-            }
+            VehicleType vehicleType = (VehicleType)Enum.Parse(typeof(VehicleType), stringVehicleType);
 
             Console.WriteLine("Number:");
             string number = Console.ReadLine();

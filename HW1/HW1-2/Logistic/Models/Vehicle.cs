@@ -10,35 +10,28 @@ using Logistic.ConsoleClient.Models.Interfaces;
 
 namespace Logistic.ConsoleClient.Models
 {
-    // Vehicle class with all its properties and methods
     public class Vehicle : IEntity
     {
         public int Id { get; set; }
 
         public VehicleType Type { get; set; }
 
-        public string Number { get; set; } = string.Empty;
+        public string Number { get; set; }
 
         public int MaxCargoWeightKg { get; set; }
 
         public float? MaxCargoWeightLbs { get; set; }
 
-        // Max cargo volume in Cubic meters
         public float MaxCargoVolume { get; set; }
 
         public List<Cargo>? Cargoes { get; set; } = null;
 
-        // Private measures
-        // private float CargoWeightCurrent = 0;
-        // private float CargoVolumeCurrent = 0;
         public float CargoWeightCurrent { get; set; } = 0;
 
         public float CargoVolumeCurrent { get; set; } = 0;
 
-        // Magic numbers
         private const float KoefKgToLbs = 2.2046f;
 
-        // Class Constructors
         public Vehicle()
         {
         }
@@ -57,26 +50,30 @@ namespace Logistic.ConsoleClient.Models
 
         public override string ToString()
         {
-            string outputString = new string('_', 20 + 12 + 20) + '\n';
-            outputString += new string(' ', 20) + "Vehicle info" + new string(' ', 20) + '\n';
-            outputString += $"Vehicle type: {Type}\t ID: {Id}\n";
-            outputString += $"Number: {Number}\n";
-            outputString += $"Max. weight:  {MaxCargoWeightKg} kg.   ( {MaxCargoWeightLbs} lbs. )\n";
-            outputString += $"Max. volume:  {MaxCargoVolume} cub. m.\n";
-            outputString += new string('.', 20 + 12 + 20) + '\n';
-            outputString += new string(' ', 15) + "Loaded cargoes info:\n";
+            string space20 = new string(' ', 20);
+            string underscore52 = new string('_', 52);
+            string dots52 = new string('.', 52);
+
+            StringBuilder outputString = new StringBuilder(underscore52 + '\n');
+            outputString.Append(space20 + "Vehicle info" + space20 + '\n');
+            outputString.Append($"Vehicle type: {Type}\t ID: {Id}\n");
+            outputString.Append($"Number: {Number}\n");
+            outputString.Append($"Max. weight:  {MaxCargoWeightKg} kg.   ( {MaxCargoWeightLbs} lbs. )\n");
+            outputString.Append($"Max. volume:  {MaxCargoVolume} cub. m.\n");
+            outputString.Append(dots52 + '\n');
+            outputString.Append(space20 + "Loaded cargoes info:\n");
 
             if (Cargoes.Count() == 0)
             {
-                outputString += "there are no cargoes";
+                outputString.Append("there are no cargoes");
             }
 
             foreach (var cargo in Cargoes)
             {
-                outputString += cargo.ToString() + "\n";
+                outputString.Append(cargo.ToString() + "\n");
             }
 
-            return outputString;
+            return outputString.ToString();
         }
     }
 }
