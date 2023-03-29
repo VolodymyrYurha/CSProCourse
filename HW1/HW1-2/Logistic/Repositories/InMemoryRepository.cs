@@ -19,7 +19,6 @@ namespace Logistic.ConsoleClient.Repositories
 
         private MapperConfiguration config = new MapperConfiguration(cfg => cfg.CreateMap<TEntity, TEntity>());
 
-        // Constructors
         public InMemoryRepository()
         {
             entities = new List<TEntity>();
@@ -37,11 +36,10 @@ namespace Logistic.ConsoleClient.Repositories
             }
         }
 
-        // Methods
         public void Create(TEntity entity)
         {
             var entityCopy = MapEntity(entity);
-            entityCopy.Id = NextId();
+            //entityCopy.Id = NextId();
             entities.Add(entityCopy);
         }
 
@@ -85,8 +83,7 @@ namespace Logistic.ConsoleClient.Repositories
             entities[index].Id = id;
         }
 
-        // private methods
-        private int NextId()
+        public int NextId()
         {
             int? maxId = entities.Any() ? (int?)entities.Max(e => e.Id) : null;
             if (maxId != null)

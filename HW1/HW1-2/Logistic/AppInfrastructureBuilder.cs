@@ -115,10 +115,8 @@ namespace Logistic.ConsoleClient
             }
         }
 
-        // Commands implementators typical Exceptions
         private ArgumentException exceptionNumberAtributes = new ArgumentException("Incorrect atributes number");
 
-        // Commands implementators
         private void CommandAdd(List<string> atributes)
         {
             if (atributes.Count != 2)
@@ -306,7 +304,6 @@ namespace Logistic.ConsoleClient
             }
         }
 
-        // Entities Filler
         private Cargo CargoFiller()
         {
             Console.WriteLine("Enter Cargo's data\n");
@@ -367,7 +364,6 @@ namespace Logistic.ConsoleClient
             return new Vehicle(vehicleType, maxWeight, maxVolume, number);
         }
 
-        // Collection printer
         private void PrintVehicles(List<Vehicle> vehicles)
         {
             if (vehicles.Count == 0)

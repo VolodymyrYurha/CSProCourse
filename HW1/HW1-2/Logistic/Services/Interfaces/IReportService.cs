@@ -8,7 +8,7 @@ using Logistic.ConsoleClient.Models.Interfaces;
 
 namespace Logistic.ConsoleClient.Services.Interfaces
 {
-    public interface IServiceReport<TEntity>
+    public interface IReportService<TEntity>
         where TEntity : class, IEntity
     {
         void CreateReport(ReportType reportType, List<TEntity> entities);

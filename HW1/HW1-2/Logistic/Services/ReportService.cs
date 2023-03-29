@@ -13,7 +13,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Logistic.ConsoleClient.Services
 {
-    public class ReportService<TEntity> : IServiceReport<TEntity>
+    public class ReportService<TEntity> : IReportService<TEntity>
         where TEntity : class, IEntity
     {
         private JsonRepository<TEntity> jsonRepository;

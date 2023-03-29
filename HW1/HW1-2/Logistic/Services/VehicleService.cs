@@ -10,7 +10,7 @@ using Logistic.ConsoleClient.Services.Interfaces;
 
 namespace Logistic.ConsoleClient.Services
 {
-    public class VehicleService : IServiceLoading<Vehicle>
+    public class VehicleService : IEntityLoadingService<Vehicle>
     {
         private IInMemoryRepository<Vehicle> repository;
 
@@ -21,6 +21,8 @@ namespace Logistic.ConsoleClient.Services
 
         public void Create(Vehicle entity)
         {
+            int id = repository.NextId();
+            entity.Id = id;
             repository.Create(entity);
         }
 

@@ -9,7 +9,7 @@ using Logistic.ConsoleClient.Services.Interfaces;
 
 namespace Logistic.ConsoleClient.Services
 {
-    public class WarehouseService : IServiceLoading<Warehouse>
+    public class WarehouseService : IEntityLoadingService<Warehouse>
     {
         private IInMemoryRepository<Warehouse> repository;
 
