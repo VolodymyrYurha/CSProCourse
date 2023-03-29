@@ -84,7 +84,7 @@ namespace Logistic.ConsoleClient.Repositories
             entities[index].Id = id;
         }
 
-        public int NextId()
+        private int NextId()
         {
             return ++currentID;
         }
