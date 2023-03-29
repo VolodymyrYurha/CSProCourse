@@ -21,8 +21,6 @@ namespace Logistic.ConsoleClient.Services
 
         public void Create(Vehicle entity)
         {
-            int id = repository.NextId();
-            entity.Id = id;
             repository.Create(entity);
         }
 

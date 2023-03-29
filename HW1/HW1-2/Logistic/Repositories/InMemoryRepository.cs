@@ -16,6 +16,7 @@ namespace Logistic.ConsoleClient.Repositories
     {
         private readonly string notFoundIdExceptionMessage = $"{typeof(TEntity).Name} entity with this Id doesn't exist";
         private List<TEntity> entities;
+        private int currentID = 0;
 
         private MapperConfiguration config = new MapperConfiguration(cfg => cfg.CreateMap<TEntity, TEntity>());
 
@@ -39,7 +40,7 @@ namespace Logistic.ConsoleClient.Repositories
         public void Create(TEntity entity)
         {
             var entityCopy = MapEntity(entity);
-            //entityCopy.Id = NextId();
+            entityCopy.Id = NextId();
             entities.Add(entityCopy);
         }
 
@@ -85,13 +86,7 @@ namespace Logistic.ConsoleClient.Repositories
 
         public int NextId()
         {
-            int? maxId = entities.Any() ? (int?)entities.Max(e => e.Id) : null;
-            if (maxId != null)
-            {
-                return maxId.Value + 1;
-            }
-
-            return 1;
+            return ++currentID;
         }
 
         private TEntity MapEntity(TEntity originalEntity)
