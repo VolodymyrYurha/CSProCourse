@@ -20,3 +20,6 @@ dotnet_diagnostic.SA1633.severity = silent
 
 # SA1602: Enumeration items should be documented
 dotnet_diagnostic.SA1602.severity = none
+
+# CS8603: Possible null reference return.
+dotnet_diagnostic.CS8603.severity = silent

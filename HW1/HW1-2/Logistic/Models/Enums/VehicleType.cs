@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Logistic.ConsoleClient.Models
+namespace Logistic.ConsoleClient.Models.Enums
 {
-    // Types of vehicle enum class
-    internal enum VehicleType
+    public enum VehicleType
     {
         Car,
         Ship,
