@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
-using Logistic.Repositories.Interfaces;
+using Logistic.DAL.Interfaces;
 
-namespace Logistic.Repositories
+namespace Logistic.DAL
 {
     public class XmlRepository<TEntity> : ISerializeRepository<TEntity>
         where TEntity : class

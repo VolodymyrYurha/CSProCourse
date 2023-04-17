@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Logistic.Models;
 using Logistic.Models.Interfaces;
 using Logistic.Models.Enums;
-using Logistic.Repositories;
+using Logistic.DAL;
 using Logistic.ConsoleClient.Services;
 
 namespace Logistic.ConsoleClient

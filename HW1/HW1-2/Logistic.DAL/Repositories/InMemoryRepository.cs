@@ -6,10 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Logistic.Repositories.Interfaces;
+using Logistic.DAL.Interfaces;
 using Logistic.Models.Interfaces;
 
-namespace Logistic.Repositories
+namespace Logistic.DAL
 {
     public class InMemoryRepository<TEntity> : IInMemoryRepository<TEntity>
         where TEntity : class, IEntity

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Logistic.Models;
 using Logistic.Models.Interfaces;
-using Logistic.Repositories;
+using Logistic.DAL;
 
 namespace Logistic.ConsoleClient.Services.Interfaces
 {

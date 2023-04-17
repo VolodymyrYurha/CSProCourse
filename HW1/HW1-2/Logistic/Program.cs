@@ -1,7 +1,7 @@
 ﻿using Logistic.ConsoleClient;
 using Logistic.Models;
 using Logistic.Models.Enums;
-using Logistic.Repositories;
+using Logistic.DAL;
 using Logistic.ConsoleClient.Services;
 
 Console.WriteLine("\t\tVehicle Loading application");
