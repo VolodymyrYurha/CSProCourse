@@ -4,10 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Logistic.Models.Interfaces;
-using Logistic.ConsoleClient.Repositories.Interfaces;
+using Logistic.Repositories.Interfaces;
 using Newtonsoft.Json;
 
-namespace Logistic.ConsoleClient.Repositories
+namespace Logistic.Repositories
 {
     public class JsonRepository<TEntity> : ISerializeRepository<TEntity>
         where TEntity : class

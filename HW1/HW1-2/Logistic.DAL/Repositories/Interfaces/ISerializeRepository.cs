@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Logistic.ConsoleClient.Repositories.Interfaces
+namespace Logistic.Repositories.Interfaces
 {
     public interface ISerializeRepository<TEntity>
         where TEntity : class

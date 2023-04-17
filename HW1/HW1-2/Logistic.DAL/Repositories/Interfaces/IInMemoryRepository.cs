@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Logistic.Models.Interfaces;
 
-namespace Logistic.ConsoleClient.Repositories.Interfaces
+namespace Logistic.Repositories.Interfaces
 {
     public interface IInMemoryRepository<TEntity>
         where TEntity : class, IEntity

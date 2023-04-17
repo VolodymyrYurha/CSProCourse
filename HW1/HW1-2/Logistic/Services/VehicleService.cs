@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper.Execution;
 using Logistic.Models;
-using Logistic.ConsoleClient.Repositories.Interfaces;
+using Logistic.Repositories.Interfaces;
 using Logistic.ConsoleClient.Services.Interfaces;
 
 namespace Logistic.ConsoleClient.Services

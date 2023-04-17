@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using Logistic.Models;
 using Logistic.Models.Enums;
 using Logistic.Models.Interfaces;
-using Logistic.ConsoleClient.Repositories;
-using Logistic.ConsoleClient.Repositories.Interfaces;
+using Logistic.Repositories;
+using Logistic.Repositories.Interfaces;
 using Logistic.ConsoleClient.Services.Interfaces;
 using Newtonsoft.Json.Linq;
 
