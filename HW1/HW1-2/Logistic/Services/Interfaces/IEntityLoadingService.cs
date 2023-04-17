@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Logistic.ConsoleClient.Models;
-using Logistic.ConsoleClient.Models.Interfaces;
+using Logistic.Models;
+using Logistic.Models.Interfaces;
 using Logistic.ConsoleClient.Repositories;
 
 namespace Logistic.ConsoleClient.Services.Interfaces

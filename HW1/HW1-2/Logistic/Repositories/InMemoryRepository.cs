@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Logistic.ConsoleClient.Models.Interfaces;
 using Logistic.ConsoleClient.Repositories.Interfaces;
+using Logistic.Models.Interfaces;
 
 namespace Logistic.ConsoleClient.Repositories
 {

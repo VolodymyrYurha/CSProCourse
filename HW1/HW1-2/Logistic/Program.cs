@@ -1,6 +1,6 @@
 ﻿using Logistic.ConsoleClient;
-using Logistic.ConsoleClient.Models;
-using Logistic.ConsoleClient.Models.Enums;
+using Logistic.Models;
+using Logistic.Models.Enums;
 using Logistic.ConsoleClient.Repositories;
 using Logistic.ConsoleClient.Services;
 

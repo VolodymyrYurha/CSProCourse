@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper.Execution;
-using Logistic.ConsoleClient.Models;
+using Logistic.Models;
 using Logistic.ConsoleClient.Repositories.Interfaces;
 using Logistic.ConsoleClient.Services.Interfaces;
 

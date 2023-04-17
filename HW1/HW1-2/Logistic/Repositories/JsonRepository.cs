@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Logistic.ConsoleClient.Models.Interfaces;
+using Logistic.Models.Interfaces;
 using Logistic.ConsoleClient.Repositories.Interfaces;
 using Newtonsoft.Json;
 
