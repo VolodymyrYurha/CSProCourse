@@ -1,0 +1,12 @@
+add vehicle
+Car
+4444
+1000
+1000
+get-all vehicle
+load-cargo vehicle 1
+100
+100
+111
+n
+get-all vehicle
