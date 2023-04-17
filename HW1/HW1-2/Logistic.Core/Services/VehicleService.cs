@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using AutoMapper.Execution;
 using Logistic.Models;
 using Logistic.DAL.Interfaces;
-using Logistic.ConsoleClient.Services.Interfaces;
+using Logistic.Core.Interfaces;
 
-namespace Logistic.ConsoleClient.Services
+namespace Logistic.Core
 {
     public class VehicleService : IEntityLoadingService<Vehicle>
     {

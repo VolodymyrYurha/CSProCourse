@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Logistic.Models.Enums;
 using Logistic.Models.Interfaces;
 
-namespace Logistic.ConsoleClient.Services.Interfaces
+namespace Logistic.Core.Interfaces
 {
     public interface IReportService<TEntity>
         where TEntity : class, IEntity

@@ -8,10 +8,10 @@ using Logistic.Models.Enums;
 using Logistic.Models.Interfaces;
 using Logistic.DAL;
 using Logistic.DAL.Interfaces;
-using Logistic.ConsoleClient.Services.Interfaces;
+using Logistic.Core.Interfaces;
 using Newtonsoft.Json.Linq;
 
-namespace Logistic.ConsoleClient.Services
+namespace Logistic.Core
 {
     public class ReportService<TEntity> : IReportService<TEntity>
         where TEntity : class, IEntity

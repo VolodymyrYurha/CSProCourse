@@ -7,7 +7,7 @@ using Logistic.Models;
 using Logistic.Models.Interfaces;
 using Logistic.DAL;
 
-namespace Logistic.ConsoleClient.Services.Interfaces
+namespace Logistic.Core.Interfaces
 {
     public interface IEntityLoadingService<TEntity>
         where TEntity : class, IEntity
