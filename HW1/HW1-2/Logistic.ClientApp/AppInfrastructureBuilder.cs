@@ -10,7 +10,7 @@ using Logistic.Models.Enums;
 using Logistic.DAL;
 using Logistic.Core;
 
-namespace Logistic.ConsoleClient
+namespace Logistic.ClientApp
 {
     public class AppInfrastructureBuilder
     {

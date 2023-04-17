@@ -17,7 +17,7 @@ namespace Logistic.DAL
 
         public XmlRepository()
         {
-            path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+            path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName;
             path += "\\Data\\Xml\\";
 
             entityType = typeof(TEntity).Name;

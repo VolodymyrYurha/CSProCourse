@@ -17,7 +17,7 @@ namespace Logistic.DAL
 
         public JsonRepository()
         {
-            path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+            path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName;
             path += "\\Data\\Json\\";
             entityType = typeof(TEntity).Name;
         }

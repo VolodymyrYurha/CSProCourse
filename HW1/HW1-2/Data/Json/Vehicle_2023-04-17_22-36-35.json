@@ -1,0 +1,61 @@
+[
+  {
+    "Id": 1,
+    "Type": 0,
+    "Number": "4444",
+    "MaxCargoWeightKg": 1000,
+    "MaxCargoWeightLbs": 2204.6,
+    "MaxCargoVolume": 1000.0,
+    "Cargoes": [
+      {
+        "Id": "993a5f09-4237-4cd9-96b4-bbb74371087f",
+        "Weight": 100,
+        "Volume": 100.0,
+        "Code": "111",
+        "Invoice": null
+      },
+      {
+        "Id": "2f33b6ed-1af8-47ba-b268-bad3e35ad950",
+        "Weight": 200,
+        "Volume": 200.0,
+        "Code": "222",
+        "Invoice": null
+      }
+    ],
+    "CargoWeightCurrent": 300.0,
+    "CargoVolumeCurrent": 300.0
+  },
+  {
+    "Id": 2,
+    "Type": 3,
+    "Number": "1002",
+    "MaxCargoWeightKg": 2000,
+    "MaxCargoWeightLbs": 4409.2,
+    "MaxCargoVolume": 2000.0,
+    "Cargoes": [
+      {
+        "Id": "1e9ca50d-ed0c-409b-83c0-eac9d9c94299",
+        "Weight": 102,
+        "Volume": 102.0,
+        "Code": "112",
+        "Invoice": null
+      },
+      {
+        "Id": "1579c552-8ba0-4bb0-8b52-9907eb79d7c5",
+        "Weight": 202,
+        "Volume": 202.0,
+        "Code": "202",
+        "Invoice": null
+      },
+      {
+        "Id": "8ffeba3c-3920-4a3a-81d2-bc05aef4896f",
+        "Weight": 302,
+        "Volume": 302.0,
+        "Code": "302",
+        "Invoice": null
+      }
+    ],
+    "CargoWeightCurrent": 606.0,
+    "CargoVolumeCurrent": 606.0
+  }
+]
