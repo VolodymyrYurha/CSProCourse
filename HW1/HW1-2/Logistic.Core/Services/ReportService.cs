@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Logistic.Models;
-using Logistic.Models.Enums;
+﻿using Logistic.Models.Enums;
 using Logistic.Models.Interfaces;
 using Logistic.DAL;
-using Logistic.DAL.Interfaces;
 using Logistic.Core.Interfaces;
-using Newtonsoft.Json.Linq;
 
 namespace Logistic.Core
 {

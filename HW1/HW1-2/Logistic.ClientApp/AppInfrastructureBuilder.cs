@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using Logistic.Models;
-using Logistic.Models.Interfaces;
+﻿using Logistic.Models;
 using Logistic.Models.Enums;
 using Logistic.DAL;
 using Logistic.Core;

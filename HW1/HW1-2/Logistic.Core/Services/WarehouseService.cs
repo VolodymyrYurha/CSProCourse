@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Logistic.Models;
+﻿using Logistic.Models;
 using Logistic.DAL.Interfaces;
 using Logistic.Core.Interfaces;
 

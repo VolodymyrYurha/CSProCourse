@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using Logistic.Models.Interfaces;
-using Logistic.DAL.Interfaces;
+﻿using Logistic.DAL.Interfaces;
 using Newtonsoft.Json;
 
 namespace Logistic.DAL
