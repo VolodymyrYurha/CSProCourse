@@ -1,15 +1,17 @@
-using AutoMapper.Execution;
-using Logistic.Core;
-using Logistic.DAL;
 using Logistic.Models;
 using Logistic.Models.Enums;
-using Logistic.Models.Interfaces;
-using System.Xml;
+using NSubstitute;
 
 namespace Logistic.DAL.Tests
 {
     public class InMemoryRepositoryTests
     {
+
+        public InMemoryRepositoryTests()
+        {
+
+        }
+
         [Fact]
         public void Create_WhenValidEntity_AddsEntityToRepo()
         {

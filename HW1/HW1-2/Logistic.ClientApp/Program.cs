@@ -10,12 +10,3 @@
         }
     }
 }
-
-//Main();
-
-//void Main()
-//{
-//    Console.WriteLine("\t\tVehicle Loading application");
-//    var appInfrastructure = new AppInfrastructureBuilder();
-//    appInfrastructure.CommandReader();
-//}
