@@ -1,7 +1,6 @@
 using AutoFixture.Xunit2;
 using Logistic.DAL.Interfaces;
 using Logistic.Models;
-using Logistic.Models.Enums;
 using NSubstitute;
 
 namespace Logistic.Core.Tests
@@ -17,24 +16,24 @@ namespace Logistic.Core.Tests
             service = new VehicleService(repository);
         }
 
-        [Fact]
-        public void Create_WhenDataIsValid_CallsExpectedMethod()
+        [Theory]
+        [AutoData]
+        public void Create_WhenDataIsValid_CallsExpectedMethod(Vehicle vehicle)
         {
             // Arrange
-            var entity = new Vehicle(VehicleType.Car, 1000, 1000.0f, "BC 1000 BO");
 
             // Act
-            service.Create(entity);
+            service.Create(vehicle);
 
             // Assert
-            repository.Received(1).Create(entity);
+            repository.Received(1).Create(vehicle);
         }
 
-        [Fact]
-        public void Delete_WhenIDIsValid_CallsExpectedMethod()
+        [Theory]
+        [AutoData]
+        public void Delete_WhenIDIsValid_CallsExpectedMethod(int id)
         {
             // Arrange
-            int id = 123;
 
             // Act
             service.Delete(id);
@@ -43,40 +42,39 @@ namespace Logistic.Core.Tests
             repository.Received(1).Delete(id);
         }
 
-        [Fact]
-        public void GetAll_WhenDataRead_EqualVehicleLists()
+        [Theory]
+        [AutoData]
+        public void GetAll_WhenDataRead_EqualVehicleLists(List<Vehicle> vehicles)
         {
             // Arrange
-            var expectedList = new List<Vehicle> { new Vehicle(), new Vehicle() };
-            repository.ReadAll().Returns(expectedList);
+            repository.ReadAll().Returns(vehicles);
 
             // Act
             var result = service.GetAll();
 
             // Assert
-            Assert.Equal(expectedList, result);
+            Assert.Equal(vehicles, result);
         }
 
-        [Fact]
-        public void GetById_ReadVehicleWithMatchingId_EqualVehicles()
+        [Theory]
+        [AutoData]
+        public void GetById_ReadVehicleWithMatchingId_EqualVehicles(Vehicle vehicle)
         {
             // Arrange
-            int id = 123;
-            var expectedVehicle = new Vehicle { Id = id };
-            repository.Read(id).Returns(expectedVehicle);
+            repository.Read(vehicle.Id).Returns(vehicle);
 
             // Act
-            var result = service.GetById(id);
+            var result = service.GetById(vehicle.Id);
 
             // Assert
-            Assert.Equal(expectedVehicle, result);
+            Assert.Equal(vehicle.Number, result.Number);
         }
 
-        [Fact]
-        public void GetVehicleInformation_ReturnsVehicleToString_EqualStrings()
+        [Theory]
+        [AutoData]
+        public void GetVehicleInformation_ReturnsVehicleToString_EqualStrings(Vehicle vehicle)
         {
             // Arrange
-            var vehicle = new Vehicle(VehicleType.Car, 1000, 1000.0f, "BC 1000 BO");
 
             // Act
             var result = service.GetVehicleInformation(vehicle);
