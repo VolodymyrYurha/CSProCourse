@@ -174,7 +174,6 @@ namespace Logistic.Core.Tests
             service.UnloadCargo(cargo.Id, vehicle.Id);
 
             // Assert
-            //var updatedVehicle = repository.Read(vehicle.Id);
             Cargo cargoById = vehicle.Cargoes.FirstOrDefault(c => c.Id == cargo.Id);
             Assert.Equal(default(Cargo), cargoById);
         }
