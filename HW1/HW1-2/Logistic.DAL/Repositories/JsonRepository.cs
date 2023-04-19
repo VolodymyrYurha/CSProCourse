@@ -16,7 +16,7 @@ namespace Logistic.DAL
             entityType = typeof(TEntity).Name;
         }
 
-        public void Create(List<TEntity> entities)
+        public string Create(List<TEntity> entities)
         {
             string dateTime = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
             var jsonName = entityType + "_" + dateTime + ".json";
@@ -29,6 +29,8 @@ namespace Logistic.DAL
             {
                 sw.WriteLine(json);
             }
+
+            return jsonName;
         }
 
         public List<TEntity> Read(string filename)

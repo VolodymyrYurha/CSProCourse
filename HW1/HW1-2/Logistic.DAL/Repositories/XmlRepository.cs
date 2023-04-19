@@ -18,7 +18,7 @@ namespace Logistic.DAL
             entityType = typeof(TEntity).Name;
         }
 
-        public void Create(List<TEntity> entities)
+        public string Create(List<TEntity> entities)
         {
             string dateTime = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
             var xmlName = entityType + "_" + dateTime + ".xml";
@@ -36,6 +36,8 @@ namespace Logistic.DAL
             };
             using var writer = XmlWriter.Create(savePath, settings);
             xmlSerializer.Serialize(writer, entities);
+
+            return xmlName;
         }
 
         public List<TEntity> Read(string filename)
