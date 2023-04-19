@@ -9,7 +9,7 @@ namespace Logistic.DAL
         where TEntity : class, IEntity
     {
         private readonly string notFoundIdExceptionMessage = $"{typeof(TEntity).Name} entity with this Id doesn't exist";
-        private List<TEntity> entities;
+        public List<TEntity> entities;
         private int currentID = 0;
 
         private MapperConfiguration config = new MapperConfiguration(cfg => cfg.CreateMap<TEntity, TEntity>());
