@@ -5,19 +5,19 @@ using Logistic.Models;
 
 namespace Logistic.DAL.Tests
 {
-    public class JsonRepositoryTests
+    public class XmlRepositoryTests : Xunit.IClassFixture<XmlRepository<Vehicle>>
     {
-        JsonRepository<Vehicle> repository;
-        public JsonRepositoryTests()
+        XmlRepository<Vehicle> repository;
+        public XmlRepositoryTests(XmlRepository<Vehicle> repo)
         {
-            repository = new JsonRepository<Vehicle>();
+            repository = repo;
         }
 
         [Fact]
         public void Read_WhenFileNameValid_ReadVehicleList()
         {
             // Arrange
-            string filename = "Vehicle_2023-03-24_17-09-18.json";
+            string filename = "Vehicle_2023-03-24_17-09-05.xml";
 
             // Act 
             var actualList = repository.Read(filename);
@@ -42,8 +42,8 @@ namespace Logistic.DAL.Tests
             // Arrange
 
             // Act
-            string createdJsonName = repository.Create(vehicles2Serialize);
-            var actualList = repository.Read(createdJsonName);
+            string createdXmlName = repository.Create(vehicles2Serialize);
+            var actualList = repository.Read(createdXmlName);
 
             // Assert
             using (new AssertionScope())
