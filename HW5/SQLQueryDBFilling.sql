@@ -1,0 +1,31 @@
+USE Logistics
+
+INSERT INTO INVOICE (Id, RecipientAddress, RecipientPhoneNumber, SenderAddress, SenderPhoneNumber)
+VALUES
+(NEWID(), '123 Main St.', '555-1234', '456 Maple Ave.', '555-5678'),
+(NEWID(), '789 Oak St.', '555-9012', '321 Pine St.', '555-3456'),
+(NEWID(), '456 Maple Ave.', '555-5678', '123 Main St.', '555-1234'),
+(NEWID(), '321 Pine St.', '555-3456', '789 Oak St.', '555-9012'),
+(NEWID(), '111 Elm St.', '555-1111', '222 Oak St.', '555-2222');
+
+INSERT INTO VEHICLE (VehicleTypeId, Number, MaxCargoWeightKg, MaxCargoWeightLbs, MaxCargoVolume, CargoWeightCurrent, CargoVolumeCurrent)
+VALUES
+(1, 'ABC-123', 1000, 2204.62, 50, 0, 0),
+(1, 'DEF-456', 1500, 3306.93, 75, 0, 0),
+(2, 'GHI-789', 200000, 440924.52, 10000, 0, 0),
+(3, 'JKL-012', 50000, 110231.13, 5000, 0, 0),
+(4, 'MNO-345', 100000, 220462.26, 7500, 0, 0);
+
+INSERT INTO WAREHOUSE DEFAULT VALUES;
+INSERT INTO WAREHOUSE DEFAULT VALUES;
+INSERT INTO WAREHOUSE DEFAULT VALUES;
+INSERT INTO WAREHOUSE DEFAULT VALUES;
+INSERT INTO WAREHOUSE DEFAULT VALUES;
+
+INSERT INTO CARGO (Id, [Weight], Volume, Code, InvoiceId, VehicleId, WarehouseId)
+VALUES
+(NEWID(), 100, 5, 'ABC123', (SELECT Id FROM ( SELECT ROW_NUMBER() OVER (ORDER BY Id) AS RowNum, Id FROM INVOICE) AS InvExt WHERE RowNum = 1), 1, null),
+(NEWID(), 200, 10, 'DEF456', (SELECT Id FROM ( SELECT ROW_NUMBER() OVER (ORDER BY Id) AS RowNum, Id FROM INVOICE) AS InvExt WHERE RowNum = 2), 2, null),
+(NEWID(), 300, 15, 'GHI789', (SELECT Id FROM ( SELECT ROW_NUMBER() OVER (ORDER BY Id) AS RowNum, Id FROM INVOICE) AS InvExt WHERE RowNum = 3), null, 1),
+(NEWID(), 400, 20, 'JKL012', (SELECT Id FROM ( SELECT ROW_NUMBER() OVER (ORDER BY Id) AS RowNum, Id FROM INVOICE) AS InvExt WHERE RowNum = 4), null, 2),
+(NEWID(), 500, 25, 'MNO345', (SELECT Id FROM ( SELECT ROW_NUMBER() OVER (ORDER BY Id) AS RowNum, Id FROM INVOICE) AS InvExt WHERE RowNum = 5), null, null);
