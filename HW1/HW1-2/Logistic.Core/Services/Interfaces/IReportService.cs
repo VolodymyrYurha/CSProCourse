@@ -6,7 +6,7 @@ namespace Logistic.Core.Interfaces
     public interface IReportService<TEntity>
         where TEntity : class, IEntity
     {
-        void CreateReport(ReportType reportType, List<TEntity> entities);
+        string CreateReport(ReportType reportType, List<TEntity> entities);
 
         List<TEntity> LoadReport(string fileName);
     }

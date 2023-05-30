@@ -57,26 +57,6 @@ namespace WpfApp1
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                if (openFileDialog.ShowDialog() == true)
-                {
-                    ImportTextBox.Text = openFileDialog.FileName;
-                }
-            }
-            catch (CustomException c)
-            {
-                MessageBox.Show(c.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(inputWeight.Text) || string.IsNullOrWhiteSpace(inputVolume.Text) || string.IsNullOrWhiteSpace(inputNumber.Text) || string.IsNullOrWhiteSpace(inputType.Text))
@@ -171,6 +151,88 @@ namespace WpfApp1
         private void showNotSelectedMessage()
         {
             MessageBox.Show("You've not selected the Vehicle", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
+
+        private void ImportButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    var path = openFileDialog.FileName;
+                    ImportTextBox.Text = path;
+                    var vehicles = reportVehicleService.LoadReport(path);
+
+                    vehicleReportListView.Items.Clear();
+
+                    foreach (var vehicle in vehicles)
+                    {
+                        ListViewItem listViewItem = new ListViewItem();
+                        listViewItem.Content = vehicle;
+                        vehicleReportListView.Items.Add(listViewItem);
+                    }
+                }
+            }
+            catch (CustomException c)
+            {
+                MessageBox.Show(c.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void ExportButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (inputExportType.SelectedItem == null)
+            {
+                MessageBox.Show("You've not selected export Type", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            try
+            {
+                var vehicles = vehicleService.GetAll();
+                if (inputExportType.SelectedValue.ToString() == "Json")
+                {
+                    string jsonPath = reportVehicleService.CreateReport(ReportType.Json, vehicles);
+
+                    vehicleExportListView.Items.Clear();
+                    foreach (var vehicle in vehicles)
+                    {
+                        ListViewItem listViewItem = new ListViewItem();
+                        listViewItem.Content = vehicle;
+                        vehicleExportListView.Items.Add(listViewItem);
+                    }
+
+                    ExportTextBox.Text = jsonPath;
+                    MessageBox.Show("Successfully saved as Json", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+
+                else if (inputExportType.SelectedValue.ToString() == "Xml")
+                {
+                    var xmlPath = reportVehicleService.CreateReport(ReportType.Xml, vehicles);
+
+                    vehicleExportListView.Items.Clear();
+                    foreach (var vehicle in vehicles)
+                    {
+                        ListViewItem listViewItem = new ListViewItem();
+                        listViewItem.Content = vehicle;
+                        vehicleExportListView.Items.Add(listViewItem);
+                    }
+                    ExportTextBox.Text = xmlPath;
+                    MessageBox.Show("Successfully saved as Json", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch (CustomException c)
+            {
+                MessageBox.Show(c.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

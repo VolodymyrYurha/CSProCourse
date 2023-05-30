@@ -43,7 +43,12 @@ namespace Logistic.DAL
         public List<TEntity> Read(string filename)
         {
             var serializer = new XmlSerializer(typeof(List<TEntity>));
-            using var stream = new FileStream(path + filename, FileMode.Open);
+            var readPath = path + filename;
+            if (filename.Contains('\\') || filename.Contains('/'))
+            {
+                readPath = filename;
+            }
+            using var stream = new FileStream(readPath, FileMode.Open);
             return (List<TEntity>)serializer.Deserialize(stream);
         }
     }
