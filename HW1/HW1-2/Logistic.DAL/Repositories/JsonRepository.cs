@@ -37,6 +37,11 @@ namespace Logistic.DAL
         {
             string readPath = path + filename;
 
+            if(filename.Contains('\\')|| filename.Contains('/'))
+            {
+                readPath = filename;
+            }
+
             using (StreamReader sr = new StreamReader(readPath))
             {
                 string json = sr.ReadToEnd();

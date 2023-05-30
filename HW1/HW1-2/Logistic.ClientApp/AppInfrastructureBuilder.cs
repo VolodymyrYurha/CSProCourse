@@ -7,17 +7,17 @@ namespace Logistic.ClientApp
 {
     public class AppInfrastructureBuilder
     {
-        private JsonRepository<Vehicle> jsonVehicleRepository;
-        private JsonRepository<Warehouse> jsonWarehouseRepository;
-        private XmlRepository<Vehicle> xmlVehicleRepository;
-        private XmlRepository<Warehouse> xmlWarehouseRepository;
-        private InMemoryRepository<Vehicle> inMemoryVehicleRepository;
-        private InMemoryRepository<Warehouse> inMemoryWarehouseRepository;
+        public JsonRepository<Vehicle> jsonVehicleRepository;
+        public JsonRepository<Warehouse> jsonWarehouseRepository;
+        public XmlRepository<Vehicle> xmlVehicleRepository;
+        public XmlRepository<Warehouse> xmlWarehouseRepository;
+        public InMemoryRepository<Vehicle> inMemoryVehicleRepository;
+        public InMemoryRepository<Warehouse> inMemoryWarehouseRepository;
 
-        private VehicleService vehicleService;
-        private WarehouseService warehouseService;
-        private ReportService<Vehicle> reportVehicleService;
-        private ReportService<Warehouse> reportWarehouseService;
+        public VehicleService vehicleService;
+        public WarehouseService warehouseService;
+        public ReportService<Vehicle> reportVehicleService;
+        public ReportService<Warehouse> reportWarehouseService;
 
         public AppInfrastructureBuilder()
         {

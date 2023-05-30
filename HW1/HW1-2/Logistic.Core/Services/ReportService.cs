@@ -17,15 +17,15 @@ namespace Logistic.Core
             this.xmlRepository = xmlRepository;
         }
 
-        public void CreateReport(ReportType reportType, List<TEntity> entities)
+        public string CreateReport(ReportType reportType, List<TEntity> entities)
         {
             if (reportType == ReportType.Json)
             {
-                jsonRepository.Create(entities);
+                return jsonRepository.Create(entities);
             }
             else
             {
-                xmlRepository.Create(entities);
+                return xmlRepository.Create(entities);
             }
         }
 

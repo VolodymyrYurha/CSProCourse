@@ -1,6 +1,7 @@
 ﻿using Logistic.Models;
 using Logistic.DAL.Interfaces;
 using Logistic.Core.Interfaces;
+using Logistic.Models.Models.Exceptions;
 
 namespace Logistic.Core
 {
@@ -16,6 +17,11 @@ namespace Logistic.Core
         public void Create(Vehicle entity)
         {
             repository.Create(entity);
+        }
+
+        public void Update(int id, Vehicle entity)
+        {
+            repository.Update(id, entity);
         }
 
         public void Delete(int id)
@@ -44,12 +50,12 @@ namespace Logistic.Core
 
             if (cargo.Weight > GetCargoWeightLeft(vehicleToLoad))
             {
-                throw new ArgumentException($"Cargo's too heavy. Weight: {cargo.Weight} kg. Space: {GetCargoWeightLeft(vehicleToLoad)} kg. Vehicle id: {idVehicle}");
+                throw new CustomException($"Cargo's too heavy. Weight: {cargo.Weight} kg. Space: {GetCargoWeightLeft(vehicleToLoad)} kg. Vehicle id: {idVehicle}");
             }
 
             if (cargo.Volume > GetCargoVolumeLeft(vehicleToLoad))
             {
-                throw new ArgumentException($"Cargo's too voluminous. Volume: {cargo.Volume} cub. m. Space: {GetCargoVolumeLeft(vehicleToLoad)} cub. m. Vehicle id: {idVehicle}");
+                throw new CustomException($"Cargo's too voluminous. Volume: {cargo.Volume} cub. m. Space: {GetCargoVolumeLeft(vehicleToLoad)} cub. m. Vehicle id: {idVehicle}");
             }
 
             vehicleToLoad.Cargoes.Add(cargo);
@@ -65,7 +71,7 @@ namespace Logistic.Core
 
             if (cargoToDelete == null)
             {
-                throw new Exception($"There is no cargo with id  [ {guidCargo} ] in vehicle with id {vehicleToUnload.Id}");
+                throw new CustomException($"There is no cargo with id  [ {guidCargo} ] in vehicle with id {vehicleToUnload.Id}");
             }
 
             vehicleToUnload.Cargoes.Remove(cargoToDelete);
@@ -79,7 +85,7 @@ namespace Logistic.Core
             var vehicleToUnload = repository.Read(idVehicle);
             if (!(vehicleToUnload.Cargoes.Count > 0))
             {
-                throw new Exception($"There isn't any cargo in vehicle with id {vehicleToUnload.Id}");
+                throw new CustomException($"There isn't any cargo in vehicle with id {vehicleToUnload.Id}");
             }
 
             var cargoToDelete = vehicleToUnload.Cargoes[vehicleToUnload.Cargoes.Count - 1];
