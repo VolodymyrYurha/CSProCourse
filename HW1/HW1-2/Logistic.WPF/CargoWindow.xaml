@@ -8,16 +8,35 @@
         Title="Cargo managment" Height="450" Width="800">
     <Grid>
 
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="687,390,0,0" VerticalAlignment="Top" Height="34" Width="96"/>
-        <GroupBox Header="Remove existing cargo" Margin="10,10,429,10">
-            <Grid Height="387">
-                <ListBox Margin="10,10,10,57"/>
-                <Button Content="Unload selected cargo" HorizontalAlignment="Left" Margin="10,343,0,0" VerticalAlignment="Top" Height="34" Width="148"/>
+        <GroupBox Header="Remove existing cargo" Margin="10,10,430,20">
+            <Grid Height="390">
+                <ListView x:Name="cargoesListView" ItemsSource="{Binding Cargoes}" Height="Auto" VerticalAlignment="Stretch" Margin="10,10,10,90" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="cargoesListView_SelectionChanged">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width ="70"/>
+                            <GridViewColumn Header="Code" DisplayMemberBinding="{Binding Code}" Width ="80"/>
+                            <GridViewColumn Header="Weight" DisplayMemberBinding="{Binding Weight}" Width ="80"/>
+                            <GridViewColumn Header="Volume" DisplayMemberBinding="{Binding Volume}" Width ="80"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Button Content="Unload selected cargo" HorizontalAlignment="Stretch" Background="Tomato" Margin="10,310,10,10" VerticalAlignment="Top" Height="34" Width="Auto" Click="UnloadButton_Click"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Add new cargo" Margin="382,10,17,57">
-            <Grid>
-                <Button Name="SaveDataButton" Content="Save changes" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" Width="96" Click="SaveDataButton_Click" Margin="283,300,0,0"/>
+        <GroupBox Header="Add new cargo" Margin="382,10,10,20">
+            <Grid Height="390">
+                <TextBlock Text="Weight" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120" Margin="10,39,10,0" Height="22"/>
+                <TextBox x:Name="inputWeight" VerticalAlignment="Top" Width="120" Margin="10,39,10,0" Height="22"/>
+
+                <TextBlock Text="Volume" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="10,110,10,0" Height="22"/>
+                <TextBox x:Name="inputVolume" VerticalAlignment="Top" Width="120" Margin="10,110,10,0" Height="22"/>
+
+                <TextBlock Text="Code" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="10,181,10,0" Height="22"/>
+                <TextBox x:Name="inputCode" VerticalAlignment="Top" Width="120" Margin="10,181,10,0" Height="22"/>
+
+
+                <Button Name="SaveDataButton" Content="Add" Background="LimeGreen" Margin="10,310,120,10" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="34" Width="Auto" Click="AddButton_Click" />
+                <Button Content="Okay" HorizontalAlignment="Right" Margin="10,310,10,10" VerticalAlignment="Top" Height="34" Width="96" Click="OkeyButton_Click"/>
             </Grid>
         </GroupBox>
     </Grid>

@@ -23,7 +23,6 @@ namespace WpfApp1
         public ReportService<Vehicle> reportVehicleService;
 
         public Vehicle lastSelectedVehicle;
-        //AppInfrastructureBuilder appInfrastructure;
         public MainWindow()
         {
             InitializeComponent();
@@ -41,9 +40,13 @@ namespace WpfApp1
         private void LoadCargoButton_Click(object sender, RoutedEventArgs e)
         {
             CargoWindow cargoWindow = new CargoWindow();
+            cargoWindow.selectedVehicle = lastSelectedVehicle;
+            cargoWindow.selectedVehicleId = lastSelectedVehicle.Id;
+            cargoWindow.vehicleService = vehicleService;
+            cargoWindow.PopulateCargoes();
             cargoWindow.ShowDialog();
 
-            if (cargoWindow.IsDataSet)
+            if (cargoWindow.IsDataChanged)
             {
                 MessageBox.Show(cargoWindow.SomeData);
             }
@@ -75,7 +78,11 @@ namespace WpfApp1
             if (vehicleListView.SelectedItem != null)
             {
                 ListViewItem selectedItem = (ListViewItem)vehicleListView.SelectedItem;
-                lastSelectedVehicle = (Vehicle)selectedItem.Content;
+                var selectedVehicleList = (Vehicle)selectedItem.Content;
+                var selectedId = selectedVehicleList.Id;
+
+                lastSelectedVehicle = vehicleService.GetById(selectedId);
+
                 inputNumber.Text = lastSelectedVehicle.Number;
                 inputWeight.Text = lastSelectedVehicle.MaxCargoWeightKg.ToString();
                 inputVolume.Text = lastSelectedVehicle.MaxCargoVolume.ToString();
@@ -85,8 +92,6 @@ namespace WpfApp1
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            //ListViewItem selectedItem = (ListViewItem)vehicleListView.SelectedItem;
-            //Vehicle selectedVehicle = (Vehicle)selectedItem.Content;
             if (lastSelectedVehicle != null)
             {
                 lastSelectedVehicle.Type = Enum.Parse<VehicleType>(inputType.SelectedItem.ToString());
