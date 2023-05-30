@@ -12,7 +12,7 @@
         <TabControl>
             <TabItem Header="Vehicle">
                 <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.552,0.558" Height="400">
-                    <ListView Margin="26,23,441,19" x:Name="vehicleListView" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="vehicleListView_SelectionChanged">
+                    <ListView Margin="26,23,441,19" x:Name="vehicleListView" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="VehicleListView_SelectionChanged">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding Id}"/>

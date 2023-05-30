@@ -13,9 +13,8 @@ namespace WpfApp1
     /// </summary>
     public partial class CargoWindow : Window
     {
-        public string SomeData = "Changes've been successfully applied.";
-        public bool IsDataChanged;
-        public Vehicle selectedVehicle { get; set; }
+        public string changesLog = "Changes've been successfully applied.";
+        public bool isDataChanged;
         public int selectedVehicleId { get; set; }
         public VehicleService vehicleService;
         public Cargo lastSelectedCargo;
@@ -26,7 +25,7 @@ namespace WpfApp1
             InitializeComponent();
             var vehicles = new List<string>();
             DataContext = this;
-            IsDataChanged = false;
+            isDataChanged = false;
             loadedCargoes = 0;
             unloadedCargoes = 0;
         }
@@ -46,10 +45,10 @@ namespace WpfApp1
 
                 Cargo newCargo = new Cargo(Weight, Volume, Code);
                 vehicleService.LoadCargo(newCargo, selectedVehicleId);
-                IsDataChanged = true;
+                isDataChanged = true;
                 loadedCargoes++;
 
-                PopulateCargoes();
+                RefreshCargoes();
             }
             catch (CustomException c)
             {
@@ -69,10 +68,10 @@ namespace WpfApp1
                 inputCode.Clear();
                 inputVolume.Clear();
                 inputWeight.Clear();
-                IsDataChanged = true;
+                isDataChanged = true;
                 unloadedCargoes++;
 
-                PopulateCargoes();
+                RefreshCargoes();
             }
             else
             {
@@ -80,30 +79,26 @@ namespace WpfApp1
             }
         }
 
-        public void PopulateCargoes()
+        public void RefreshCargoes()
         {
-            cargoesListView.Items.Clear();
-
-            foreach (var cargo in vehicleService.GetById(selectedVehicleId).Cargoes)
-            {
-                cargoesListView.Items.Add(cargo);
-            }
+            var cargoes = vehicleService.GetById(selectedVehicleId).Cargoes;
+            cargoesListView.ItemsSource = cargoes;
         }
 
         private void OkeyButton_Click(object sender, RoutedEventArgs e)
         {
-            if (IsDataChanged)
+            if (isDataChanged)
             {
-                SomeData += $"\n(+{loadedCargoes}) and (-{unloadedCargoes}) cargoes";
+                changesLog += $"\n(+{loadedCargoes}) and (-{unloadedCargoes}) cargoes";
             }
             else
             {
-                SomeData = "Nothing's been changed";
+                changesLog = "Nothing's been changed";
             }
             Close();
         }
 
-        private void cargoesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CargoesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cargoesListView.SelectedItem != null)
             {

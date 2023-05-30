@@ -34,7 +34,7 @@ namespace WpfApp1
             vehicleService = new VehicleService(inMemoryVehicleRepository);
             reportVehicleService = new ReportService<Vehicle>(jsonVehicleRepository, xmlVehicleRepository);
 
-            PopulateListView();
+            RefreshList(vehicleListView);
         }
 
         private void LoadCargoButton_Click(object sender, RoutedEventArgs e)
@@ -42,13 +42,12 @@ namespace WpfApp1
             if (lastSelectedVehicle != null)
             {
                 CargoWindow cargoWindow = new CargoWindow();
-                cargoWindow.selectedVehicle = lastSelectedVehicle;
                 cargoWindow.selectedVehicleId = lastSelectedVehicle.Id;
                 cargoWindow.vehicleService = vehicleService;
-                cargoWindow.PopulateCargoes();
+                cargoWindow.RefreshCargoes();
                 cargoWindow.ShowDialog();
 
-                MessageBox.Show(cargoWindow.SomeData, "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(cargoWindow.changesLog, "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
@@ -72,7 +71,7 @@ namespace WpfApp1
 
                 Vehicle vehicle = new Vehicle(type, maxCargoWeightKg, maxCargoVolume, number);
                 vehicleService.Create(vehicle);
-                PopulateListView();
+                RefreshList(vehicleListView);
             }
             catch (CustomException c)
             {
@@ -84,13 +83,12 @@ namespace WpfApp1
             }
         }
 
-        private void vehicleListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void VehicleListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (vehicleListView.SelectedItem != null)
             {
-                ListViewItem selectedItem = (ListViewItem)vehicleListView.SelectedItem;
-                var selectedVehicleList = (Vehicle)selectedItem.Content;
-                var selectedId = selectedVehicleList.Id;
+                var selectedVehicle = vehicleListView.SelectedItem as Vehicle;
+                var selectedId = selectedVehicle.Id;
 
                 lastSelectedVehicle = vehicleService.GetById(selectedId);
 
@@ -111,7 +109,7 @@ namespace WpfApp1
                 lastSelectedVehicle.Number = inputNumber.Text;
 
                 vehicleService.Update(lastSelectedVehicle.Id, lastSelectedVehicle);
-                PopulateListView();
+                RefreshList(vehicleListView);
             }
             else
             {
@@ -127,23 +125,11 @@ namespace WpfApp1
                 inputVolume.Clear();
                 inputType.ClearValue(ComboBox.SelectedItemProperty);
                 vehicleService.Delete(lastSelectedVehicle.Id);
-                PopulateListView();
+                RefreshList(vehicleListView);
             }
             else
             {
                 showNotSelectedMessage();
-            }
-        }
-
-        private void PopulateListView()
-        {
-            vehicleListView.Items.Clear();
-
-            foreach (var vehicle in vehicleService.GetAll())
-            {
-                ListViewItem listViewItem = new ListViewItem();
-                listViewItem.Content = vehicle;
-                vehicleListView.Items.Add(listViewItem);
             }
         }
 
@@ -162,15 +148,7 @@ namespace WpfApp1
                     var path = openFileDialog.FileName;
                     ImportTextBox.Text = path;
                     var vehicles = reportVehicleService.LoadReport(path);
-
-                    vehicleReportListView.Items.Clear();
-
-                    foreach (var vehicle in vehicles)
-                    {
-                        ListViewItem listViewItem = new ListViewItem();
-                        listViewItem.Content = vehicle;
-                        vehicleReportListView.Items.Add(listViewItem);
-                    }
+                    vehicleReportListView.ItemsSource = vehicles;
                 }
             }
             catch (CustomException c)
@@ -196,14 +174,7 @@ namespace WpfApp1
                 if (inputExportType.SelectedValue.ToString() == "Json")
                 {
                     string jsonPath = reportVehicleService.CreateReport(ReportType.Json, vehicles);
-
-                    vehicleExportListView.Items.Clear();
-                    foreach (var vehicle in vehicles)
-                    {
-                        ListViewItem listViewItem = new ListViewItem();
-                        listViewItem.Content = vehicle;
-                        vehicleExportListView.Items.Add(listViewItem);
-                    }
+                    RefreshList(vehicleExportListView);
 
                     ExportTextBox.Text = jsonPath;
                     MessageBox.Show("Successfully saved as Json", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -212,16 +183,10 @@ namespace WpfApp1
                 else if (inputExportType.SelectedValue.ToString() == "Xml")
                 {
                     var xmlPath = reportVehicleService.CreateReport(ReportType.Xml, vehicles);
+                    RefreshList(vehicleExportListView); 
 
-                    vehicleExportListView.Items.Clear();
-                    foreach (var vehicle in vehicles)
-                    {
-                        ListViewItem listViewItem = new ListViewItem();
-                        listViewItem.Content = vehicle;
-                        vehicleExportListView.Items.Add(listViewItem);
-                    }
                     ExportTextBox.Text = xmlPath;
-                    MessageBox.Show("Successfully saved as Json", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Successfully saved as Xml", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             catch (CustomException c)
@@ -232,6 +197,11 @@ namespace WpfApp1
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+        private void RefreshList(ListView listView)
+        {
+            var vehicles = vehicleService.GetAll();
+            listView.ItemsSource = vehicles;
         }
     }
 }

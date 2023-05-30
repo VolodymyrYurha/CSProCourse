@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfVehicle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Vehicle>
+		<Id>1</Id>
+		<Type>Car</Type>
+		<Number>BC 1111 AK</Number>
+		<MaxCargoWeightKg>100</MaxCargoWeightKg>
+		<MaxCargoWeightLbs>220.46</MaxCargoWeightLbs>
+		<MaxCargoVolume>100</MaxCargoVolume>
+		<Cargoes>
+			<Cargo>
+				<Id>3f9f1947-a984-414b-8b7b-767fc9123aab</Id>
+				<Weight>10</Weight>
+				<Volume>10</Volume>
+				<Code>1</Code>
+			</Cargo>
+			<Cargo>
+				<Id>db1163b0-a165-4ffe-bd2d-4d5ef43be881</Id>
+				<Weight>10</Weight>
+				<Volume>10</Volume>
+				<Code>2</Code>
+			</Cargo>
+			<Cargo>
+				<Id>cbc89651-24ae-4d3e-a9c1-297a1ca1c778</Id>
+				<Weight>10</Weight>
+				<Volume>10</Volume>
+				<Code>3</Code>
+			</Cargo>
+			<Cargo>
+				<Id>d0f96260-39ca-4ac1-9cdd-d5e7626d3fb3</Id>
+				<Weight>10</Weight>
+				<Volume>20</Volume>
+				<Code>3</Code>
+			</Cargo>
+			<Cargo>
+				<Id>cc53be46-2c36-47a0-a093-0a308bdbb33e</Id>
+				<Weight>10</Weight>
+				<Volume>33</Volume>
+				<Code>3</Code>
+			</Cargo>
+			<Cargo>
+				<Id>0eb10836-3982-4925-828c-42a96999c616</Id>
+				<Weight>44</Weight>
+				<Volume>10</Volume>
+				<Code>5</Code>
+			</Cargo>
+			<Cargo>
+				<Id>1db300a4-7be9-4ba3-a493-52934b0347ce</Id>
+				<Weight>6</Weight>
+				<Volume>7</Volume>
+				<Code>6</Code>
+			</Cargo>
+		</Cargoes>
+		<CargoWeightCurrent>100</CargoWeightCurrent>
+		<CargoVolumeCurrent>100</CargoVolumeCurrent>
+	</Vehicle>
+	<Vehicle>
+		<Id>2</Id>
+		<Type>Car</Type>
+		<Number>BC 1111 AK</Number>
+		<MaxCargoWeightKg>200</MaxCargoWeightKg>
+		<MaxCargoWeightLbs>220.46</MaxCargoWeightLbs>
+		<MaxCargoVolume>200</MaxCargoVolume>
+		<Cargoes />
+		<CargoWeightCurrent>0</CargoWeightCurrent>
+		<CargoVolumeCurrent>0</CargoVolumeCurrent>
+	</Vehicle>
+	<Vehicle>
+		<Id>3</Id>
+		<Type>Car</Type>
+		<Number>BC 1111 AK</Number>
+		<MaxCargoWeightKg>300</MaxCargoWeightKg>
+		<MaxCargoWeightLbs>220.46</MaxCargoWeightLbs>
+		<MaxCargoVolume>300</MaxCargoVolume>
+		<Cargoes />
+		<CargoWeightCurrent>0</CargoWeightCurrent>
+		<CargoVolumeCurrent>0</CargoVolumeCurrent>
+	</Vehicle>
+	<Vehicle>
+		<Id>4</Id>
+		<Type>Car</Type>
+		<Number>BC 1111 AK</Number>
+		<MaxCargoWeightKg>400</MaxCargoWeightKg>
+		<MaxCargoWeightLbs>220.46</MaxCargoWeightLbs>
+		<MaxCargoVolume>400</MaxCargoVolume>
+		<Cargoes />
+		<CargoWeightCurrent>0</CargoWeightCurrent>
+		<CargoVolumeCurrent>0</CargoVolumeCurrent>
+	</Vehicle>
+</ArrayOfVehicle>
