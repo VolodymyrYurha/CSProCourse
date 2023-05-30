@@ -18,6 +18,11 @@ namespace Logistic.Core
             repository.Create(entity);
         }
 
+        public void Update(int id, Vehicle entity)
+        {
+            repository.Update(id, entity);
+        }
+
         public void Delete(int id)
         {
             repository.Delete(id);
