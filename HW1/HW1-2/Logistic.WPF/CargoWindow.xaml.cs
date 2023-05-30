@@ -1,11 +1,8 @@
 ﻿using Logistic.Models;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Windows;
 using Logistic.Core;
-using Logistic.Models;
 using System.Windows.Controls;
-using System.Data;
 using Logistic.Models.Models.Exceptions;
 using System;
 
@@ -114,10 +111,7 @@ namespace WpfApp1
                 inputCode.Text = lastSelectedCargo.Code;
                 inputVolume.Text = lastSelectedCargo.Volume.ToString();
                 inputWeight.Text = lastSelectedCargo.Weight.ToString();
-                // Do something with the selected cargo
             }
         }
-
-        
     }
 }

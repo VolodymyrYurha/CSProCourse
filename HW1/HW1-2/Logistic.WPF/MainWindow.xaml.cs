@@ -4,7 +4,6 @@ using Logistic.Models;
 using Logistic.Models.Enums;
 using Logistic.DAL;
 using Logistic.Core;
-using Logistic.ClientApp;
 using System.Windows.Controls;
 using System;
 using Logistic.Models.Models.Exceptions;
