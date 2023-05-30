@@ -6,6 +6,8 @@ using Logistic.Core;
 using Logistic.Models;
 using System.Windows.Controls;
 using System.Data;
+using Logistic.Models.Models.Exceptions;
+using System;
 
 namespace WpfApp1
 {
@@ -14,14 +16,13 @@ namespace WpfApp1
     /// </summary>
     public partial class CargoWindow : Window
     {
-        //private ObservableCollection<Cargo> Cargoes { get; set; } = new ObservableCollection<Cargo>();
-
-        public string SomeData = "Changes've been successfully applied";
+        public string SomeData = "Changes've been successfully applied.";
         public bool IsDataChanged;
         public Vehicle selectedVehicle { get; set; }
         public int selectedVehicleId { get; set; }
         public VehicleService vehicleService;
         public Cargo lastSelectedCargo;
+        private int loadedCargoes, unloadedCargoes;
 
         public CargoWindow()
         {
@@ -29,27 +30,57 @@ namespace WpfApp1
             var vehicles = new List<string>();
             DataContext = this;
             IsDataChanged = false;
-            //selectedVehicleId = selectedVehicle.Id;
-            //cargoesListView.ItemsSource = Cargoes;
+            loadedCargoes = 0;
+            unloadedCargoes = 0;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            //default
-            //int Weight = 10;
-            //float Volume = 10.2f;
-            //string Code = "#4444";
+            if (string.IsNullOrWhiteSpace(inputWeight.Text) || string.IsNullOrWhiteSpace(inputVolume.Text)  || string.IsNullOrWhiteSpace(inputCode.Text))
+            {
+                MessageBox.Show("You've not filled all data", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            try
+            {
+                int Weight = int.Parse(inputWeight.Text);
+                float Volume = float.Parse(inputVolume.Text);
+                string Code = inputCode.Text;
 
-            int Weight = int.Parse(inputWeight.Text);
-            float Volume = float.Parse(inputVolume.Text);
-            string Code = inputCode.Text;
+                Cargo newCargo = new Cargo(Weight, Volume, Code);
+                vehicleService.LoadCargo(newCargo, selectedVehicleId);
+                IsDataChanged = true;
+                loadedCargoes++;
 
-            Cargo newCargo = new Cargo(Weight, Volume, Code);
-            vehicleService.LoadCargo(newCargo, selectedVehicleId);
-            IsDataChanged = true;
-            PopulateCargoes();
-            //IsDataChanged = true;
-            //Close();
+                PopulateCargoes();
+            }
+            catch (CustomException c)
+            {
+                MessageBox.Show(c.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
+        private void UnloadButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (lastSelectedCargo != null)
+            {
+                vehicleService.UnloadCargo(lastSelectedCargo.Id, selectedVehicleId);
+                inputCode.Clear();
+                inputVolume.Clear();
+                inputWeight.Clear();
+                IsDataChanged = true;
+                unloadedCargoes++;
+
+                PopulateCargoes();
+            }
+            else
+            {
+                MessageBox.Show("You've not select the Cargo", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         public void PopulateCargoes()
@@ -64,9 +95,17 @@ namespace WpfApp1
 
         private void OkeyButton_Click(object sender, RoutedEventArgs e)
         {
-            //IsDataChanged = true;
+            if (IsDataChanged)
+            {
+                SomeData += $"\n(+{loadedCargoes}) and (-{unloadedCargoes}) cargoes";
+            }
+            else
+            {
+                SomeData = "Nothing's been changed";
+            }
             Close();
         }
+
         private void cargoesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cargoesListView.SelectedItem != null)
@@ -79,18 +118,6 @@ namespace WpfApp1
             }
         }
 
-        private void UnloadButton_Click(object sender, RoutedEventArgs e)
-        {
-            //Cargo selectedCargo = new Cargo();
-            if(lastSelectedCargo != null)
-            {
-                vehicleService.UnloadCargo(lastSelectedCargo.Id, selectedVehicleId);
-                inputCode.Clear();
-                inputVolume.Clear();
-                inputWeight.Clear();
-                IsDataChanged = true;
-                PopulateCargoes();
-            }
-        }
+        
     }
 }
