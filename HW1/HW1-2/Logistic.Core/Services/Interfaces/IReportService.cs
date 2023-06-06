@@ -8,6 +8,8 @@ namespace Logistic.Core.Interfaces
     {
         string CreateReport(ReportType reportType, List<TEntity> entities);
 
-        List<TEntity> LoadReport(string fileName);
+        List<TEntity> LoadReport(string file);
+
+        byte[] LoadFile(string file);
     }
 }

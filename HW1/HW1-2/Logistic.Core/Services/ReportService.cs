@@ -2,6 +2,11 @@
 using Logistic.Models.Interfaces;
 using Logistic.DAL;
 using Logistic.Core.Interfaces;
+using System.Text;
+using Newtonsoft.Json;
+using System.IO;
+using System.Collections;
+using System.Data.SqlTypes;
 
 namespace Logistic.Core
 {
@@ -43,5 +48,34 @@ namespace Logistic.Core
 
             throw new Exception("invalid file format");
         }
+
+        public byte[] LoadFile(string file)
+        {
+            string jsonPath, xmlPath;
+            jsonPath = jsonRepository.path;
+            xmlPath = xmlRepository.path;
+
+            string readPath;
+            if (file.EndsWith(".json"))
+            {
+                readPath = jsonPath + file;
+            }
+            else
+            {
+                readPath = xmlPath + file;
+            }
+
+            if (file.Contains('\\') || file.Contains('/'))
+            {
+                readPath = file;
+            }
+
+            using (StreamReader sr = new StreamReader(readPath))
+            {
+                string content = sr.ReadToEnd();
+                return Encoding.UTF8.GetBytes(content);
+            }
+        }
+
     }
 }

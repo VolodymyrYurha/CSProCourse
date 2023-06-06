@@ -6,13 +6,21 @@ namespace Logistic.DAL
     public class JsonRepository<TEntity> : ISerializeRepository<TEntity>
         where TEntity : class
     {
-        private string path;
+        public string path;
         private string entityType;
 
         public JsonRepository()
         {
-            path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName;
-            path += "\\Data\\Json\\";
+            string currentDirectory = Directory.GetCurrentDirectory();
+            string rootDirectory = currentDirectory;
+
+            while (!string.IsNullOrEmpty(rootDirectory) && !File.Exists(Path.Combine(rootDirectory, "Logistic.sln")))
+            {
+                rootDirectory = Directory.GetParent(rootDirectory)?.FullName;
+            }
+
+            //path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName;
+            path = rootDirectory + "\\Data\\Json\\";
             entityType = typeof(TEntity).Name;
         }
 

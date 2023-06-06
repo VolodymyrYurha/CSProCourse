@@ -14,19 +14,19 @@ namespace Logistic.Core
             this.repository = repository;
         }
 
-        public void Create(Vehicle entity)
+        public Vehicle Create(Vehicle entity)
         {
-            repository.Create(entity);
+            return repository.Create(entity);
         }
 
-        public void Update(int id, Vehicle entity)
+        public Vehicle Update(int id, Vehicle entity)
         {
-            repository.Update(id, entity);
+            return repository.Update(id, entity);
         }
 
-        public void Delete(int id)
+        public Vehicle Delete(int id)
         {
-            repository.Delete(id);
+            return repository.Delete(id);
         }
 
         public List<Vehicle> GetAll()
@@ -44,7 +44,7 @@ namespace Logistic.Core
             return vehicle.ToString();
         }
 
-        public void LoadCargo(Cargo cargo, int idVehicle)
+        public Cargo LoadCargo(Cargo cargo, int idVehicle)
         {
             var vehicleToLoad = repository.Read(idVehicle);
 
@@ -57,14 +57,15 @@ namespace Logistic.Core
             {
                 throw new CustomException($"Cargo's too voluminous. Volume: {cargo.Volume} cub. m. Space: {GetCargoVolumeLeft(vehicleToLoad)} cub. m. Vehicle id: {idVehicle}");
             }
-
+            cargo.Id = Guid.NewGuid();
             vehicleToLoad.Cargoes.Add(cargo);
             vehicleToLoad.CargoWeightCurrent += cargo.Weight;
             vehicleToLoad.CargoVolumeCurrent += cargo.Volume;
             repository.Update(idVehicle, vehicleToLoad);
+            return cargo;
         }
 
-        public void UnloadCargo(Guid guidCargo, int idVehicle)
+        public Cargo UnloadCargo(Guid guidCargo, int idVehicle)
         {
             var vehicleToUnload = repository.Read(idVehicle);
             var cargoToDelete = vehicleToUnload.Cargoes.FirstOrDefault(c => c.Id == guidCargo);
@@ -78,9 +79,10 @@ namespace Logistic.Core
             vehicleToUnload.CargoWeightCurrent -= cargoToDelete.Weight;
             vehicleToUnload.CargoVolumeCurrent -= cargoToDelete.Volume;
             repository.Update(idVehicle, vehicleToUnload);
+            return cargoToDelete;
         }
 
-        public void UnloadLastCargo(int idVehicle)
+        public Cargo UnloadLastCargo(int idVehicle)
         {
             var vehicleToUnload = repository.Read(idVehicle);
             if (!(vehicleToUnload.Cargoes.Count > 0))
@@ -93,6 +95,7 @@ namespace Logistic.Core
             vehicleToUnload.CargoWeightCurrent -= cargoToDelete.Weight;
             vehicleToUnload.CargoVolumeCurrent -= cargoToDelete.Volume;
             repository.Update(idVehicle, vehicleToUnload);
+            return cargoToDelete;
         }
 
         private float GetCargoWeightLeft(Vehicle vehicle)
