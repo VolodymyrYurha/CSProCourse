@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Logistic.DAL.Interfaces;
+using Logistic.Models;
 using Logistic.Models.Interfaces;
 
 namespace Logistic.DAL

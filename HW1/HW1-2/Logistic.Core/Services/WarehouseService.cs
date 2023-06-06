@@ -41,6 +41,7 @@ namespace Logistic.Core
         public Cargo LoadCargo(Cargo cargo, int idWarehouse)
         {
             var warehouseToLoad = repository.Read(idWarehouse);
+            cargo.Id = Guid.NewGuid();
             warehouseToLoad.Stock.Add(cargo);
             repository.Update(idWarehouse, warehouseToLoad);
             return cargo;

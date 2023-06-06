@@ -57,7 +57,7 @@ namespace Logistic.Core
             {
                 throw new CustomException($"Cargo's too voluminous. Volume: {cargo.Volume} cub. m. Space: {GetCargoVolumeLeft(vehicleToLoad)} cub. m. Vehicle id: {idVehicle}");
             }
-
+            cargo.Id = Guid.NewGuid();
             vehicleToLoad.Cargoes.Add(cargo);
             vehicleToLoad.CargoWeightCurrent += cargo.Weight;
             vehicleToLoad.CargoVolumeCurrent += cargo.Volume;

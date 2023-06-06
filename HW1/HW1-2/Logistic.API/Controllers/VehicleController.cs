@@ -64,5 +64,16 @@ namespace Logistic.API.Controllers
             return Ok(_vehicleService.Delete(id));
         }
 
+        [HttpPost("{id}")]
+        public Cargo LoadCargo(int id, Cargo cargo)
+        {
+            return _vehicleService.LoadCargo(cargo, id);
+        }
+
+        [HttpPost("{vehicleId}/{cargoGuid}")]
+        public Cargo UnloadCargo(Guid cargoGuid, int vehicleId)
+        {
+            return _vehicleService.UnloadCargo(cargoGuid, vehicleId);
+        }
     }
 }
