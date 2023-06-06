@@ -15,6 +15,7 @@ namespace Logistic.Core
 
         public Warehouse Create(Warehouse entity)
         {
+            //entity.Id = Guid.NewGuid();
             return repository.Create(entity);
         }
 

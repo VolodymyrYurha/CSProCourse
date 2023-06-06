@@ -10,6 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<IInMemoryRepository<Vehicle>, InMemoryRepository<Vehicle>>();
 builder.Services.AddScoped<IEntityLoadingService<Vehicle>, VehicleService>();
 
+builder.Services.AddSingleton<IInMemoryRepository<Warehouse>, InMemoryRepository<Warehouse>>();
+builder.Services.AddScoped<IEntityLoadingService<Warehouse>, WarehouseService>();
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

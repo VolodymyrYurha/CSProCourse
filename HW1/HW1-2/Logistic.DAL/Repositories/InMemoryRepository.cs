@@ -36,6 +36,14 @@ namespace Logistic.DAL
         {
             var entityCopy = MapEntity(entity);
             entityCopy.Id = NextId();
+            //if (entityCopy.Id is int)
+            //{
+            //    entityCopy.Id = NextId();
+            //}
+            //if(entityCopy.Id is Guid)
+            //{
+            //    entityCopy.Id = Guid.NewGuid();
+            //}
             entities.Add(entityCopy);
             return entityCopy;
         }

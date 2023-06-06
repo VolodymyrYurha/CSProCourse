@@ -14,6 +14,10 @@ namespace Logistic.Models
 
         public Invoice? Invoice { get; set; }
 
+        public Cargo()
+        {
+        }
+
         public Cargo(int weight, float volume, string code)
         {
             Id = Guid.NewGuid();
