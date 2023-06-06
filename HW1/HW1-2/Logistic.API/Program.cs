@@ -11,12 +11,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<IInMemoryRepository<Vehicle>, InMemoryRepository<Vehicle>>();
 builder.Services.AddScoped<IEntityLoadingService<Vehicle>, VehicleService>();
 
-//builder.Services.AddSingleton<ISerializeRepository<Vehicle>, JsonRepository<Vehicle>>();
-//builder.Services.AddSingleton<ISerializeRepository<Vehicle>, XmlRepository<Vehicle>>();
-//builder.Services.AddScoped<IReportService<Vehicle>, ReportService<Vehicle>>();
-
-builder.Services.AddSingleton<ISerializeRepository<Vehicle>, JsonRepository<Vehicle>>();
-builder.Services.AddSingleton<ISerializeRepository<Vehicle>, XmlRepository<Vehicle>>();
 builder.Services.AddScoped<IReportService<Vehicle>>(provider =>
 {
     var jsonRepository = new JsonRepository<Vehicle>();
