@@ -1,0 +1,24 @@
+[
+  {
+    "Id": 1,
+    "Type": 0,
+    "Number": "bc 1",
+    "MaxCargoWeightKg": 100,
+    "MaxCargoWeightLbs": 220.46,
+    "MaxCargoVolume": 100.0,
+    "Cargoes": [],
+    "CargoWeightCurrent": 0.0,
+    "CargoVolumeCurrent": 0.0
+  },
+  {
+    "Id": 2,
+    "Type": 0,
+    "Number": "bc 2",
+    "MaxCargoWeightKg": 200,
+    "MaxCargoWeightLbs": 440.92,
+    "MaxCargoVolume": 200.0,
+    "Cargoes": [],
+    "CargoWeightCurrent": 0.0,
+    "CargoVolumeCurrent": 0.0
+  }
+]

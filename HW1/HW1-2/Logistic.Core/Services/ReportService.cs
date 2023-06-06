@@ -2,6 +2,7 @@
 using Logistic.Models.Interfaces;
 using Logistic.DAL;
 using Logistic.Core.Interfaces;
+using System.Text;
 
 namespace Logistic.Core
 {

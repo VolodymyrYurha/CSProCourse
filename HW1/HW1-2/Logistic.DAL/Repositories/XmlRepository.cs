@@ -12,9 +12,18 @@ namespace Logistic.DAL
 
         public XmlRepository()
         {
-            path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName;
-            path += "\\Data\\Xml\\";
+            //path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName;
+            //path += "\\Data\\Xml\\";
 
+            string currentDirectory = Directory.GetCurrentDirectory();
+            string rootDirectory = currentDirectory;
+
+            while (!string.IsNullOrEmpty(rootDirectory) && !File.Exists(Path.Combine(rootDirectory, "Logistic.sln")))
+            {
+                rootDirectory = Directory.GetParent(rootDirectory)?.FullName;
+            }
+
+            path = rootDirectory + "\\Data\\Xml\\";
             entityType = typeof(TEntity).Name;
         }
 

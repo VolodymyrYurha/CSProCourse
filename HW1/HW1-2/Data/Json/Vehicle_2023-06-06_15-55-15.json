@@ -1,0 +1,52 @@
+[
+  {
+    "Id": 1,
+    "Type": 0,
+    "Number": "string",
+    "MaxCargoWeightKg": 0,
+    "MaxCargoWeightLbs": 0.0,
+    "MaxCargoVolume": 0.0,
+    "Cargoes": [
+      {
+        "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "Weight": 0,
+        "Volume": 0.0,
+        "Code": "string",
+        "Invoice": {
+          "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "RecipientAddress": "string",
+          "RecipientPhoneNumber": "string",
+          "SenderAddress": "string",
+          "SenderPhoneNumber": "string"
+        }
+      }
+    ],
+    "CargoWeightCurrent": 0.0,
+    "CargoVolumeCurrent": 0.0
+  },
+  {
+    "Id": 2,
+    "Type": 0,
+    "Number": "string",
+    "MaxCargoWeightKg": 0,
+    "MaxCargoWeightLbs": 0.0,
+    "MaxCargoVolume": 0.0,
+    "Cargoes": [
+      {
+        "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "Weight": 0,
+        "Volume": 0.0,
+        "Code": "string",
+        "Invoice": {
+          "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "RecipientAddress": "string",
+          "RecipientPhoneNumber": "string",
+          "SenderAddress": "string",
+          "SenderPhoneNumber": "string"
+        }
+      }
+    ],
+    "CargoWeightCurrent": 0.0,
+    "CargoVolumeCurrent": 0.0
+  }
+]
