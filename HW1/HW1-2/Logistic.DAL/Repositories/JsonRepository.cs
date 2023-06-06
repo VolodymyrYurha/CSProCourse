@@ -6,7 +6,7 @@ namespace Logistic.DAL
     public class JsonRepository<TEntity> : ISerializeRepository<TEntity>
         where TEntity : class
     {
-        private string path;
+        public string path;
         private string entityType;
 
         public JsonRepository()

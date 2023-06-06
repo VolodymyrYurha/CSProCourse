@@ -7,7 +7,7 @@ namespace Logistic.DAL
     public class XmlRepository<TEntity> : ISerializeRepository<TEntity>
         where TEntity : class
     {
-        private string path;
+        public string path;
         private string entityType;
 
         public XmlRepository()

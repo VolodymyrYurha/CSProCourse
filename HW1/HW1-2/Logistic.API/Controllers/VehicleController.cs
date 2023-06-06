@@ -9,6 +9,7 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Text;
 using System.Xml.Serialization;
+using System.Collections;
 
 namespace Logistic.API.Controllers
 {
@@ -91,37 +92,17 @@ namespace Logistic.API.Controllers
             return Ok();
         }
 
-        [HttpGet("jsonreport/{file}")]
-        public IActionResult DownloadJsonReport(string file)
+        [HttpGet("download/{file}")]
+        public IActionResult DownloadFile(string file)
         {
-            var vehicles = _reportService.LoadReport(file);
-            var jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(vehicles);
-            var byteArray = Encoding.UTF8.GetBytes(jsonString);
-
-            return File(byteArray, "application/json", "report.json");
-        }
-
-        [HttpGet("xmlreport/{file}")]
-        public IActionResult DownloadXmlReport(string file)
-        {
-            var vehicles = _reportService.LoadReport(file);
-
-            var serializer = new XmlSerializer(typeof(List<Vehicle>));
-            string xmlString;
-
-            using (var stream = new MemoryStream())
+            if (file.EndsWith(".json"))
             {
-                serializer.Serialize(stream, vehicles);
-                stream.Position = 0;
-                using (var reader = new StreamReader(stream))
-                {
-                    xmlString = reader.ReadToEnd();
-                }
+                return File(_reportService.LoadFile(file), "application/json", "report.json");
             }
-
-            var byteArray = Encoding.UTF8.GetBytes(xmlString);
-
-            return File(byteArray, "application/xml", "report.xml");
+            else
+            {
+                return File(_reportService.LoadFile(file), "application/xml", "report.xml");
+            }
         }
     }
 }
