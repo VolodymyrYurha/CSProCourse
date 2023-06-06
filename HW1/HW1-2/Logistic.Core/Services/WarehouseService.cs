@@ -13,14 +13,14 @@ namespace Logistic.Core
             this.repository = repository;
         }
 
-        public void Create(Warehouse entity)
+        public Warehouse Create(Warehouse entity)
         {
-            repository.Create(entity);
+            return repository.Create(entity);
         }
 
-        public void Delete(int id)
+        public Warehouse Delete(int id)
         {
-            repository.Delete(id);
+            return repository.Delete(id);
         }
 
         public List<Warehouse> GetAll()
@@ -33,14 +33,20 @@ namespace Logistic.Core
             return repository.Read(id);
         }
 
-        public void LoadCargo(Cargo cargo, int idWarehouse)
+        public Warehouse Update(int id, Warehouse entity)
+        {
+            return repository.Update(id, entity);
+        }
+
+        public Cargo LoadCargo(Cargo cargo, int idWarehouse)
         {
             var warehouseToLoad = repository.Read(idWarehouse);
             warehouseToLoad.Stock.Add(cargo);
             repository.Update(idWarehouse, warehouseToLoad);
+            return cargo;
         }
 
-        public void UnloadCargo(Guid guidCargo, int idWarehouse)
+        public Cargo UnloadCargo(Guid guidCargo, int idWarehouse)
         {
             var warehouseToUnload = repository.Read(idWarehouse);
             var cargoToDelete = warehouseToUnload.Stock.FirstOrDefault(c => c.Id == guidCargo);
@@ -52,9 +58,10 @@ namespace Logistic.Core
 
             warehouseToUnload.Stock.Remove(cargoToDelete);
             repository.Update(idWarehouse, warehouseToUnload);
+            return cargoToDelete;
         }
 
-        public void UnloadLastCargo(int idWarehouse)
+        public Cargo UnloadLastCargo(int idWarehouse)
         {
             var warehouseToUnload = repository.Read(idWarehouse);
             if (!(warehouseToUnload.Stock.Count > 0))
@@ -65,6 +72,7 @@ namespace Logistic.Core
             var cargoToDelete = warehouseToUnload.Stock[warehouseToUnload.Stock.Count - 1];
             warehouseToUnload.Stock.Remove(cargoToDelete);
             repository.Update(idWarehouse, warehouseToUnload);
+            return cargoToDelete;
         }
     }
 }

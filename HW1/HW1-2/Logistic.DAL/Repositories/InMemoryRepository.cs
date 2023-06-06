@@ -31,14 +31,15 @@ namespace Logistic.DAL
             }
         }
 
-        public void Create(TEntity entity)
+        public TEntity Create(TEntity entity)
         {
             var entityCopy = MapEntity(entity);
             entityCopy.Id = NextId();
             entities.Add(entityCopy);
+            return entityCopy;
         }
 
-        public void Delete(int id)
+        public TEntity Delete(int id)
         {
             TEntity? entity = entities.FirstOrDefault(e => e.Id == id);
             if (entity == null)
@@ -47,6 +48,7 @@ namespace Logistic.DAL
             }
 
             entities.Remove(entity);
+            return entity;
         }
 
         public TEntity Read(int id)
@@ -65,7 +67,7 @@ namespace Logistic.DAL
             return MapEntityList(entities);
         }
 
-        public void Update(int id, TEntity updateTo)
+        public TEntity Update(int id, TEntity updateTo)
         {
             int index = entities.FindIndex(e => e.Id == id);
 
@@ -76,6 +78,7 @@ namespace Logistic.DAL
 
             entities[index] = updateTo;
             entities[index].Id = id;
+            return updateTo;
         }
 
         private int NextId()

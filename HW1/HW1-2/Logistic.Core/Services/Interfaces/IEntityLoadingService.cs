@@ -6,16 +6,18 @@ namespace Logistic.Core.Interfaces
     public interface IEntityLoadingService<TEntity>
         where TEntity : class, IEntity
     {
-        void Create(TEntity entity);
+        TEntity Create(TEntity entity);
 
         TEntity GetById(int id);
 
         List<TEntity> GetAll();
 
-        void Delete(int id);
+        TEntity Delete(int id);
 
-        void LoadCargo(Cargo cargo, int idEntity);
+        TEntity Update(int id, TEntity entity);
 
-        void UnloadCargo(Guid guidCargo, int idEntity);
+        Cargo LoadCargo(Cargo cargo, int idEntity);
+
+        Cargo UnloadCargo(Guid guidCargo, int idEntity);
     }
 }
