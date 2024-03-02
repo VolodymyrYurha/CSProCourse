@@ -39,9 +39,23 @@ namespace DataGrid
             vehicleService.Create(new Vehicle(VehicleType.Car,  800,     800,    "BC 3333 CK"));
             vehicleService.Create(new Vehicle(VehicleType.Car,  1200,    1000,   "BC 4444 DK"));
             vehicleService.Create(new Vehicle(VehicleType.Car,  2000,    1500,   "BC 5555 EK"));
-            var vehicles = vehicleService.GetAll();
+            vehicleService.Create(new Vehicle(VehicleType.Car,  2000,    1500,   "BC 5555 EK"));
+            vehicleService.Create(new Vehicle(VehicleType.Car,  2000,    1500,   "BC 5555 EK"));
+            vehicleService.Create(new Vehicle(VehicleType.Car,  2000,    1500,   "BC 5555 EK"));
             
-            membersDataGrid.ItemsSource = vehicles;
+            vehicleService.Create(new Vehicle(VehicleType.Car,  2000,    1500,   "BC 5555 EK"));
+            vehicleService.Create(new Vehicle(VehicleType.Car,  2000,    1500,   "BC 5555 EK"));
+            vehicleService.Create(new Vehicle(VehicleType.Car,  2000,    1500,   "BC 5555 EK"));
+            vehicleService.Create(new Vehicle(VehicleType.Car,  2000,    1500,   "BC 5555 EK"));
+            vehicleService.Create(new Vehicle(VehicleType.Car,  2000,    1500,   "BC 5555 EK"));
+            vehicleService.Create(new Vehicle(VehicleType.Car,  2000,    1500,   "BC 5555 EK"));
+            vehicleService.Create(new Vehicle(VehicleType.Car,  2000,    1500,   "BC 5555 EK"));
+            vehicleService.Create(new Vehicle(VehicleType.Car,  2000,    1500,   "BC 5555 EK"));
+            vehicleService.Create(new Vehicle(VehicleType.Car,  2000,    1500,   "BC 5555 EK"));
+            //var vehicles = vehicleService.GetAll();
+
+            //membersDataGrid.ItemsSource = vehicles;
+            UpdateGrid();
         }
 
         private bool IsMaximize = false;
@@ -87,6 +101,11 @@ namespace DataGrid
             createVehicleWindow.Show();
         }
 
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
         private void CreateVehicleWindow_VehicleCreated(object sender, Vehicle e)
         {
             vehicleService.Create(e);
@@ -97,6 +116,7 @@ namespace DataGrid
         {
             var vehicles = vehicleService.GetAll();
             membersDataGrid.ItemsSource = vehicles;
+            VehiclesNumberTextBlock.Text = vehicles.Count.ToString();
         }
     }
 
