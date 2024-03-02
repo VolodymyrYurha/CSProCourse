@@ -15,10 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CSProCourse\HW1\HW1-2\Logistic.API\Logistic.API.csproj" />
-    <ProjectReference Include="..\CSProCourse\HW1\HW1-2\Logistic.Core\Logistic.Core.csproj" />
-    <ProjectReference Include="..\CSProCourse\HW1\HW1-2\Logistic.DAL\Logistic.DAL.csproj" />
-    <ProjectReference Include="..\CSProCourse\HW1\HW1-2\Logistic.Models\Logistic.Models.csproj" />
+    <ProjectReference Include="..\Logistic.Core.Tests\Logistic.Core.Tests.csproj" />
+    <ProjectReference Include="..\Logistic.Core\Logistic.Core.csproj" />
+    <ProjectReference Include="..\Logistic.DAL\Logistic.DAL.csproj" />
+    <ProjectReference Include="..\Logistic.Models\Logistic.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>

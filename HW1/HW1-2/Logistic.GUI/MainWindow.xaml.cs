@@ -7,8 +7,6 @@ using Logistic.Models.Enums;
 using Logistic.DAL;
 using Logistic.Core;
 using System.Windows.Controls;
-using Microsoft.AspNetCore.Components.Forms;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System;
 using AutoMapper.Execution;
 
