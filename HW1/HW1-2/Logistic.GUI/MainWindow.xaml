@@ -31,7 +31,7 @@
                 <Border Grid.Row="1" Background="#623ED0" CornerRadius="0 50 0 30">
                     <DockPanel>
                         <!--Menu Logo-->
-                        <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="20 -30 0 0">
+                        <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100" DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0 -30 0 0">
                             <Ellipse>
                                 <Ellipse.Fill>
                                     <ImageBrush ImageSource="/Images/p1.jpg"/>
@@ -89,7 +89,7 @@
                 </Border>
 
             </Grid>
-
+            
             <!--Main Section-->
             <Grid Grid.Column="1" Margin="30 20 20 20">
                 <Grid.RowDefinitions>
@@ -114,7 +114,7 @@
                 </Grid>
 
                 <!--Top Buttons-->
-                <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="#dcdcdc">
+                <Button Style="{StaticResource topButton}" Margin="0 0 20 0">
                     <Icon:PackIconMaterial Kind="Cog"/>
                 </Button>
 
@@ -144,7 +144,13 @@
                 </StackPanel>
 
                 <!--Counter Title-->
-                <TextBlock x:Name="VehiclesNumberTextBlock" Text="10 Vehicles" Grid.Row="4" FontSize="18" FontWeight="SemiBold" Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <!--<TextBlock x:Name="VehiclesNumberTextBlock" Text="10 Vehicles" Grid.Row="4" FontSize="18" FontWeight="SemiBold" Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>-->
+
+                <StackPanel Orientation="Horizontal" Grid.Row="4">
+                    <TextBlock x:Name="VehiclesNumberTextBlock" Text="0" FontSize="18" FontWeight="SemiBold" Foreground="#7B5CD6"/>
+                    <TextBlock Text="Vehicles" FontSize="18" FontWeight="SemiBold" Foreground="#121518" Margin="5,0,0,0"/>
+                </StackPanel>
+
 
                 <TextBlock Text="Filter by" Grid.Row="4" FontSize="13" FontWeight="SemiBold" Margin="0 0 215 0" Foreground="#121518" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
@@ -160,7 +166,7 @@
                 <!--Members Data Grid-->
                 <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}">
                     <DataGrid.Columns>
-                        <DataGridCheckBoxColumn Header="C" CanUserResize="False" Width="auto" ElementStyle="{StaticResource CheckBoxStyle1}">
+                        <!--<DataGridCheckBoxColumn Header="C" CanUserResize="False" Width="auto" ElementStyle="{StaticResource CheckBoxStyle1}">
                             <DataGridCheckBoxColumn.HeaderTemplate>
                                 <DataTemplate>
                                     <CheckBox Style="{StaticResource CheckBoxStyle1}"/>
@@ -180,7 +186,7 @@
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                        </DataGridTemplateColumn>-->
 
                         <DataGridTextColumn Header="Id"        Width="*"    IsReadOnly="True"   Binding="{Binding Id}"/>
                         <DataGridTextColumn Header="Number"    Width="*"    IsReadOnly="True"   Binding="{Binding Number}"/>
