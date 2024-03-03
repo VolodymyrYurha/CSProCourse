@@ -190,7 +190,7 @@
 
 
     <!--<Border Background="White" BorderBrush="#623ED0" BorderThickness="5" CornerRadius="30">-->
-    <Border Background="White" BorderBrush="ForestGreen" BorderThickness="5" CornerRadius="30">
+    <Border Background="White" BorderBrush="#32CD32" BorderThickness="3" CornerRadius="30">
         <Grid>
             <TextBlock Text="Create Vehicle" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" Foreground="#121518" HorizontalAlignment="Center"/>
 
@@ -227,7 +227,8 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <TextBlock Style="{StaticResource CustomTextBlock}" Text="Vehicle type:" Grid.Row="0" VerticalAlignment="Center"/>
-                    <ComboBox x:Name="inputType" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Width="120">
+                    <!--<ComboBox Style="{StaticResource {x:Type ComboBox}}" x:Name="inputType" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Width="120">-->
+                    <ComboBox Style="{StaticResource theComboBox}" x:Name="inputType" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Width="120">
                         <ComboBox.ItemsSource>
                             <x:Array Type="sys:String">
                                 <sys:String>Car</sys:String>
@@ -237,6 +238,8 @@
                             </x:Array>
                         </ComboBox.ItemsSource>
                     </ComboBox>
+
+
                 </Grid>
 
                 <!-- Second row -->
