@@ -9,7 +9,12 @@ namespace Logistic.GUI.MVVM.ViewModel
 {
     class MainViewModel : ObservableObject
     {
+        public RelayCommand VehicleViewCommand { get; set; }
+        public RelayCommand WarehouseViewCommand { get; set; }
+
         public VehicleViewModel VehicleVM { get; set; }
+        public WarehouseViewModel WarehouseVM { get; set; }
+
         private object _currentView;
 
         public object CurrentView
@@ -25,7 +30,18 @@ namespace Logistic.GUI.MVVM.ViewModel
         public MainViewModel()
         {
             VehicleVM = new VehicleViewModel();
+            WarehouseVM = new WarehouseViewModel();
             CurrentView = VehicleVM;
+
+            VehicleViewCommand = new RelayCommand(o =>
+            {
+                CurrentView = VehicleVM;
+            });
+            
+            WarehouseViewCommand = new RelayCommand(o =>
+            {
+                CurrentView = WarehouseVM;
+            });
         }
     }
 }

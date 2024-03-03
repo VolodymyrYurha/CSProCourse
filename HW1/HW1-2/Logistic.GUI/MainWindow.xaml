@@ -59,14 +59,15 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}" Background="#7B5CD6" Foreground="White">
+                            <Button Command="{Binding VehicleViewCommand}" Style="{StaticResource menuButton}" Background="#7B5CD6" Foreground="White">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Car" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Vehicle"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}">
+                            <Button Style="{StaticResource menuButton}"
+                                    Command="{Binding WarehouseViewCommand}">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Warehouse" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Warehouse"/>

@@ -538,7 +538,11 @@
             <DataTemplate DataType="{x:Type viewModel:VehicleViewModel}">
                 <view:VehicleView/>
             </DataTemplate>
-        
+
+            <DataTemplate DataType="{x:Type viewModel:WarehouseViewModel}">
+                <view:WarehouseView/>
+            </DataTemplate>
+
         </ResourceDictionary>
 
     </Application.Resources>
