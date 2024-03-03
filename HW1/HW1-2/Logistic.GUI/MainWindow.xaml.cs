@@ -54,7 +54,7 @@ namespace DataGrid
             vehicleService.Create(new Vehicle(VehicleType.Car,  2000,    1500,   "BC 5555 EK"));
             //var vehicles = vehicleService.GetAll();
 
-            //membersDataGrid.ItemsSource = vehicles;
+            //vehiclesDataGrid.ItemsSource = vehicles;
             UpdateGrid();
         }
 
@@ -115,7 +115,7 @@ namespace DataGrid
         private void UpdateGrid()
         {
             var vehicles = vehicleService.GetAll();
-            //membersDataGrid.ItemsSource = vehicles;
+            //vehiclesDataGrid.ItemsSource = vehicles;
             //VehiclesNumberTextBlock.Text = vehicles.Count.ToString();
         }
     }
