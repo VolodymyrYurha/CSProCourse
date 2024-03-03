@@ -115,8 +115,8 @@ namespace DataGrid
         private void UpdateGrid()
         {
             var vehicles = vehicleService.GetAll();
-            membersDataGrid.ItemsSource = vehicles;
-            VehiclesNumberTextBlock.Text = vehicles.Count.ToString();
+            //membersDataGrid.ItemsSource = vehicles;
+            //VehiclesNumberTextBlock.Text = vehicles.Count.ToString();
         }
     }
 

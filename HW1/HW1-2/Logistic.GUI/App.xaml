@@ -2,6 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:viewModel ="clr-namespace:Logistic.GUI.MVVM.ViewModel"
+             xmlns:view ="clr-namespace:Logistic.GUI.MVVM.View"
              StartupUri="MainWindow.xaml"
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
     <Application.Resources>
@@ -532,6 +534,11 @@
         </Style>
         <!--#endregion-->
 
+
+            <DataTemplate DataType="{x:Type viewModel:VehicleViewModel}">
+                <view:VehicleView/>
+            </DataTemplate>
+        
         </ResourceDictionary>
 
     </Application.Resources>
