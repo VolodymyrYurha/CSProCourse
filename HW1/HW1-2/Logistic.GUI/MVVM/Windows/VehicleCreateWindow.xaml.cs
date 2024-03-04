@@ -21,7 +21,7 @@ namespace DataGrid
     /// </summary>
     public partial class VehicleCreateWindow : Window
     {
-        public event EventHandler<Vehicle> VehicleCreated;
+        public event EventHandler<Vehicle> VehicleEdited;
         
         public VehicleCreateWindow()
         {
@@ -30,7 +30,7 @@ namespace DataGrid
 
         protected virtual void OnVehicleCreated(Vehicle e)
         {
-            VehicleCreated?.Invoke(this, e);
+            VehicleEdited?.Invoke(this, e);
         }
 
         private void AddVehicle_Click(object sender, RoutedEventArgs e)
@@ -64,13 +64,13 @@ namespace DataGrid
         }
 
     }
-    public class VehicleEventArgs : EventArgs
-    {
-        public Vehicle Vehicle { get; }
+    //public class VehicleEventArgs : EventArgs
+    //{
+    //    public Vehicle Vehicle { get; }
 
-        public VehicleEventArgs(Vehicle vehicle)
-        {
-            Vehicle = vehicle;
-        }
-    }
+    //    public VehicleEventArgs(Vehicle vehicle)
+    //    {
+    //        Vehicle = vehicle;
+    //    }
+    //}
 }

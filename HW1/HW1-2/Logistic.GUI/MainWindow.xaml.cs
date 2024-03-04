@@ -97,7 +97,7 @@ namespace DataGrid
         private void AddVehicle_Click(object sender, RoutedEventArgs e)
         {
             var createVehicleWindow = new VehicleCreateWindow();
-            createVehicleWindow.VehicleCreated += CreateVehicleWindow_VehicleCreated;
+            createVehicleWindow.VehicleEdited += CreateVehicleWindow_VehicleCreated;
             createVehicleWindow.Show();
         }
 

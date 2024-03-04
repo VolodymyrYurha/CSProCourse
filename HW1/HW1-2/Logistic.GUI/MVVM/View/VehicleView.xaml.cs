@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Logistic.GUI.MVVM.Windows;
 
 namespace Logistic.GUI.MVVM.View
 {
@@ -58,17 +59,36 @@ namespace Logistic.GUI.MVVM.View
 
             UpdateGrid();
         }
+        private void EditVehicle_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = ((FrameworkElement)sender).DataContext;
+            var vehicle = (Vehicle)selectedItem;
+            //var id = vehicle.Id;
+
+            var editVehicleWindow = new VehicleEditWindow();
+            editVehicleWindow.EditedVehicle = vehicle;
+            editVehicleWindow.UpdateInputs();
+
+            editVehicleWindow.VehicleCreated += EditVehicleWindow_VehicleEdited;
+            editVehicleWindow.Show();
+        }
 
         private void AddVehicle_Click(object sender, RoutedEventArgs e)
         {
             var createVehicleWindow = new VehicleCreateWindow();
-            createVehicleWindow.VehicleCreated += CreateVehicleWindow_VehicleCreated;
+            createVehicleWindow.VehicleEdited += CreateVehicleWindow_VehicleCreated;
             createVehicleWindow.Show();
         }
 
         private void CreateVehicleWindow_VehicleCreated(object sender, Vehicle e)
         {
             vehicleService.Create(e);
+            UpdateGrid();
+        }
+
+        private void EditVehicleWindow_VehicleEdited(object sender, Vehicle e)
+        {
+            vehicleService.Update(e.Id, e);
             UpdateGrid();
         }
 
@@ -79,11 +99,6 @@ namespace Logistic.GUI.MVVM.View
             VehiclesNumberTextBlock.Text = vehicles.Count.ToString();
         }
 
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            var selectedItem = ((FrameworkElement)sender).DataContext;
-            var id = ((Vehicle)selectedItem).Id;
-        }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
