@@ -78,5 +78,19 @@ namespace Logistic.GUI.MVVM.View
             vehiclesDataGrid.ItemsSource = vehicles;
             VehiclesNumberTextBlock.Text = vehicles.Count.ToString();
         }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = ((FrameworkElement)sender).DataContext;
+            var id = ((Vehicle)selectedItem).Id;
+        }
+
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Get the selected item from the DataGrid
+            var selectedItem = ((FrameworkElement)sender).DataContext;
+            // Perform remove operation with the selected item
+        }
+
     }
 }
