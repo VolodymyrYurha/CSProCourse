@@ -73,6 +73,9 @@
                         <components:CustomInput x:Name="inputNumber" Title="Number" Value="BC 4444 AK"/>
                     </ContentControl>
 
+                    <!--<ContentControl Grid.Row="0" Grid.Column="0">
+                        <components:CustomTextBlock x:Name="inputNumber" Title="Number" Value="BC 4444 AK"/>
+                    </ContentControl>-->
 
                     <!-- Second row -->
                     <ContentControl Grid.Row="1" Grid.Column="0">
@@ -83,8 +86,12 @@
                         <components:CustomInput x:Name="inputVolume" Title="Volume" Value="1 000"/>
                     </ContentControl>
 
-                    <ContentControl Grid.Row="1" Grid.Column="2">
+                    <!--<ContentControl Grid.Row="1" Grid.Column="2">
                         <components:CustomInput x:Name="inputID" Title="ID" Value="1"/>
+                    </ContentControl>-->
+
+                    <ContentControl Grid.Row="1" Grid.Column="2">
+                        <components:CustomTextBlock x:Name="inputID" TextBlockValue="1" TextBlockTitle="ID"/>
                     </ContentControl>
 
                     <!--<TextBlock Grid.Row="0" Grid.Column="1" Text="Row 1, Column 2" HorizontalAlignment="Center" VerticalAlignment="Center"/>

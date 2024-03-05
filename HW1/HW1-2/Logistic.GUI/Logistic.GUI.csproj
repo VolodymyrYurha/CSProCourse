@@ -31,4 +31,10 @@
     <Folder Include="MVVM\Model\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="MVVM\Components\CustomTextBlock.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>
