@@ -63,7 +63,7 @@ namespace Logistic.GUI.MVVM.View
         {
             var selectedItem = ((FrameworkElement)sender).DataContext;
             var vehicle = (Vehicle)selectedItem;
-            //var id = vehicle.Id;
+            //var deletedVehicleId = vehicle.Id;
 
             var editVehicleWindow = new VehicleEditWindow();
             editVehicleWindow.EditedVehicle = vehicle;
@@ -74,6 +74,21 @@ namespace Logistic.GUI.MVVM.View
             editVehicleWindow.Show();
         }
 
+        private void DeleteVehicle_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = ((FrameworkElement)sender).DataContext;
+            var vehicle = (Vehicle)selectedItem;
+            //var deletedVehicleId = vehicle.Id;
+
+            var deleteVehicleWindow = new VehicleDeleteWindow();
+            deleteVehicleWindow.DeletedVehicle = vehicle;
+            //deleteVehicleWindow.UpdateInputs();
+
+            deleteVehicleWindow.VehicleDeleted += DeleteVehicleWindow_VehicleDeleted;
+            MainWindow.Overlay.Visibility = Visibility.Visible;
+            deleteVehicleWindow.Show();
+        }
+
         private void AddVehicle_Click(object sender, RoutedEventArgs e)
         {
             var createVehicleWindow = new VehicleCreateWindow();
@@ -82,15 +97,20 @@ namespace Logistic.GUI.MVVM.View
             createVehicleWindow.Show();
         }
 
-        private void CreateVehicleWindow_VehicleCreated(object sender, Vehicle e)
+        private void CreateVehicleWindow_VehicleCreated(object sender, Vehicle createdVehicle)
         {
-            vehicleService.Create(e);
+            vehicleService.Create(createdVehicle);
             UpdateGrid();
         }
 
-        private void EditVehicleWindow_VehicleEdited(object sender, Vehicle e)
+        private void EditVehicleWindow_VehicleEdited(object sender, Vehicle editedVehicle)
         {
-            vehicleService.Update(e.Id, e);
+            vehicleService.Update(editedVehicle.Id, editedVehicle);
+            UpdateGrid();
+        }
+        private void DeleteVehicleWindow_VehicleDeleted(object sender, int deletedVehicleId)
+        {
+            vehicleService.Delete(deletedVehicleId);
             UpdateGrid();
         }
 

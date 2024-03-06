@@ -69,7 +69,16 @@ namespace Logistic.GUI.MVVM.Windows
             this.Close();
         }
 
-        //private void SaveEditVehicle_Click(object sender, RoutedEventArgs e)
-        
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                SaveEditVehicle_Click(null, null);
+            }
+            else if (e.Key == Key.Escape)
+            {
+                CancelEditVehicle_Click(null, null);
+            }
+        }
     }
 }

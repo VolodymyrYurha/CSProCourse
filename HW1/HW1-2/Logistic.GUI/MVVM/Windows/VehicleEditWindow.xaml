@@ -9,7 +9,8 @@
              mc:Ignorable="d" 
              Height="320" Width="600"
              WindowStartupLocation="CenterScreen" AllowsTransparency="True"
-             Background="Transparent" WindowStyle="None">
+             Background="Transparent" WindowStyle="None"
+             KeyDown="Window_KeyDown">
 
     <Window.Resources>
         <Style x:Key="CustomTextBlock" TargetType="TextBlock">

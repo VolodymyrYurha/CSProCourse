@@ -141,7 +141,7 @@
                                 <Button Click="EditVehicle_Click" Style="{StaticResource gridEditButton}">
                                     <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
                                 </Button>
-                                <Button Click="RemoveButton_Click" Margin="5 0 0 0" Style="{StaticResource gridRemoveButton}">
+                                <Button Click="DeleteVehicle_Click" Margin="5 0 0 0" Style="{StaticResource gridRemoveButton}">
                                     <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
                                 </Button>
                             </StackPanel>
