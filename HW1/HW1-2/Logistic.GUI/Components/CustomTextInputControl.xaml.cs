@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace DataGrid.Components
+namespace WpfGUI.Components
 {
     public partial class CustomTextInputControl : UserControl
     {

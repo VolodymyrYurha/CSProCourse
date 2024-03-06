@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace DataGrid
+namespace WpfGUI
 {
     /// <summary>
     /// Interaction logic for VehicleCreateWindow.xaml

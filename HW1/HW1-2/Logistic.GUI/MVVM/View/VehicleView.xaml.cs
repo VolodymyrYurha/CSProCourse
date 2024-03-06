@@ -1,4 +1,4 @@
-﻿using DataGrid;
+﻿using WpfGUI;
 using Logistic.Core;
 using Logistic.DAL;
 using Logistic.Models.Enums;
@@ -70,6 +70,7 @@ namespace Logistic.GUI.MVVM.View
             editVehicleWindow.UpdateInputs();
 
             editVehicleWindow.VehicleCreated += EditVehicleWindow_VehicleEdited;
+            MainWindow.Overlay.Visibility = Visibility.Visible;
             editVehicleWindow.Show();
         }
 
@@ -102,7 +103,7 @@ namespace Logistic.GUI.MVVM.View
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            // Get the selected item from the DataGrid
+            // Get the selected item from the WpfGUI
             var selectedItem = ((FrameworkElement)sender).DataContext;
             // Perform remove operation with the selected item
         }

@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfGUI;
 
 namespace Logistic.GUI.MVVM.Windows
 {
@@ -57,12 +58,14 @@ namespace Logistic.GUI.MVVM.Windows
             newVehicle.Type = (VehicleType)Enum.Parse(typeof(VehicleType), inputType.SelectedItem.ToString());
 
             OnVehicleEdited(newVehicle);
+            MainWindow.Overlay.Visibility = Visibility.Collapsed;
 
             this.Close();
         }
 
         private void CancelEditVehicle_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow.Overlay.Visibility = Visibility.Collapsed;
             this.Close();
         }
 

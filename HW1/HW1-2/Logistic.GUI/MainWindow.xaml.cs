@@ -9,8 +9,9 @@ using Logistic.Core;
 using System.Windows.Controls;
 using System;
 using AutoMapper.Execution;
+using System.Windows.Shapes;
 
-namespace DataGrid
+namespace WpfGUI
 {
     public partial class MainWindow : Window
     {
@@ -23,9 +24,12 @@ namespace DataGrid
 
         public Vehicle lastSelectedVehicle;
 
+        public static Rectangle Overlay { get; private set; }
+
         public MainWindow()
         {
             InitializeComponent();
+            Overlay = overlay;
 
             jsonVehicleRepository = new JsonRepository<Vehicle>();
             xmlVehicleRepository = new XmlRepository<Vehicle>();
