@@ -113,7 +113,7 @@
                         </Grid.ColumnDefinitions>
 
                         <ContentControl Grid.Column="0" Margin="0,0,7,0">
-                            <components:CustomButton Click="CancelEditVehicle_Click" CustomButtonText ="Cancel"/>
+                            <components:CustomHollowButton ButtonColor="#6741D9" Click="CancelEditVehicle_Click" CustomHollowButtonText ="Cancel"/>
                         </ContentControl>
 
                         <ContentControl Grid.Column="1" Margin="7,0,0,0">
