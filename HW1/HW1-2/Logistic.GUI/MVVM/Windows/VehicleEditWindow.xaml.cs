@@ -46,7 +46,7 @@ namespace Logistic.GUI.MVVM.Windows
             VehicleCreated?.Invoke(this, e);
         }
 
-        private void EditVehicle_Click(object sender, RoutedEventArgs e)
+        private void SaveEditVehicle_Click(object sender, RoutedEventArgs e)
         {
             var newVehicle = this.EditedVehicle; 
             newVehicle.Number = inputNumber.inputValue.Text;
@@ -58,5 +58,13 @@ namespace Logistic.GUI.MVVM.Windows
 
             this.Close();
         }
+
+        private void CancelEditVehicle_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        //private void SaveEditVehicle_Click(object sender, RoutedEventArgs e)
+        
     }
 }

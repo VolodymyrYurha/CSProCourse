@@ -73,10 +73,6 @@
                         <components:CustomInput x:Name="inputNumber" Title="Number" Value="BC 4444 AK"/>
                     </ContentControl>
 
-                    <!--<ContentControl Grid.Row="0" Grid.Column="0">
-                        <components:CustomTextBlock x:Name="inputNumber" Title="Number" Value="BC 4444 AK"/>
-                    </ContentControl>-->
-
                     <!-- Second row -->
                     <ContentControl Grid.Row="1" Grid.Column="0">
                         <components:CustomInput x:Name="inputWeight" Title="Weight" Value="1 000"/>
@@ -105,9 +101,28 @@
                     <TextBlock Grid.Row="1" Grid.Column="2" Text="Row 2, Column 3" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
 
                 </Grid>
-                <Button Style="{StaticResource addButton}" Click="EditVehicle_Click" Background="ForestGreen" Width="80" Height="50" Margin="5" Grid.Column="1">
+                <!--<Button Style="{StaticResource addButton}" Click="EditVehicle_Click" Background="ForestGreen" Width="80" Height="50" Margin="5" Grid.Column="1">
                     <TextBlock Text="Ok" VerticalAlignment="Center"/>
-                </Button>
+                </Button>-->
+
+                <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                    <Grid Margin="0,0,0,20" Height="40" Width="300">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <ContentControl Grid.Column="0" Margin="0,0,7,0">
+                            <components:CustomButton Click="CancelEditVehicle_Click" CustomButtonText ="Cancel"/>
+                        </ContentControl>
+
+                        <ContentControl Grid.Column="1" Margin="7,0,0,0">
+                            <components:CustomButton Click="SaveEditVehicle_Click" CustomButtonText ="Save"/>
+                        </ContentControl>
+                    </Grid>
+                    
+                </StackPanel>
+
 
             </Grid>
 
