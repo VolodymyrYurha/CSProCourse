@@ -77,7 +77,8 @@ namespace Logistic.GUI.MVVM.View
         private void AddVehicle_Click(object sender, RoutedEventArgs e)
         {
             var createVehicleWindow = new VehicleCreateWindow();
-            createVehicleWindow.VehicleEdited += CreateVehicleWindow_VehicleCreated;
+            createVehicleWindow.VehicleCreated += CreateVehicleWindow_VehicleCreated;
+            MainWindow.Overlay.Visibility = Visibility.Visible;
             createVehicleWindow.Show();
         }
 

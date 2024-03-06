@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using System;
 using AutoMapper.Execution;
 using System.Windows.Shapes;
+using Logistic.GUI.MVVM.Windows;
 
 namespace WpfGUI
 {
@@ -98,12 +99,12 @@ namespace WpfGUI
             listView.ItemsSource = vehicles;
         }
 
-        private void AddVehicle_Click(object sender, RoutedEventArgs e)
-        {
-            var createVehicleWindow = new VehicleCreateWindow();
-            createVehicleWindow.VehicleEdited += CreateVehicleWindow_VehicleCreated;
-            createVehicleWindow.Show();
-        }
+        //private void AddVehicle_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var createVehicleWindow = new VehicleCreateWindow();
+        //    createVehicleWindow.VehicleCreated += CreateVehicleWindow_VehicleCreated;
+        //    createVehicleWindow.Show();
+        //}
 
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
