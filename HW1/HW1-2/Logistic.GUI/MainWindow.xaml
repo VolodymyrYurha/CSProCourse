@@ -53,10 +53,10 @@
 
                         <!--Menu Buttons-->
                         <StackPanel DockPanel.Dock="Top" >
-                            <Button Style="{StaticResource menuButton}">
+                            <!--<Button Style="{StaticResource menuButton}">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Home" Style="{StaticResource menuButtonIcon}"/>
-                                    <!--<Icon:PackIconMaterial Kind="ShipWheel" Foreground="red" Style="{StaticResource menuButtonIcon}"/>-->
+                                    --><!--<Icon:PackIconMaterial Kind="ShipWheel" Foreground="red" Style="{StaticResource menuButtonIcon}"/>--><!--
                                 </StackPanel>
                             </Button>
 
@@ -73,16 +73,44 @@
                                     <Icon:PackIconMaterial Kind="Warehouse" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Warehouse"/>
                                 </StackPanel>
-                            </Button>
+                            </Button>-->
 
-                            <Button Style="{StaticResource menuButton}">
+                            <!--<Button Style="{StaticResource menuButton}">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="FileDocument" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Report"/>
                                 </StackPanel>
                             </Button>
 
-                        </StackPanel>
+                            <RadioButton Command="{Binding VehicleViewCommand}" Height="50" FontSize="14" Foreground="White" Style="{StaticResource MenuButtonTheme}">
+                                <StackPanel Orientation="Horizontal" Margin="15,0,0,0">
+                                    <Icon:PackIconMaterial Kind="Car" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="Vehicle"/>
+                                </StackPanel>
+                            </RadioButton>-->
+                            <!--<RadioButton Style="{StaticResource MenuButtonTheme}" Content="Warehouse" Tag="Warehouse" Command="{Binding WarehouseViewCommand}" />-->
+
+                                <!--<RadioButton Style="{StaticResource MenuButtonTheme}" Content="Vehicle" Command="{Binding VehicleViewCommand}" />
+                                <RadioButton Style="{StaticResource MenuButtonTheme}" Content="Warehouse" Command="{Binding WarehouseViewCommand}" />-->
+                                <RadioButton Style="{StaticResource MenuButtonTheme}" Content="Vehicle"     Tag="Car" Command="{Binding VehicleViewCommand}" />
+                                <RadioButton Style="{StaticResource MenuButtonTheme}" Content="Warehouse"   Tag="Warehouse" Command="{Binding WarehouseViewCommand}" />
+                                <RadioButton Style="{StaticResource MenuButtonTheme}" Content="Report"      Tag="FileDocument" Command="{Binding WarehouseViewCommand}" />
+
+                                <!--<RadioButton Command="{Binding WarehouseViewCommand}" Height="50" FontSize="14" Foreground="White" Style="{StaticResource MenuButtonTheme}">
+                                    <StackPanel Orientation="Horizontal" Margin="15,0,0,0">
+                                        <Icon:PackIconMaterial Kind="Warehouse" Style="{StaticResource menuButtonIcon}"/>
+                                        <TextBlock Text="Warehouse"/>
+                                    </StackPanel>
+                                </RadioButton>
+                            
+                                <RadioButton Height="50" FontSize="14" Foreground="White" Style="{StaticResource MenuButtonTheme}">
+                                    <StackPanel Orientation="Horizontal" Margin="15,0,0,0">
+                                        <Icon:PackIconMaterial Kind="FileDocument" Style="{StaticResource menuButtonIcon}"/>
+                                        <TextBlock Text="Report"/>
+                                    </StackPanel>
+                                </RadioButton>-->
+                            
+                            </StackPanel>
 
                         <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20" Click="Logout_Click">
                             <StackPanel Orientation="Horizontal">

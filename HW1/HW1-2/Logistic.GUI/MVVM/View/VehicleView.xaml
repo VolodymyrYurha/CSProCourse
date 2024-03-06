@@ -47,8 +47,8 @@
         <!--<TextBlock x:Name="VehiclesNumberTextBlock" Text="10 Vehicles" Grid.Row="4" FontSize="18" FontWeight="SemiBold" Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>-->
 
         <StackPanel Orientation="Horizontal" Grid.Row="4">
-            <TextBlock x:Name="VehiclesNumberTextBlock" Text="0" FontSize="18" FontWeight="SemiBold" Foreground="#7B5CD6"/>
-            <TextBlock Text="Vehicles" FontSize="18" FontWeight="SemiBold" Foreground="#121518" Margin="5,0,0,0"/>
+            <TextBlock Text="Total vehicles:" FontSize="18" FontWeight="SemiBold" Foreground="#121518" Margin="5,0,0,0"/>
+            <TextBlock x:Name="VehiclesNumberTextBlock" Text="0" FontSize="18" FontWeight="SemiBold" Foreground="#7B5CD6" Margin="5,0,0,0"/>
         </StackPanel>
 
 
