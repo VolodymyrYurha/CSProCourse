@@ -63,12 +63,71 @@
             <TextBox Name="textBoxFilter" Style="{StaticResource filterTextBox}"/>
         </Grid>
 
-        <!--Members Data Grid-->
         <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="vehiclesDataGrid" Style="{DynamicResource DataGridStyle1}">
             <DataGrid.Columns>
                 
                 <DataGridTextColumn Header="Id"        Width="*"    IsReadOnly="True"   Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="Number"    Width="*"    IsReadOnly="True"   Binding="{Binding Number}"/>
+
+                <DataGridTemplateColumn Header="Type" Width="*" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ContentControl>
+                                <ContentControl.Style>
+                                    <Style TargetType="ContentControl">
+                                        <Setter Property="ContentTemplate">
+                                            <Setter.Value>
+                                                <DataTemplate>
+                                                    <Icon:PackIconMaterial Kind="Car" Foreground="#623ED0"/>
+                                                </DataTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Type}" Value="Car">
+                                                <Setter Property="ContentTemplate">
+                                                    <Setter.Value>
+                                                        <DataTemplate>
+                                                            <Icon:PackIconMaterial Kind="Car"/>
+                                                        </DataTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Type}" Value="Train">
+                                                <Setter Property="ContentTemplate">
+                                                    <Setter.Value>
+                                                        <DataTemplate>
+                                                            <Icon:PackIconMaterial Kind="Train" />
+                                                        </DataTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Type}" Value="Plane">
+                                                <Setter Property="ContentTemplate">
+                                                    <Setter.Value>
+                                                        <DataTemplate>
+                                                            <Icon:PackIconMaterial Kind="Airplane" />
+                                                        </DataTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Type}" Value="Ship">
+                                                <Setter Property="ContentTemplate">
+                                                    <Setter.Value>
+                                                        <DataTemplate>
+                                                            <Icon:PackIconMaterial Kind="ShipWheel" />
+                                                        </DataTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ContentControl.Style>
+                            </ContentControl>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <!--<DataGridTextColumn Header="Type"      Width="*"    IsReadOnly="True"   Binding="{Binding Type}"/>-->
                 <DataGridTextColumn Header="MaxWeight" Width="*"    IsReadOnly="True"   Binding="{Binding MaxCargoWeightKg}"/>
                 <DataGridTextColumn Header="MaxVolume" Width="*"    IsReadOnly="True"   Binding="{Binding MaxCargoVolume}"/>
 
@@ -92,30 +151,6 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <!--Pagingation Section-->
-        <!--<Border Grid.Row="6" HorizontalAlignment="Right" BorderBrush="#DEE4EC" BorderThickness="1" CornerRadius="5" Padding="5" Background="#ffffff" Margin="0 10 10 10">
-                        <StackPanel Orientation="Horizontal">
-                            <Button Style="{StaticResource pagingButton}">
-                                <Icon:PackIconMaterial Kind="ChevronLeft" Style="{StaticResource pagingButtonIcon}"/>
-                            </Button>
-                            <Rectangle Width="1" Fill="#DEE4EC" Margin="3 7"/>
-
-                            <Button Style="{StaticResource pagingButton}" Content="1"/>
-                            <Button Style="{StaticResource pagingButton}" Content="2" Background="#7950F2" Foreground="#ffffff"/>
-                            <Button Style="{StaticResource pagingButton}" Content="3"/>
-
-                            <TextBlock Text="..." Foreground="#6C7682" VerticalAlignment="Center" Margin="10 0" FontSize="15"/>
-
-                            <Button Style="{StaticResource pagingButton}" Content="7"/>
-                            <Button Style="{StaticResource pagingButton}" Content="8"/>
-                            <Button Style="{StaticResource pagingButton}" Content="9"/>
-
-                            <Rectangle Width="1" Fill="#DEE4EC" Margin="3 7"/>
-                            <Button Style="{StaticResource pagingButton}">
-                                <Icon:PackIconMaterial Kind="ChevronRight" Style="{StaticResource pagingButtonIcon}"/>
-                            </Button>
-                        </StackPanel>
-                    </Border>-->
-
+        
     </Grid>
 </UserControl>

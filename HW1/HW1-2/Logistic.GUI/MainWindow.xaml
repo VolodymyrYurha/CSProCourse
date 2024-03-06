@@ -58,7 +58,8 @@
                         <StackPanel DockPanel.Dock="Top" >
                             <Button Style="{StaticResource menuButton}">
                                 <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="HomeVariant" Style="{StaticResource menuButtonIcon}"/>
+                                    <Icon:PackIconMaterial Kind="Home" Style="{StaticResource menuButtonIcon}"/>
+                                    <!--<Icon:PackIconMaterial Kind="ShipWheel" Foreground="red" Style="{StaticResource menuButtonIcon}"/>-->
                                 </StackPanel>
                             </Button>
 

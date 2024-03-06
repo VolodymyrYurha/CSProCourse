@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:local="clr-namespace:Logistic.GUI.MVVM.Windows"
              xmlns:components="clr-namespace:Logistic.GUI.MVVM.Components"
              mc:Ignorable="d" 
@@ -41,6 +42,69 @@
             <Setter Property="Background" Value="#FFFFFF"/>
             <Setter Property="BorderBrush" Value="#8A8A8A"/>
         </Style>
+
+
+        <Style x:Key="CustomComboBox" TargetType="ComboBox">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#888888"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <Border x:Name="border"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="6">
+                                <ToggleButton x:Name="toggleButton"
+              BorderThickness="0"
+              Background="Transparent"
+              Padding="6"
+              Focusable="False"
+              ClickMode="Press"
+              HorizontalContentAlignment="Right">
+                                    <Grid>
+                                        <ContentPresenter Content="{TemplateBinding SelectionBoxItem}"
+                          ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                          VerticalAlignment="Center" />
+                                        <Path x:Name="arrow"
+              Width="8"
+              Height="8"
+              Margin="0,0,4,0"
+              HorizontalAlignment="Right"
+              VerticalAlignment="Center"
+              Data="M 0 0 L 4 4 L 8 0 Z"
+              Fill="{TemplateBinding Foreground}" />
+                                    </Grid>
+                                </ToggleButton>
+
+                            </Border>
+                            <Popup x:Name="popup"
+                           Placement="Bottom"
+                           IsOpen="{TemplateBinding IsDropDownOpen}"
+                           AllowsTransparency="True"
+                           Focusable="False"
+                           PopupAnimation="Slide">
+                                <Border x:Name="popupBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="6">
+                                    <ScrollViewer>
+                                        <ItemsPresenter />
+                                    </ScrollViewer>
+                                </Border>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Window.Resources>
     <Grid>
         <Border Background="White" CornerRadius="20">
@@ -69,41 +133,45 @@
                     </Grid.ColumnDefinitions>
 
                     <!-- First row -->
-                    <ContentControl Grid.Row="0" Grid.Column="0">
+                    <ContentControl Grid.Row="0" Grid.Column="0" Margin="5,5,5,5">
                         <components:CustomInput x:Name="inputNumber" Title="Number" Value="BC 4444 AK"/>
                     </ContentControl>
 
+                    <Grid Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="5,5,5,5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Style="{StaticResource CustomTextBlock}" Text="Vehicle type:" Grid.Row="0"/>
+                        <ComboBox Style="{StaticResource theComboBox}" x:Name="inputType" Grid.Row="1">
+                            <ComboBox.ItemsSource>
+                                <x:Array Type="sys:String">
+                                    <sys:String>Car</sys:String>
+                                    <sys:String>Ship</sys:String>
+                                    <sys:String>Plane</sys:String>
+                                    <sys:String>Train</sys:String>
+                                </x:Array>
+                            </ComboBox.ItemsSource>
+                        </ComboBox>
+
+                    </Grid>
+
                     <!-- Second row -->
-                    <ContentControl Grid.Row="1" Grid.Column="0">
+                    <ContentControl Grid.Row="1" Grid.Column="0" Margin="5,5,5,5">
                         <components:CustomInput x:Name="inputWeight" Title="Weight" Value="1 000"/>
                     </ContentControl>
 
-                    <ContentControl Grid.Row="1" Grid.Column="1">
+                    <ContentControl Grid.Row="1" Grid.Column="1" Margin="5,5,5,5">
                         <components:CustomInput x:Name="inputVolume" Title="Volume" Value="1 000"/>
                     </ContentControl>
 
-                    <!--<ContentControl Grid.Row="1" Grid.Column="2">
-                        <components:CustomInput x:Name="inputID" Title="ID" Value="1"/>
-                    </ContentControl>-->
-
-                    <ContentControl Grid.Row="1" Grid.Column="2">
+                    <ContentControl Grid.Row="1" Grid.Column="2" Margin="5,5,5,5">
                         <components:CustomTextBlock x:Name="inputID" TextBlockValue="1" TextBlockTitle="ID"/>
                     </ContentControl>
 
-                    <!--<TextBlock Grid.Row="0" Grid.Column="1" Text="Row 1, Column 2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <TextBlock Grid.Row="0" Grid.Column="2" Text="Row 1, Column 3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
-                    -->
-                    <!-- Second row -->
-                    <!--
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Row 2, Column 1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <TextBlock Grid.Row="1" Grid.Column="1" Text="Row 2, Column 2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <TextBlock Grid.Row="1" Grid.Column="2" Text="Row 2, Column 3" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
-
+                    
                 </Grid>
-                <!--<Button Style="{StaticResource addButton}" Click="EditVehicle_Click" Background="ForestGreen" Width="80" Height="50" Margin="5" Grid.Column="1">
-                    <TextBlock Text="Ok" VerticalAlignment="Center"/>
-                </Button>-->
+               
 
                 <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center">
                     <Grid Margin="0,0,0,20" Height="40" Width="300">
@@ -120,7 +188,7 @@
                             <components:CustomButton Click="SaveEditVehicle_Click" CustomButtonText ="Save"/>
                         </ContentControl>
                     </Grid>
-                    
+
                 </StackPanel>
 
 

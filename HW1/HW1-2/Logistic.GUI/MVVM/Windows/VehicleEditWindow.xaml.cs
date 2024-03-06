@@ -39,6 +39,7 @@ namespace Logistic.GUI.MVVM.Windows
             inputWeight.inputValue.Text = EditedVehicle.MaxCargoVolume.ToString();
             inputVolume.inputValue.Text = EditedVehicle.MaxCargoWeightKg.ToString();
             inputID.inputValue.Text = EditedVehicle.Id.ToString();
+            inputType.SelectedItem = EditedVehicle.Type.ToString();
         }
 
         protected virtual void OnVehicleEdited(Vehicle e)
@@ -53,6 +54,7 @@ namespace Logistic.GUI.MVVM.Windows
             newVehicle.MaxCargoVolume = int.Parse(inputWeight.inputValue.Text); 
             newVehicle.MaxCargoWeightKg = int.Parse(inputVolume.inputValue.Text); 
             newVehicle.Id = int.Parse(inputID.inputValue.Text);
+            newVehicle.Type = (VehicleType)Enum.Parse(typeof(VehicleType), inputType.SelectedItem.ToString());
 
             OnVehicleEdited(newVehicle);
 
