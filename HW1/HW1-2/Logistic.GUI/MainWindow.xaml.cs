@@ -39,8 +39,8 @@ namespace WpfGUI
             vehicleService = new VehicleService(inMemoryVehicleRepository);
             reportVehicleService = new ReportService<Vehicle>(jsonVehicleRepository, xmlVehicleRepository);
 
-            vehicleService.Create(new Vehicle(VehicleType.Car,  1000,    1000,   "BC 1111 AK"));
-            vehicleService.Create(new Vehicle(VehicleType.Car,  1500,    1200,   "BC 2222 BK"));
+            vehicleService.Create(new Vehicle(VehicleType.Car,  1000,    1000,   "BC 1234 AK"));
+            vehicleService.Create(new Vehicle(VehicleType.Car,  1500,    1200,   "BC 4321 BK"));
             vehicleService.Create(new Vehicle(VehicleType.Car,  800,     800,    "BC 3333 CK"));
             vehicleService.Create(new Vehicle(VehicleType.Car,  1200,    1000,   "BC 4444 DK"));
             vehicleService.Create(new Vehicle(VehicleType.Car,  2000,    1500,   "BC 5555 EK"));
