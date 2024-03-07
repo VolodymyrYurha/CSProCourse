@@ -33,7 +33,15 @@ namespace Logistic.GUI.MVVM.Components
             DependencyProperty.Register("Value", typeof(string), typeof(CustomInput), new PropertyMetadata(string.Empty));
 
 
+        public static readonly DependencyProperty BorderBrushProperty =
+        DependencyProperty.Register("BorderBrush", typeof(Brush), typeof(CustomInput),
+            new PropertyMetadata(new SolidColorBrush((Color)ColorConverter.ConvertFromString("#8A8A8A"))));
 
+        public Brush BorderBrush
+        {
+            get { return (Brush)GetValue(BorderBrushProperty); }
+            set { SetValue(BorderBrushProperty, value); }
+        }
 
 
         public string Title
@@ -44,6 +52,19 @@ namespace Logistic.GUI.MVVM.Components
 
         public static readonly DependencyProperty TitleProperty =
             DependencyProperty.Register("Title", typeof(string), typeof(CustomInput), new PropertyMetadata(string.Empty));
+
+
+
+        public string ErrorMessage
+        {
+            get { return (string)GetValue(ErrorMessageProperty); }
+            set { SetValue(ErrorMessageProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ErrorMessage.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ErrorMessageProperty =
+            DependencyProperty.Register("ErrorMessage", typeof(string), typeof(CustomInput), new PropertyMetadata(string.Empty));
+
 
 
         public CustomInput()

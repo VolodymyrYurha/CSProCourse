@@ -140,19 +140,31 @@
                     <Grid Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="5,5,5,5">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
-                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Style="{StaticResource CustomTextBlock}" Text="Vehicle type:" Grid.Row="0"/>
-                        <ComboBox Style="{StaticResource theComboBox}" x:Name="inputType" Grid.Row="1">
-                            <ComboBox.ItemsSource>
-                                <x:Array Type="sys:String">
-                                    <sys:String>Car</sys:String>
-                                    <sys:String>Ship</sys:String>
-                                    <sys:String>Plane</sys:String>
-                                    <sys:String>Train</sys:String>
-                                </x:Array>
-                            </ComboBox.ItemsSource>
-                        </ComboBox>
+
+                        <StackPanel Orientation="Horizontal" Grid.Row="0">
+                            <TextBlock Style="{StaticResource CustomTextBlock}" Height="Auto" Width="Auto" Text="Vehicle type:" Grid.Row="0"/>
+                            <TextBlock Style="{StaticResource CustomTextBlock}" Height="Auto" Width="Auto" Text="*" Foreground="#623ED0" Grid.Row="0"/>
+                        </StackPanel>
+
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <ComboBox Style="{StaticResource theComboBox}" Height="28" x:Name="inputType" Grid.Row="0">
+                                <ComboBox.ItemsSource>
+                                    <x:Array Type="sys:String">
+                                        <sys:String>Car</sys:String>
+                                        <sys:String>Ship</sys:String>
+                                        <sys:String>Plane</sys:String>
+                                        <sys:String>Train</sys:String>
+                                    </x:Array>
+                                </ComboBox.ItemsSource>
+                            </ComboBox>
+                            <TextBlock x:Name="inputTypeErrorMessage" Text="" Margin="5,0,0,0" HorizontalAlignment="Left" Grid.Row="1" Height="Auto"  Foreground="Red" FontSize="8" Visibility="Visible"/>
+                        </Grid>
 
                     </Grid>
 

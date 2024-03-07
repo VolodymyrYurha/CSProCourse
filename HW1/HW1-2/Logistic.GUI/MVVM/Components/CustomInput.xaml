@@ -119,11 +119,11 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
             <TextBlock Style="{StaticResource CustomTextBlock}" x:Name="inputTitle" Grid.Row="0" Height="Auto" Width="Auto" Text="{Binding Title, ElementName=root,  FallbackValue='Title'}"/>
-            <TextBlock Style="{StaticResource CustomTextBlock}" Grid.Row="0" Height="Auto" Text="*" Foreground="#623ED0"/>
+            <TextBlock Style="{StaticResource CustomTextBlock}" Grid.Row="0" Width="Auto" Text="*" Foreground="#623ED0"/>
         </StackPanel>
         <!--<TextBox Style="{StaticResource CustomTextBox}" HorizontalAlignment="Left" Grid.Row="1" Height="Auto" x:Name="inputValue">
             <TextBox.Text set="{Binding Value, ElementName=root, FallbackValue='Value'>
@@ -133,28 +133,34 @@
                 
             </TextBox.Text>
         </TextBox>-->
-        
-        
-        <TextBox  HorizontalAlignment="Left" Grid.Row="1" Height="Auto" x:Name="inputValue">
-            <TextBox.Text>
-                <Binding Path="Value" ElementName="root" FallbackValue="Value" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <validation:StringInputValidation/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-            <TextBox.Style>
-                <Style TargetType="TextBox" BasedOn="{StaticResource CustomTextBox}">
-                    <Setter Property="Validation.ErrorTemplate" Value="{StaticResource NoErrorTemplate}"/>
-                    <!--<Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBox BorderBrush="{Binding BorderBrush, ElementName=root, FallbackValue='#8A8A8A'}" HorizontalAlignment="Left" Grid.Row="0" Height="Auto" x:Name="inputValue">
+                <TextBox.Text>
+                    <Binding Path="Value" ElementName="root" FallbackValue="Value" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <!--<validation:StringInputValidation/>-->
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+                <TextBox.Style>
+                    <Style TargetType="TextBox" BasedOn="{StaticResource CustomTextBox}">
+                        <Setter Property="Validation.ErrorTemplate" Value="{StaticResource NoErrorTemplate}"/>
+                        <!--<Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self},
                         Path=(Validation.Errors[0]/err}"/>-->
-                    <Setter Property="ToolTip"
+                        <Setter Property="ToolTip"
                                 Value="{Binding RelativeSource={RelativeSource Self},
                                         Path=(Validation.Errors)[0].ErrorContent}"/>
-                </Style>
-            </TextBox.Style>
+                    </Style>
+                </TextBox.Style>
 
-        </TextBox>
+            </TextBox>
+            <TextBlock Margin="5,0,0,0" HorizontalAlignment="Left" Grid.Row="1" Height="Auto" x:Name="inputValueError" Text="{Binding ErrorMessage, ElementName=root,  FallbackValue='Error message'}" Foreground="Red" FontSize="8" Visibility="Visible"/>
+        </Grid>
     </Grid>
 
 </UserControl>
