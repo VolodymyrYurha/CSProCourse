@@ -15,10 +15,14 @@ namespace Logistic.GUI.MVVM.ViewModel
     {
         public JsonRepository<Vehicle> jsonVehicleRepository;
         public XmlRepository<Vehicle> xmlVehicleRepository;
+        public ReportService<Vehicle> reportVehicleService;
+
         public InMemoryRepository<Vehicle> inMemoryVehicleRepository;
+        public InMemoryRepository<Warehouse> inMemoryWarehouseRepository;
 
         public VehicleService vehicleService;
-        public ReportService<Vehicle> reportVehicleService;
+        public WarehouseService warehouseService;
+
 
         public RelayCommand VehicleViewCommand { get; set; }
         public RelayCommand WarehouseViewCommand { get; set; }
@@ -45,34 +49,23 @@ namespace Logistic.GUI.MVVM.ViewModel
         {
             jsonVehicleRepository = new JsonRepository<Vehicle>();
             xmlVehicleRepository = new XmlRepository<Vehicle>();
+            reportVehicleService = new ReportService<Vehicle>(jsonVehicleRepository, xmlVehicleRepository);
+            
             inMemoryVehicleRepository = new InMemoryRepository<Vehicle>();
+            inMemoryWarehouseRepository = new InMemoryRepository<Warehouse>();
 
             vehicleService = new VehicleService(inMemoryVehicleRepository);
-            reportVehicleService = new ReportService<Vehicle>(jsonVehicleRepository, xmlVehicleRepository);
+            warehouseService = new WarehouseService(inMemoryWarehouseRepository);
 
-            //VehicleVM = new VehicleViewModel();
-            //WarehouseVM = new WarehouseViewModel();
-            //CurrentView = VehicleVM;
-
-            //VehicleViewCommand = new RelayCommand(o =>
-            //{
-            //    CurrentView = VehicleVM;
-            //});
-
-            //WarehouseViewCommand = new RelayCommand(o =>
-            //{
-            //    CurrentView = WarehouseVM;
-            //});
-            // Initialize your view models
             VehicleVM = new VehicleViewModel();
+            _vehicleView = new VehicleView(vehicleService);
+            
+            _warehouseView = new WarehouseView(warehouseService);
             WarehouseVM = new WarehouseViewModel();
-            CurrentView = VehicleVM;
+            CurrentView = _vehicleView;
 
-            // Initialize your views
-            _vehicleView = new VehicleView();
-            _vehicleView.InitServices(vehicleService);
-            _warehouseView = new WarehouseView();
-            _warehouseView.InitServices(vehicleService);
+            //_vehicleView.InitServices(vehicleService);
+
 
             VehicleViewCommand = new RelayCommand(o =>
             {

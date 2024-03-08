@@ -57,7 +57,7 @@ namespace WpfGUI
             vehicleService.Create(new Vehicle(VehicleType.Car,  2000,    1500,   "BC 5555 EK"));
             vehicleService.Create(new Vehicle(VehicleType.Car,  2000,    1500,   "BC 5555 EK"));
             vehicleService.Create(new Vehicle(VehicleType.Car,  2000,    1500,   "BC 5555 EK"));
-            //var vehicles = vehicleService.GetAll();
+            //var vehicles = warehouseService.GetAll();
 
             //vehiclesDataGrid.ItemsSource = vehicles;
             UpdateGrid();

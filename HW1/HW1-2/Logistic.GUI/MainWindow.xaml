@@ -110,6 +110,6 @@
 
         </Grid>
     </Border>
-        <Rectangle x:Name="overlay" Fill="#80000000" Visibility="Collapsed" />
+        <Rectangle x:Name="overlay" Fill="#80000000" RadiusX="30" RadiusY="30" Visibility="Collapsed" />
     </Grid>
 </Window>

@@ -8,6 +8,8 @@ namespace Logistic.Models
 
         public List<Cargo>? Stock { get; set; }
 
+        public int CargoCount => Stock?.Count ?? 0;
+
         public override string ToString()
         {
             string outputString = new string('_', 20 + 12 + 20) + '\n';

@@ -13,7 +13,7 @@ namespace Logistic.GUI.MVVM.ViewModel
 
         public VehicleViewModel()
         {
-            new VehicleView();
+            
         }
     }
 }
