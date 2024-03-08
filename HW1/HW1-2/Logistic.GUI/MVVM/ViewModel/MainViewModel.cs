@@ -26,6 +26,7 @@ namespace Logistic.GUI.MVVM.ViewModel
 
         public RelayCommand VehicleViewCommand { get; set; }
         public RelayCommand WarehouseViewCommand { get; set; }
+        public RelayCommand ReportViewCommand { get; set; }
 
         public VehicleViewModel VehicleVM { get; set; }
         public WarehouseViewModel WarehouseVM { get; set; }
@@ -50,7 +51,7 @@ namespace Logistic.GUI.MVVM.ViewModel
             jsonVehicleRepository = new JsonRepository<Vehicle>();
             xmlVehicleRepository = new XmlRepository<Vehicle>();
             reportVehicleService = new ReportService<Vehicle>(jsonVehicleRepository, xmlVehicleRepository);
-            
+
             inMemoryVehicleRepository = new InMemoryRepository<Vehicle>();
             inMemoryWarehouseRepository = new InMemoryRepository<Warehouse>();
 
@@ -59,9 +60,11 @@ namespace Logistic.GUI.MVVM.ViewModel
 
             VehicleVM = new VehicleViewModel();
             _vehicleView = new VehicleView(vehicleService);
-            
+
             _warehouseView = new WarehouseView(warehouseService);
             WarehouseVM = new WarehouseViewModel();
+
+            var _reportsView = new ReportsView();
             CurrentView = _vehicleView;
 
             //_vehicleView.InitServices(vehicleService);
@@ -75,6 +78,11 @@ namespace Logistic.GUI.MVVM.ViewModel
             WarehouseViewCommand = new RelayCommand(o =>
             {
                 CurrentView = _warehouseView;
+            });
+
+            ReportViewCommand = new RelayCommand(o =>
+            {
+                CurrentView = _reportsView;
             });
         }
     }

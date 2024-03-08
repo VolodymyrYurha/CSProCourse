@@ -12,6 +12,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Theme/ComboboxTheme.xaml"/>
                 <ResourceDictionary Source="Theme/ButtonsTheme.xaml"/>
+                <ResourceDictionary Source="Theme/TextBlockTheme.xaml"/>
+                <ResourceDictionary Source="Theme/RadioButtonTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
        
         <Style x:Key="topButton" TargetType="Button">

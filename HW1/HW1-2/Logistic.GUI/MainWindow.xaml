@@ -55,7 +55,7 @@
                             <StackPanel DockPanel.Dock="Top" >
                                 <RadioButton Style="{StaticResource MenuButtonTheme}" Content="Vehicle"     Tag="Car" Command="{Binding VehicleViewCommand}" IsChecked="True"/>
                                 <RadioButton Style="{StaticResource MenuButtonTheme}" Content="Warehouse"   Tag="Warehouse" Command="{Binding WarehouseViewCommand}" />
-                                <RadioButton Style="{StaticResource MenuButtonTheme}" Content="Report"      Tag="FileDocument" Command="{Binding WarehouseViewCommand}" />
+                                <RadioButton Style="{StaticResource MenuButtonTheme}" Content="Report"      Tag="FileDocument" Command="{Binding ReportViewCommand}" />
 
                             </StackPanel>
 
