@@ -59,6 +59,11 @@ namespace Logistic.GUI.MVVM.View
 
             UpdateGrid();
         }
+        public void InitServices(VehicleService vehicleService)
+        {
+            this.vehicleService = vehicleService;
+            UpdateGrid();
+        }
         private void EditVehicle_Click(object sender, RoutedEventArgs e)
         {
             var selectedItem = ((FrameworkElement)sender).DataContext;

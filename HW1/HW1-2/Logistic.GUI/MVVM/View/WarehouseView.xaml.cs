@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logistic.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,21 @@ namespace Logistic.GUI.MVVM.View
     /// </summary>
     public partial class WarehouseView : UserControl
     {
+        public VehicleService vehicleService;
         public WarehouseView()
         {
             InitializeComponent();
+        }
+
+        public void InitServices(VehicleService vehicleService)
+        {
+            this.vehicleService = vehicleService;
+            //UpdateGrid();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var vehicles = vehicleService.GetAll();
         }
     }
 }

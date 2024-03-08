@@ -1,4 +1,5 @@
 ﻿using Logistic.GUI.Core;
+using Logistic.GUI.MVVM.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,10 @@ namespace Logistic.GUI.MVVM.ViewModel
 {
     class VehicleViewModel
     {
+
+        public VehicleViewModel()
+        {
+            new VehicleView();
+        }
     }
 }
