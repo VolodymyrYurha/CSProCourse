@@ -8,7 +8,7 @@
              xmlns:viewModel ="clr-namespace:Logistic.GUI.MVVM.ViewModel"
              xmlns:components ="clr-namespace:Logistic.GUI.MVVM.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="White">
+             d:DesignHeight="450" d:DesignWidth="800" >
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -30,7 +30,7 @@
                 </Grid.RowDefinitions>
                 
                 <StackPanel Orientation="Horizontal">
-                    <RadioButton Margin="0,0,10,0" Style="{StaticResource CustomRadioButtonStyle}" IsChecked="True" Content="Json"/>
+                    <RadioButton x:Name="vehicleJsonRadioButton" Margin="0,0,10,0" Style="{StaticResource CustomRadioButtonStyle}" IsChecked="True" Content="Json"/>
                     <RadioButton Margin="10,0,0,0" Style="{StaticResource CustomRadioButtonStyle}" Content="Xml"/>
                 </StackPanel>
 
@@ -38,17 +38,39 @@
                     
                 </TextBlock>-->
 
-                <TextBox x:Name="vehicleTextBox" Style="{StaticResource JsonViewTextBox}" Grid.Row="1" Text="sdaasda sdas das d">
-                    
-                </TextBox>
+                <TextBox Margin="5,15,15,15" x:Name="vehicleTextBox" Style="{StaticResource JsonViewTextBox}" Grid.Row="1" Text=""/>
 
                 <Button Click="VehicleCopyContent_Click" Grid.Row="1" Height="24" Width="24" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20" Style="{StaticResource gridEditButton}">
                     <Icon:PackIconMaterial Kind="ContentCopy" Style="{StaticResource gridButtonIcon}"/>
                 </Button>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2" Margin="20">
-                    <components:CustomButton Margin ="0,0,10,0"  CustomButtonText ="Import Vehicle"/>
+                    <components:CustomButton Click="ImportVehicle_Click" Margin ="0,0,10,0"  CustomButtonText ="Import Vehicle"/>
                     <components:CustomButton Margin ="10,0,0,0" CustomButtonText ="Export Vehicle"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Margin="20" Grid.Column="1" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition />
+                    <RowDefinition Height="85"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton x:Name="warehouseJsonRadioButton" Margin="0,0,10,0" Style="{StaticResource CustomRadioButtonStyle}" IsChecked="True" Content="Json"/>
+                    <RadioButton Margin="10,0,0,0" Style="{StaticResource CustomRadioButtonStyle}" Content="Xml"/>
+                </StackPanel>
+
+                <TextBox Margin="5,15,15,15" x:Name="warehouseTextBox" Style="{StaticResource JsonViewTextBox}" Grid.Row="1" Text=""/>
+
+                <Button Click="WarehouseCopyContent_Click" Grid.Row="1" Height="24" Width="24" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20" Style="{StaticResource gridEditButton}">
+                    <Icon:PackIconMaterial Kind="ContentCopy" Style="{StaticResource gridButtonIcon}"/>
+                </Button>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2" Margin="20">
+                    <components:CustomButton Margin ="0,0,10,0"  CustomButtonText ="Import Warehouse"/>
+                    <components:CustomButton Margin ="10,0,0,0" CustomButtonText ="Export Warehouse"/>
                 </StackPanel>
             </Grid>
         </Grid>

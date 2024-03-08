@@ -128,7 +128,7 @@ namespace Logistic.GUI.MVVM.View
             UpdateGrid();
         }
 
-        private void UpdateGrid()
+        public void UpdateGrid()
         {
             var vehicles = vehicleService.GetAll();
             vehiclesDataGrid.ItemsSource = vehicles;

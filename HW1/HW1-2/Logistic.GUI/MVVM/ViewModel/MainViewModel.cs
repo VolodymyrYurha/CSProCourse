@@ -5,6 +5,7 @@ using Logistic.GUI.MVVM.View;
 using Logistic.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,10 @@ namespace Logistic.GUI.MVVM.ViewModel
         public XmlRepository<Vehicle> xmlVehicleRepository;
         public ReportService<Vehicle> reportVehicleService;
 
+        public JsonRepository<Warehouse> jsonWarehouseRepository;
+        public XmlRepository<Warehouse> xmlWarehouseRepository;
+        public ReportService<Warehouse> reportWarehouseService;
+        
         public InMemoryRepository<Vehicle> inMemoryVehicleRepository;
         public InMemoryRepository<Warehouse> inMemoryWarehouseRepository;
 
@@ -35,6 +40,7 @@ namespace Logistic.GUI.MVVM.ViewModel
 
         private VehicleView _vehicleView;
         private WarehouseView _warehouseView;
+        private ReportsView _reportView;
 
         public object CurrentView
         {
@@ -64,7 +70,8 @@ namespace Logistic.GUI.MVVM.ViewModel
             _warehouseView = new WarehouseView(warehouseService);
             WarehouseVM = new WarehouseViewModel();
 
-            var _reportsView = new ReportsView();
+            _reportView = new ReportsView();
+            _reportView.InitServicesRepositories(reportVehicleService, reportWarehouseService, vehicleService, warehouseService, inMemoryVehicleRepository, inMemoryWarehouseRepository);
             CurrentView = _vehicleView;
 
             //_vehicleView.InitServices(vehicleService);
@@ -73,6 +80,7 @@ namespace Logistic.GUI.MVVM.ViewModel
             VehicleViewCommand = new RelayCommand(o =>
             {
                 CurrentView = _vehicleView;
+                _vehicleView.UpdateGrid();
             });
 
             WarehouseViewCommand = new RelayCommand(o =>
@@ -82,7 +90,7 @@ namespace Logistic.GUI.MVVM.ViewModel
 
             ReportViewCommand = new RelayCommand(o =>
             {
-                CurrentView = _reportsView;
+                CurrentView = _reportView;
             });
         }
     }
