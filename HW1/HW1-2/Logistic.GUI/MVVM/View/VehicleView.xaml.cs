@@ -85,15 +85,10 @@ namespace Logistic.GUI.MVVM.View
         {
             var selectedItem = ((FrameworkElement)sender).DataContext;
             var vehicle = (Vehicle)selectedItem;
-            //var deletedVehicleId = vehicle.Id;
 
             var cargoVehicleWindow = new CargoViewWindow();
             cargoVehicleWindow.InitVehicle(vehicle, vehicleService);
-            //cargoVehicleWindow.DeletedCargo = vehicle;
-            //cargoVehicleWindow.UpdateInputs();
 
-            //cargoVehicleWindow.CargoDeleted += DeleteVehicleWindow_VehicleDeleted;
-            //MainWindow.Overlay.Visibility = Visibility.Visible;
             cargoVehicleWindow.cargoesManaged += CargoVehicleWindow_cargoesManaged;
             cargoVehicleWindow.Show();
         }

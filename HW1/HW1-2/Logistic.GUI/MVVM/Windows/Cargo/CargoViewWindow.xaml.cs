@@ -167,7 +167,7 @@ namespace Logistic.GUI.MVVM.Windows.Cargo
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
 
-            var repository = _vehicleService.repository;
+            //var repository = _vehicleService.repository;
             MainWindow.Overlay.Visibility = Visibility.Collapsed;
             cargoesManaged?.Invoke(this, null);
             this.Close();

@@ -72,27 +72,28 @@ namespace Logistic.GUI.MVVM.View
         private void CargoWarehouse_Click(object sender, RoutedEventArgs e)
         {
             var selectedItem = ((FrameworkElement)sender).DataContext;
-            var vehicle = (Warehouse)selectedItem;
-            //var deletedVehicleId = vehicle.Id;
+            var warehouse = (Warehouse)selectedItem;
 
             var cargoVehicleWindow = new CargoViewWindow();
-            cargoVehicleWindow.InitWarehouse(vehicle, warehouseService);
-            //cargoVehicleWindow.DeletedCargo = vehicle;
-            //cargoVehicleWindow.UpdateInputs();
-
-            //cargoVehicleWindow.CargoDeleted += DeleteVehicleWindow_VehicleDeleted;
-            //MainWindow.Overlay.Visibility = Visibility.Visible;
+            cargoVehicleWindow.InitWarehouse(warehouse, warehouseService);
+            
+            cargoVehicleWindow.cargoesManaged += CargoVehicleWindow_cargoesManaged;
             cargoVehicleWindow.Show();
+        }
+
+        private void CargoVehicleWindow_cargoesManaged(object sender, EventArgs e)
+        {
+            UpdateGrid();
         }
 
         private void DeleteWarehouse_Click(object sender, RoutedEventArgs e)
         {
             //var selectedItem = ((FrameworkElement)sender).DataContext;
-            //var vehicle = (Vehicle)selectedItem;
-            ////var deletedVehicleId = vehicle.Id;
+            //var warehouse = (Vehicle)selectedItem;
+            ////var deletedVehicleId = warehouse.Id;
 
             //var deleteVehicleWindow = new VehicleDeleteWindow();
-            //deleteVehicleWindow.DeletedCargo = vehicle;
+            //deleteVehicleWindow.DeletedCargo = warehouse;
             ////deleteVehicleWindow.UpdateInputs();
 
             //deleteVehicleWindow.CargoDeleted += DeleteVehicleWindow_VehicleDeleted;
