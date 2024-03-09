@@ -13,38 +13,40 @@
     <Grid>
         <Border Background="White" CornerRadius="20">
             <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-                <TextBlock Text="Error occurred"
-                           Height="Auto"
+                <TextBlock x:Name="errorTitle" Grid.Row="0"
+                           Text="Error occurred"
                            FontSize="18"
+                           Foreground="Red"
                            FontWeight="SemiBold" 
-                           Margin="0 20 0 0" 
-                           Foreground="Red"   
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Top"/>
+                           Margin="0 20 0 20" 
+                           HorizontalAlignment="Center"/>
 
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="100" Width="300">
-                    <TextBlock Text="{Binding ErrorMessage, FallbackValue='Error text'}"
+                <StackPanel Grid.Row="1" Orientation="Horizontal" >
+                    <TextBox x:Name="errorText"
+                             VerticalAlignment="Center"
+                             Margin="20,0,20,0"
+                             Text="Error message"
+                             BorderThickness="0"
                            TextWrapping="Wrap"
+                           AcceptsReturn="True"
+                             Width="300"
                            FontSize="16"
                            Foreground="#121518" 
-                           VerticalAlignment="Center"/>
+                           />
                 </StackPanel>
 
 
 
-                <Grid Margin="0,0,0,20" Height="40" Width="300" VerticalAlignment="Bottom">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--<ContentControl Grid.Column="0" Margin="0,0,7,0">
-                        <components:CustomHollowButton ButtonColor="red" Click="ConfirmDeleteVehicle_Click" CustomHollowButtonText ="Delete"/>
-                    </ContentControl>-->
-
-                    <ContentControl Grid.Column="1" Margin="7,0,0,0" HorizontalAlignment="Right">
-                        <components:CustomButton Width="80" Click="CancelDeleteVehicle_Click" CustomButtonText ="Ok"/>
+                <!--<Grid Margin="0,0,20,20" Height="40" Width="300" VerticalAlignment="Bottom" HorizontalAlignment="Right">-->
+                <Grid Grid.Row="2" Height="Auto" Margin="0,20,0,20" HorizontalAlignment="Center">
+                    <ContentControl Grid.Column="1">
+                        <components:CustomButton Width="80" Click="OkButton_Click" CustomButtonText ="Ok"/>
                     </ContentControl>
                 </Grid>
             </Grid>

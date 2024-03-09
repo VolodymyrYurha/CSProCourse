@@ -25,6 +25,21 @@ namespace Logistic.GUI.MVVM.Validations
                 return ValidationResult.ValidResult;
             }
         }
+
+        public ValidationResult ValidateCargoCode(string input)
+        {
+            Regex regex = new Regex(@"^#[a-zA-Z0-9]{4}$");
+
+            if (!regex.IsMatch(input))
+            {
+                return new ValidationResult(false, "Incorrect form. Expected: #aa11");
+            }
+            else
+            {
+                return ValidationResult.ValidResult;
+            }
+        }
+
         public ValidationResult ValidateWeightInt(string input)
         {
             Regex regex = new Regex(@"^\d+$");

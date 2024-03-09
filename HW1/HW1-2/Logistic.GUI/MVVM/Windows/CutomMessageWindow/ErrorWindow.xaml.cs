@@ -20,15 +20,31 @@ namespace Logistic.GUI.MVVM.Windows.CutomMessageWindow
     /// </summary>
     public partial class ErrorWindow : Window
     {
+        public event EventHandler onWindowClosed;
+
         public ErrorWindow()
         {
             InitializeComponent();
-            MainWindow.Overlay.Visibility = Visibility.Visible;
+            //MainWindow.Overlay.Visibility = Visibility.Visible;
+        }
+
+        public void ShowFullErrorWindow(string title, string message)
+        {
+            errorTitle.Text = title;
+            errorText.Text = message;
+            this.Show();
+        }
+        public void ShowErrorMessageWindow(string message)
+        {
+            errorText.Text = message;
+            onWindowClosed?.Invoke(this, EventArgs.Empty);
+            this.Show();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.Overlay.Visibility = Visibility.Collapsed;
+            //MainWindow.Overlay.Visibility = Visibility.Collapsed;
+            onWindowClosed?.Invoke(this, EventArgs.Empty);
             this.Close();
         }
 

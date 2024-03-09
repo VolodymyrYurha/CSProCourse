@@ -1,8 +1,10 @@
 ﻿using Logistic.Core;
 using Logistic.Core.Interfaces;
 using Logistic.DAL;
+using Logistic.GUI.MVVM.Windows.CutomMessageWindow;
 using Logistic.Models;
 using Logistic.Models.Interfaces;
+using NSubstitute;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -93,7 +95,42 @@ namespace Logistic.GUI.MVVM.Windows.Cargo
 
         private void AddCargo_Click(object sender, RoutedEventArgs e)
         {
+            var createCargoWindow = new CargoCreateWindow();
+            //createCargoWindow.cargoCreated = cargo;
 
+            createCargoWindow.Show();
+            createCargoWindow.cargoCreated += CreateCargoWindow_cargoCreated;
+        }
+
+        private void CreateCargoWindow_cargoCreated(object sender, Models.Cargo cargo)
+        {
+            try
+            {
+                if (_typeToManage == typeof(Vehicle))
+                {
+                    _vehicleService.LoadCargo(cargo, entity.Id);
+                    UpdateGrid();
+                }
+                else
+                {
+                    _warehouseService.LoadCargo(cargo, entity.Id);
+                    UpdateGrid();
+                }
+                overlay.Visibility = Visibility.Collapsed;
+            }
+            catch (Exception e)
+            {
+                var errorWindow = new ErrorWindow();
+                errorWindow.onWindowClosed += ErrorWindow_onWindowClosed;
+                errorWindow.ShowErrorMessageWindow(e.Message);
+                overlay.Visibility = Visibility.Visible;
+            }
+            
+        }
+
+        private void ErrorWindow_onWindowClosed(object sender, EventArgs e)
+        {
+            overlay.Visibility=Visibility.Collapsed;
         }
 
         private void EditCargo_Click(object sender, RoutedEventArgs e)
@@ -105,21 +142,11 @@ namespace Logistic.GUI.MVVM.Windows.Cargo
         {
             var selectedItem = ((FrameworkElement)sender).DataContext;
             var cargo = (Models.Cargo)selectedItem;
-            //var deletedCargoGuid = warehouse.Id;
-            //var deletedCargoGuid = warehouse.Id;
-
+            
             var deleteVehicleWindow = new DeleteCargoWindow();
             deleteVehicleWindow.DeletedCargo = cargo;
-            //cargoVehicleWindow.UpdateInputs();
-
-            
-                //cargoesDataGrid.ItemsSource = _vehicle.Cargoes;
-                //_vehicleService.UnloadCargo(cargo.Id, _vehicle.Id);
-                //UpdateGrid();
-            //}
 
             deleteVehicleWindow.CargoDeleted += CargoDeleteWindow_CargoDeleted;
-            //MainWindow.Overlay.Visibility = Visibility.Visible;
             deleteVehicleWindow.Show();
         }
 
@@ -135,8 +162,6 @@ namespace Logistic.GUI.MVVM.Windows.Cargo
                 _warehouseService.UnloadCargo(deletedCargoGuid, entity.Id);
                 UpdateGrid();
             }
-            //entityService.UnloadCargo(deletedCargoGuid, entity.Id);
-            //UpdateGrid();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
