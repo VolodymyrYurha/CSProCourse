@@ -35,10 +35,6 @@ namespace Logistic.GUI.MVVM.View
         {
             InitializeComponent();
             this.warehouseService = warehouseService;
-            warehouseService.Create(new Warehouse());
-            warehouseService.LoadCargo(new Cargo(), 1);
-            warehouseService.LoadCargo(new Cargo(), 1);
-            warehouseService.LoadCargo(new Cargo(), 1);
             UpdateGrid();
         }
 

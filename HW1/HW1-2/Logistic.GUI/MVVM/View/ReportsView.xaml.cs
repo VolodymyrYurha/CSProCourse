@@ -1,5 +1,6 @@
 ﻿using Logistic.Core;
 using Logistic.DAL;
+using Logistic.GUI.MVVM.Windows.CutomMessageWindow;
 using Logistic.Models;
 using Logistic.Models.Enums;
 using Logistic.Models.Models.Exceptions;
@@ -20,6 +21,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Xunit.Sdk;
 
 namespace Logistic.GUI.MVVM.View
 {
@@ -119,14 +121,18 @@ namespace Logistic.GUI.MVVM.View
         private void ExportVehicle_Click(object sender, RoutedEventArgs e)
         {
             var vehicles = vehicleService.GetAll();
+            string filename;
             if(vehicleJsonRadioButton.IsChecked == true)
             {
-                reportVehicleService.CreateReport(ReportType.Json, vehicles);
+                filename = reportVehicleService.CreateReport(ReportType.Json, vehicles);
             }
             else
             {
-                reportVehicleService.CreateReport(ReportType.Xml, vehicles);
+                filename = reportVehicleService.CreateReport(ReportType.Xml, vehicles);
             }
+
+            var messageWindow = new MessageWindow();
+            messageWindow.ShowMessageWindow("Vehicle exported", $"File name:\n{filename}");
         }
 
 
@@ -182,14 +188,17 @@ namespace Logistic.GUI.MVVM.View
         private void ExportWarehouse_Click(object sender, RoutedEventArgs e)
         {
             var warehouses = warehouseService.GetAll();
+            string filename;
             if (warehouseJsonRadioButton.IsChecked == true)
             {
-                reportWarehouseService.CreateReport(ReportType.Json, warehouses);
+                filename = reportWarehouseService.CreateReport(ReportType.Json, warehouses);
             }
             else
             {
-                reportWarehouseService.CreateReport(ReportType.Xml, warehouses);
+                filename = reportWarehouseService.CreateReport(ReportType.Xml, warehouses);
             }
+            var messageWindow = new MessageWindow();
+            messageWindow.ShowMessageWindow("Warehouse exported", $"File name:\n{filename}");
         }
 
         private void warehouseJsonRadioButton_Click(object sender, RoutedEventArgs e)
