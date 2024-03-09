@@ -19,6 +19,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Logistic.GUI.MVVM.Windows;
 using Logistic.GUI.MVVM.Windows.Cargo;
+using Logistic.Core.Interfaces;
+using Logistic.Models.Interfaces;
 
 namespace Logistic.GUI.MVVM.View
 {
@@ -87,12 +89,18 @@ namespace Logistic.GUI.MVVM.View
 
             var cargoVehicleWindow = new CargoViewWindow();
             cargoVehicleWindow.InitVehicle(vehicle, vehicleService);
-            //cargoVehicleWindow.DeletedVehicle = vehicle;
+            //cargoVehicleWindow.DeletedCargo = vehicle;
             //cargoVehicleWindow.UpdateInputs();
 
-            //cargoVehicleWindow.VehicleDeleted += DeleteVehicleWindow_VehicleDeleted;
+            //cargoVehicleWindow.CargoDeleted += DeleteVehicleWindow_VehicleDeleted;
             //MainWindow.Overlay.Visibility = Visibility.Visible;
+            cargoVehicleWindow.cargoesManaged += CargoVehicleWindow_cargoesManaged;
             cargoVehicleWindow.Show();
+        }
+
+        private void CargoVehicleWindow_cargoesManaged(object sender, EventArgs e)
+        {
+            UpdateGrid();
         }
 
         private void AddVehicle_Click(object sender, RoutedEventArgs e)

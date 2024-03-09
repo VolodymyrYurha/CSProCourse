@@ -1,5 +1,6 @@
 ﻿using Logistic.Core;
 using Logistic.GUI.MVVM.Windows;
+using Logistic.GUI.MVVM.Windows.Cargo;
 using Logistic.GUI.MVVM.Windows.Warehouse;
 using Logistic.Models;
 using System;
@@ -70,7 +71,18 @@ namespace Logistic.GUI.MVVM.View
 
         private void CargoWarehouse_Click(object sender, RoutedEventArgs e)
         {
+            var selectedItem = ((FrameworkElement)sender).DataContext;
+            var vehicle = (Warehouse)selectedItem;
+            //var deletedVehicleId = vehicle.Id;
 
+            var cargoVehicleWindow = new CargoViewWindow();
+            cargoVehicleWindow.InitWarehouse(vehicle, warehouseService);
+            //cargoVehicleWindow.DeletedCargo = vehicle;
+            //cargoVehicleWindow.UpdateInputs();
+
+            //cargoVehicleWindow.CargoDeleted += DeleteVehicleWindow_VehicleDeleted;
+            //MainWindow.Overlay.Visibility = Visibility.Visible;
+            cargoVehicleWindow.Show();
         }
 
         private void DeleteWarehouse_Click(object sender, RoutedEventArgs e)
@@ -80,10 +92,10 @@ namespace Logistic.GUI.MVVM.View
             ////var deletedVehicleId = vehicle.Id;
 
             //var deleteVehicleWindow = new VehicleDeleteWindow();
-            //deleteVehicleWindow.DeletedVehicle = vehicle;
+            //deleteVehicleWindow.DeletedCargo = vehicle;
             ////deleteVehicleWindow.UpdateInputs();
 
-            //deleteVehicleWindow.VehicleDeleted += DeleteVehicleWindow_VehicleDeleted;
+            //deleteVehicleWindow.CargoDeleted += DeleteVehicleWindow_VehicleDeleted;
             //MainWindow.Overlay.Visibility = Visibility.Visible;
             //deleteVehicleWindow.Show();
         }

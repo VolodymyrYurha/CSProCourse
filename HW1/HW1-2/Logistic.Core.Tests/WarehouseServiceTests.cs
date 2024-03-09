@@ -82,7 +82,7 @@ namespace Logistic.Core.Tests
             service.LoadCargo(cargo, warehouse.Id);
 
             // Assert
-            var loadedCargo = warehouse.Stock.FirstOrDefault(c => c.Id == cargo.Id);
+            var loadedCargo = warehouse.Cargoes.FirstOrDefault(c => c.Id == cargo.Id);
             Assert.Equal(cargo, loadedCargo);
             repository.Received(1).Update(warehouse.Id, warehouse);
         }
@@ -93,14 +93,14 @@ namespace Logistic.Core.Tests
         {
             // Arrange
             repository.Read(warehouse.Id).Returns(warehouse);
-            warehouse.Stock.Add(cargo);
+            warehouse.Cargoes.Add(cargo);
             service.Create(warehouse);
 
             // Act
             service.UnloadCargo(cargo.Id, warehouse.Id);
 
             // Assert
-            var unloadedCargo = warehouse.Stock.FirstOrDefault(c => c.Id == cargo.Id);
+            var unloadedCargo = warehouse.Cargoes.FirstOrDefault(c => c.Id == cargo.Id);
             Assert.Equal(default, unloadedCargo);
             repository.Received(1).Update(warehouse.Id, warehouse);
         }

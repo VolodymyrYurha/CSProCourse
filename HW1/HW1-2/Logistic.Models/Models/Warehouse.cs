@@ -6,9 +6,9 @@ namespace Logistic.Models
     {
         public int Id { get; set; }
 
-        public List<Cargo>? Stock { get; set; }
+        public List<Cargo>? Cargoes { get; set; }
 
-        public int CargoCount => Stock?.Count ?? 0;
+        public int CargoCount => Cargoes?.Count ?? 0;
 
         public override string ToString()
         {
@@ -17,12 +17,12 @@ namespace Logistic.Models
             outputString += $"Id: {Id}\n";
             outputString += new string(' ', 15) + "Loaded cargoes info:\n";
 
-            if (Stock.Count() == 0)
+            if (Cargoes.Count() == 0)
             {
                 outputString += "there are no cargoes";
             }
 
-            foreach (var cargo in Stock)
+            foreach (var cargo in Cargoes)
             {
                 outputString += cargo.ToString() + "\n";
             }

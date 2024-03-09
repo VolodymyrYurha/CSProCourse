@@ -42,7 +42,7 @@ namespace Logistic.Core
         {
             var warehouseToLoad = repository.Read(idWarehouse);
             cargo.Id = Guid.NewGuid();
-            warehouseToLoad.Stock.Add(cargo);
+            warehouseToLoad.Cargoes.Add(cargo);
             repository.Update(idWarehouse, warehouseToLoad);
             return cargo;
         }
@@ -50,14 +50,14 @@ namespace Logistic.Core
         public Cargo UnloadCargo(Guid guidCargo, int idWarehouse)
         {
             var warehouseToUnload = repository.Read(idWarehouse);
-            var cargoToDelete = warehouseToUnload.Stock.FirstOrDefault(c => c.Id == guidCargo);
+            var cargoToDelete = warehouseToUnload.Cargoes.FirstOrDefault(c => c.Id == guidCargo);
 
             if (cargoToDelete == null)
             {
                 throw new Exception($"There is no cargo with id [ {guidCargo} ] in warehouse with id {warehouseToUnload.Id}");
             }
 
-            warehouseToUnload.Stock.Remove(cargoToDelete);
+            warehouseToUnload.Cargoes.Remove(cargoToDelete);
             repository.Update(idWarehouse, warehouseToUnload);
             return cargoToDelete;
         }
@@ -65,13 +65,13 @@ namespace Logistic.Core
         public Cargo UnloadLastCargo(int idWarehouse)
         {
             var warehouseToUnload = repository.Read(idWarehouse);
-            if (!(warehouseToUnload.Stock.Count > 0))
+            if (!(warehouseToUnload.Cargoes.Count > 0))
             {
                 throw new Exception($"There isn't any cargo in warehouse with id {warehouseToUnload.Id}");
             }
 
-            var cargoToDelete = warehouseToUnload.Stock[warehouseToUnload.Stock.Count - 1];
-            warehouseToUnload.Stock.Remove(cargoToDelete);
+            var cargoToDelete = warehouseToUnload.Cargoes[warehouseToUnload.Cargoes.Count - 1];
+            warehouseToUnload.Cargoes.Remove(cargoToDelete);
             repository.Update(idWarehouse, warehouseToUnload);
             return cargoToDelete;
         }

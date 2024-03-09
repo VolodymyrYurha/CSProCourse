@@ -32,7 +32,7 @@
                     </Grid.RowDefinitions>
 
 
-                    <DataGrid Grid.Row="0" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="warehouseDataGrid" Style="{DynamicResource DataGridStyle1}">
+                    <DataGrid Grid.Row="0" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="cargoesDataGrid" Style="{DynamicResource DataGridStyle1}">
                         <DataGrid.Columns>
 
                             <DataGridTextColumn Header="Id"             Width="*"    IsReadOnly="True"   Binding="{Binding Id}"/>
@@ -91,5 +91,6 @@
 
 
         </Border>
+        <Rectangle x:Name="overlay" Fill="#80000000" RadiusX="20" RadiusY="20" Visibility="Collapsed" />
     </Grid>
 </Window>

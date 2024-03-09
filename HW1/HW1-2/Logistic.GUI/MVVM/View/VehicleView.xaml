@@ -133,7 +133,7 @@
                                 <Button Click="CargoVehicle_Click" Style="{StaticResource gridEditButton}">
                                     <Icon:PackIconMaterial Kind="CubeOutline" Style="{StaticResource gridButtonIcon}"/>
                                 </Button>
-                                <Button Click="EditVehicle_Click" Style="{StaticResource gridEditButton}">
+                                <Button Click="EditVehicle_Click" Margin="5 0 0 0" Style="{StaticResource gridEditButton}">
                                     <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
                                 </Button>
                                 <Button Click="DeleteVehicle_Click" Margin="5 0 0 0" Style="{StaticResource gridRemoveButton}">
