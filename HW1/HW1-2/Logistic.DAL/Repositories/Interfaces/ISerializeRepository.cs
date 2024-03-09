@@ -6,5 +6,9 @@
         string Create(List<TEntity> entities);
 
         List<TEntity> Read(string filename);
+
+        string Serialize(List<TEntity> entitiesList);
+
+        List<TEntity> Deserialize(string serializedData);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System.IO;
+using System.Xml;
 using System.Xml.Serialization;
 using Logistic.DAL.Interfaces;
 
@@ -49,6 +50,15 @@ namespace Logistic.DAL
             return xmlName;
         }
 
+        public List<TEntity> Deserialize(string serializedData)
+        {
+            var serializer = new XmlSerializer(typeof(List<TEntity>));
+            using (var reader = new StringReader(serializedData))
+            {
+                return (List<TEntity>)serializer.Deserialize(reader);
+            }
+        }
+
         public List<TEntity> Read(string filename)
         {
             var serializer = new XmlSerializer(typeof(List<TEntity>));
@@ -59,6 +69,16 @@ namespace Logistic.DAL
             }
             using var stream = new FileStream(readPath, FileMode.Open);
             return (List<TEntity>)serializer.Deserialize(stream);
+        }
+
+        public string Serialize(List<TEntity> entitiesList)
+        {
+            var serializer = new XmlSerializer(typeof(List<TEntity>));
+            using (var writer = new StringWriter())
+            {
+                serializer.Serialize(writer, entitiesList);
+                return writer.ToString();
+            }
         }
     }
 }

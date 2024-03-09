@@ -11,5 +11,9 @@ namespace Logistic.Core.Interfaces
         List<TEntity> LoadReport(string file);
 
         byte[] LoadFile(string file);
+
+        string Serialize(List<TEntity> entitiesList, ReportType reportType);
+
+        List<TEntity> Deserialize(string serializedData, ReportType reportType);
     }
 }

@@ -26,9 +26,6 @@ namespace Logistic.GUI.MVVM.View
     /// </summary>
     public partial class VehicleView : UserControl
     {
-        //public JsonRepository<Vehicle> jsonVehicleRepository;
-        //public XmlRepository<Vehicle> xmlVehicleRepository;
-        //public InMemoryRepository<Vehicle> inMemoryVehicleRepository;
 
         public VehicleService vehicleService;
         public ReportService<Vehicle> reportVehicleService;
@@ -39,28 +36,6 @@ namespace Logistic.GUI.MVVM.View
         {
             InitializeComponent();
         }
-
-
-        //    //jsonVehicleRepository = new JsonRepository<Vehicle>();
-        //    //xmlVehicleRepository = new XmlRepository<Vehicle>();
-        //    var inMemoryVehicleRepository = new InMemoryRepository<Vehicle>();
-
-        //    vehicleService = new VehicleService(inMemoryVehicleRepository);
-        //    //reportVehicleService = new ReportService<Vehicle>(jsonVehicleRepository, xmlVehicleRepository);
-
-        //    vehicleService.Create(new Vehicle(VehicleType.Car, 1000, 1000, "BC 1111 AK"));
-        //    //vehicleService.Create(new Vehicle(VehicleType.Car, 1500, 1200, "BC 2222 BK"));
-        //    //vehicleService.Create(new Vehicle(VehicleType.Car, 800, 800, "BC 3333 CK"));
-        //    //vehicleService.Create(new Vehicle(VehicleType.Car, 1200, 1000, "BC 4444 DK"));
-        //    //vehicleService.Create(new Vehicle(VehicleType.Car, 2000, 1500, "BC 5555 EK"));
-        //    //vehicleService.Create(new Vehicle(VehicleType.Car, 2000, 1500, "BC 6666 FK"));
-        //    //vehicleService.Create(new Vehicle(VehicleType.Car, 2000, 1500, "BC 7777 GK"));
-        //    //vehicleService.Create(new Vehicle(VehicleType.Car, 2000, 1500, "BC 8888 HK"));
-        //    //vehicleService.Create(new Vehicle(VehicleType.Car, 2000, 1500, "BC 9999 IK"));
-        //    //vehicleService.Create(new Vehicle(VehicleType.Car, 2000, 1500, "BC 1010 JK"));
-
-        //    UpdateGrid();
-        //}
 
         public VehicleView(VehicleService vehicleService)
         {
@@ -138,9 +113,7 @@ namespace Logistic.GUI.MVVM.View
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            // Get the selected item from the WpfGUI
             var selectedItem = ((FrameworkElement)sender).DataContext;
-            // Perform remove operation with the selected item
         }
 
     }

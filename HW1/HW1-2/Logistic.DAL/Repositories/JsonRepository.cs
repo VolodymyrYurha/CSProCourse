@@ -41,6 +41,11 @@ namespace Logistic.DAL
             return jsonName;
         }
 
+        public List<TEntity> Deserialize(string serializedData)
+        {
+            return JsonConvert.DeserializeObject<List<TEntity>>(serializedData);
+        }
+
         public List<TEntity> Read(string filename)
         {
             string readPath = path + filename;
@@ -55,6 +60,11 @@ namespace Logistic.DAL
                 string json = sr.ReadToEnd();
                 return JsonConvert.DeserializeObject<List<TEntity>>(json);
             }
+        }
+
+        public string Serialize(List<TEntity> entitiesList)
+        {
+            return JsonConvert.SerializeObject(entitiesList, Formatting.Indented);
         }
     }
 }

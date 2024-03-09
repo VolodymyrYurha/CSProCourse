@@ -91,6 +91,7 @@ namespace Logistic.GUI.MVVM.ViewModel
             ReportViewCommand = new RelayCommand(o =>
             {
                 CurrentView = _reportView;
+                _reportView.UpdateTextBoxes();
             });
         }
     }

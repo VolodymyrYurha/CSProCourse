@@ -1,0 +1,107 @@
+[
+  {
+    "Id": 1,
+    "Type": 0,
+    "Number": "BC 1111 AK",
+    "MaxCargoWeightKg": 100,
+    "MaxCargoWeightLbs": 220.46,
+    "MaxCargoVolume": 100.0,
+    "Cargoes": [
+      {
+        "Id": "3f9f1947-a984-414b-8b7b-767fc9123aab",
+        "Weight": 10,
+        "Volume": 10.0,
+        "Code": "1",
+        "Invoice": null
+      },
+      {
+        "Id": "db1163b0-a165-4ffe-bd2d-4d5ef43be881",
+        "Weight": 10,
+        "Volume": 10.0,
+        "Code": "2",
+        "Invoice": null
+      },
+      {
+        "Id": "cbc89651-24ae-4d3e-a9c1-297a1ca1c778",
+        "Weight": 10,
+        "Volume": 10.0,
+        "Code": "3",
+        "Invoice": null
+      },
+      {
+        "Id": "d0f96260-39ca-4ac1-9cdd-d5e7626d3fb3",
+        "Weight": 10,
+        "Volume": 20.0,
+        "Code": "3",
+        "Invoice": null
+      },
+      {
+        "Id": "cc53be46-2c36-47a0-a093-0a308bdbb33e",
+        "Weight": 10,
+        "Volume": 33.0,
+        "Code": "3",
+        "Invoice": null
+      },
+      {
+        "Id": "0eb10836-3982-4925-828c-42a96999c616",
+        "Weight": 44,
+        "Volume": 10.0,
+        "Code": "5",
+        "Invoice": null
+      },
+      {
+        "Id": "1db300a4-7be9-4ba3-a493-52934b0347ce",
+        "Weight": 6,
+        "Volume": 7.0,
+        "Code": "6",
+        "Invoice": null
+      }
+    ],
+    "CargoWeightCurrent": 100.0,
+    "CargoVolumeCurrent": 100.0
+  },
+  {
+    "Id": 2,
+    "Type": 0,
+    "Number": "BC 1111 AK",
+    "MaxCargoWeightKg": 200,
+    "MaxCargoWeightLbs": 220.46,
+    "MaxCargoVolume": 200.0,
+    "Cargoes": [],
+    "CargoWeightCurrent": 0.0,
+    "CargoVolumeCurrent": 0.0
+  },
+  {
+    "Id": 3,
+    "Type": 0,
+    "Number": "BC 1111 AK",
+    "MaxCargoWeightKg": 300,
+    "MaxCargoWeightLbs": 220.46,
+    "MaxCargoVolume": 300.0,
+    "Cargoes": [],
+    "CargoWeightCurrent": 0.0,
+    "CargoVolumeCurrent": 0.0
+  },
+  {
+    "Id": 4,
+    "Type": 0,
+    "Number": "BC 1111 AK",
+    "MaxCargoWeightKg": 400,
+    "MaxCargoWeightLbs": 220.46,
+    "MaxCargoVolume": 400.0,
+    "Cargoes": [],
+    "CargoWeightCurrent": 0.0,
+    "CargoVolumeCurrent": 0.0
+  },
+  {
+    "Id": 1,
+    "Type": 2,
+    "Number": "BC 0000 AA",
+    "MaxCargoWeightKg": 1234,
+    "MaxCargoWeightLbs": 2720.4766,
+    "MaxCargoVolume": 432.1,
+    "Cargoes": [],
+    "CargoWeightCurrent": 0.0,
+    "CargoVolumeCurrent": 0.0
+  }
+]
