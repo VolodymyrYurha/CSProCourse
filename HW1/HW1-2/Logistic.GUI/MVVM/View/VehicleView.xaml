@@ -38,19 +38,6 @@
             </StackPanel>
         </Button>
 
-        <!--Seprator-->
-        <!--<Separator Height="1" Grid.Row="3" Background="#DAE2EA" Margin="0 -1 0 10"/>
-
-        --><!--Tab buttons--><!--
-        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 10 0 0">
-            <Button Style="{StaticResource tabButton}" Content="Club staff" BorderBrush="#784FF2"/>
-            <Button Style="{StaticResource tabButton}" Content="Players"/>
-            <Button Style="{StaticResource tabButton}" Content="Archived"/>
-        </StackPanel>-->
-
-        <!--Counter Title-->
-        <!--<TextBlock x:Name="VehiclesNumberTextBlock" Text="10 Vehicles" Grid.Row="4" FontSize="18" FontWeight="SemiBold" Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>-->
-
         <StackPanel Orientation="Horizontal" Grid.Row="4">
             <TextBlock Text="Total:" FontSize="18" FontWeight="SemiBold" Foreground="#121518" Margin="5,0,0,0"/>
             <TextBlock x:Name="VehiclesNumberTextBlock" Text="0" FontSize="18" FontWeight="SemiBold" Foreground="#7B5CD6" Margin="5,0,0,0"/>
@@ -143,6 +130,9 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
+                                <Button Click="CargoVehicle_Click" Style="{StaticResource gridEditButton}">
+                                    <Icon:PackIconMaterial Kind="CubeOutline" Style="{StaticResource gridButtonIcon}"/>
+                                </Button>
                                 <Button Click="EditVehicle_Click" Style="{StaticResource gridEditButton}">
                                     <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
                                 </Button>

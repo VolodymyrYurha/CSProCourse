@@ -18,6 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Logistic.GUI.MVVM.Windows;
+using Logistic.GUI.MVVM.Windows.Cargo;
 
 namespace Logistic.GUI.MVVM.View
 {
@@ -71,11 +72,27 @@ namespace Logistic.GUI.MVVM.View
 
             var deleteVehicleWindow = new VehicleDeleteWindow();
             deleteVehicleWindow.DeletedVehicle = vehicle;
-            //deleteVehicleWindow.UpdateInputs();
+            //cargoVehicleWindow.UpdateInputs();
 
             deleteVehicleWindow.VehicleDeleted += DeleteVehicleWindow_VehicleDeleted;
             MainWindow.Overlay.Visibility = Visibility.Visible;
             deleteVehicleWindow.Show();
+        }
+
+        private void CargoVehicle_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = ((FrameworkElement)sender).DataContext;
+            var vehicle = (Vehicle)selectedItem;
+            //var deletedVehicleId = vehicle.Id;
+
+            var cargoVehicleWindow = new CargoViewWindow();
+            cargoVehicleWindow.InitVehicle(vehicle, vehicleService);
+            //cargoVehicleWindow.DeletedVehicle = vehicle;
+            //cargoVehicleWindow.UpdateInputs();
+
+            //cargoVehicleWindow.VehicleDeleted += DeleteVehicleWindow_VehicleDeleted;
+            //MainWindow.Overlay.Visibility = Visibility.Visible;
+            cargoVehicleWindow.Show();
         }
 
         private void AddVehicle_Click(object sender, RoutedEventArgs e)
