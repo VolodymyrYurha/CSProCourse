@@ -6,7 +6,7 @@ namespace Logistic.Core
 {
     public class WarehouseService : IEntityLoadingService<Warehouse>
     {
-        private IInMemoryRepository<Warehouse> repository;
+        public IInMemoryRepository<Warehouse> repository;
 
         public WarehouseService(IInMemoryRepository<Warehouse> repository)
         {

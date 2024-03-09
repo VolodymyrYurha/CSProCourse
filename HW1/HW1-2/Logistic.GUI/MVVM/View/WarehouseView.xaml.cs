@@ -31,7 +31,7 @@ namespace Logistic.GUI.MVVM.View
             InitializeComponent();
         }
 
-        public WarehouseView( WarehouseService warehouseService)
+        public WarehouseView(WarehouseService warehouseService)
         {
             InitializeComponent();
             this.warehouseService = warehouseService;
@@ -63,7 +63,7 @@ namespace Logistic.GUI.MVVM.View
             warehouseService.Delete(deletedWarehouseId);
             UpdateGrid();
         }
-        private void UpdateGrid()
+        public void UpdateGrid()
         {
             var warehouses = warehouseService.GetAll();
             warehouseDataGrid.ItemsSource = warehouses;
@@ -72,19 +72,9 @@ namespace Logistic.GUI.MVVM.View
         }
 
 
-        private void EditWarehouse_Click(object sender, RoutedEventArgs e)
+        private void CargoWarehouse_Click(object sender, RoutedEventArgs e)
         {
-            //var selectedItem = ((FrameworkElement)sender).DataContext;
-            //var vehicle = (Vehicle)selectedItem;
-            ////var deletedVehicleId = vehicle.Id;
 
-            //var editVehicleWindow = new VehicleEditWindow();
-            //editVehicleWindow.EditedVehicle = vehicle;
-            //editVehicleWindow.UpdateInputs();
-
-            //editVehicleWindow.VehicleCreated += EditVehicleWindow_VehicleEdited;
-            //MainWindow.Overlay.Visibility = Visibility.Visible;
-            //editVehicleWindow.Show();
         }
 
         private void DeleteWarehouse_Click(object sender, RoutedEventArgs e)
@@ -104,14 +94,6 @@ namespace Logistic.GUI.MVVM.View
 
         private void AddWarehouse_Click(object sender, RoutedEventArgs e)
         {
-            //createVehicleWindow.VehicleCreated += CreateVehicleWindow_VehicleCreated;
-            //MainWindow.Overlay.Visibility = Visibility.Visible;
-            //var createWarehouseWindow = new WarehouseCreateWindow();
-            //createWarehouseWindow.warehouseService = warehouseService;
-            //createWarehouseWindow.Show();
-            //warehouseService.Create(new Warehouse());
-            //UpdateGrid();
-
             var createWarehouseWindow = new WarehouseCreateWindow();
             createWarehouseWindow.WarehouseCreated += CreateWarehouseWindow_WarehouseCreated;
             MainWindow.Overlay.Visibility = Visibility.Visible;

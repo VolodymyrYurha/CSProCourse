@@ -142,6 +142,69 @@ namespace Logistic.GUI.MVVM.View
             vehicleTextBox.Text = reportVehicleService.Serialize(vehicles, ReportType.Xml);
         }
 
+        private void ImportWarehouse_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    var path = openFileDialog.FileName;
+                    var warehouses = reportWarehouseService.LoadReport(path);
+                    if (path.EndsWith(".json"))
+                    {
+                        warehouseJsonRadioButton.IsChecked = true;
+                    }
+                    else
+                    {
+                        warehouseXmlRadioButton.IsChecked = true;
+                    }
+
+                    using (StreamReader sr = new StreamReader(path))
+                    {
+                        string json = sr.ReadToEnd();
+                        warehouseTextBox.Text = json;
+                    }
+
+                    warehouseService.repository = new InMemoryRepository<Warehouse>(warehouses);
+                }
+            }
+            catch (CustomException c)
+            {
+                MessageBox.Show(c.Message, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void ExportWarehouse_Click(object sender, RoutedEventArgs e)
+        {
+            var warehouses = warehouseService.GetAll();
+            if (warehouseJsonRadioButton.IsChecked == true)
+            {
+                reportWarehouseService.CreateReport(ReportType.Json, warehouses);
+            }
+            else
+            {
+                reportWarehouseService.CreateReport(ReportType.Xml, warehouses);
+            }
+        }
+
+        private void warehouseJsonRadioButton_Click(object sender, RoutedEventArgs e)
+        {
+            var warehouses = warehouseService.GetAll();
+            warehouseTextBox.Text = reportWarehouseService.Serialize(warehouses, ReportType.Json);
+        }
+
+        private void warehouseXmlRadioButton_Click(object sender, RoutedEventArgs e)
+        {
+            var warehouses = warehouseService.GetAll();
+            warehouseTextBox.Text = reportWarehouseService.Serialize(warehouses, ReportType.Xml);
+        }
+
+
         public void UpdateTextBoxes()
         {
             if(vehicleJsonRadioButton.IsChecked == true)
@@ -151,6 +214,15 @@ namespace Logistic.GUI.MVVM.View
             else
             {
                 vehicleXmlRadioButton_Click(null, null);
+            }
+
+            if (warehouseJsonRadioButton.IsChecked == true)
+            {
+                warehouseJsonRadioButton_Click(null, null);
+            }
+            else
+            {
+                warehouseXmlRadioButton_Click(null, null);
             }
         }
     }

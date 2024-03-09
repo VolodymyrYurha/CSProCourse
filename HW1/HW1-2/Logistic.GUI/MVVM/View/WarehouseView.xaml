@@ -74,8 +74,8 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button Click="EditWarehouse_Click" Style="{StaticResource gridEditButton}">
-                                    <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
+                                <Button Click="CargoWarehouse_Click" Style="{StaticResource gridEditButton}">
+                                    <Icon:PackIconMaterial Kind="CubeOutline" Style="{StaticResource gridButtonIcon}"/>
                                 </Button>
                                 <Button Click="DeleteWarehouse_Click" Margin="5 0 0 0" Style="{StaticResource gridRemoveButton}">
                                     <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>

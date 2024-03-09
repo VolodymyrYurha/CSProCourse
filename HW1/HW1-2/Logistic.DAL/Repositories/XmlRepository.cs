@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Text.Json.Nodes;
 using System.Xml;
 using System.Xml.Serialization;
 using Logistic.DAL.Interfaces;
@@ -33,7 +34,7 @@ namespace Logistic.DAL
             string dateTime = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
             var xmlName = entityType + "_" + dateTime + ".xml";
 
-            string savePath = path + xmlName;
+            string savePath = path + $"{entityType}\\" + xmlName;
 
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<TEntity>));
 

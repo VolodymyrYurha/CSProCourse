@@ -58,6 +58,10 @@ namespace Logistic.GUI.MVVM.ViewModel
             xmlVehicleRepository = new XmlRepository<Vehicle>();
             reportVehicleService = new ReportService<Vehicle>(jsonVehicleRepository, xmlVehicleRepository);
 
+            jsonWarehouseRepository = new JsonRepository<Warehouse>();
+            xmlWarehouseRepository = new XmlRepository<Warehouse>();
+            reportWarehouseService = new ReportService<Warehouse>(jsonWarehouseRepository, xmlWarehouseRepository);
+
             inMemoryVehicleRepository = new InMemoryRepository<Vehicle>();
             inMemoryWarehouseRepository = new InMemoryRepository<Warehouse>();
 
@@ -86,6 +90,7 @@ namespace Logistic.GUI.MVVM.ViewModel
             WarehouseViewCommand = new RelayCommand(o =>
             {
                 CurrentView = _warehouseView;
+                _warehouseView.UpdateGrid();
             });
 
             ReportViewCommand = new RelayCommand(o =>
