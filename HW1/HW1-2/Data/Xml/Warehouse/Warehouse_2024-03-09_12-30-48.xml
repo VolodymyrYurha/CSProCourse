@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfWarehouse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Warehouse>
+		<Id>1</Id>
+		<Stock>
+			<Cargo>
+				<Id>204e431f-e1a7-44e7-a6d0-a89ca0bc5b38</Id>
+				<Weight>0</Weight>
+				<Volume>0</Volume>
+			</Cargo>
+			<Cargo>
+				<Id>815be4a6-f974-4c2b-8d0c-8f821f6626a2</Id>
+				<Weight>0</Weight>
+				<Volume>0</Volume>
+			</Cargo>
+			<Cargo>
+				<Id>f12bce52-f499-4d9b-b3ed-967becb0fa20</Id>
+				<Weight>0</Weight>
+				<Volume>0</Volume>
+			</Cargo>
+		</Stock>
+	</Warehouse>
+	<Warehouse>
+		<Id>2</Id>
+		<Stock />
+	</Warehouse>
+	<Warehouse>
+		<Id>3</Id>
+		<Stock />
+	</Warehouse>
+	<Warehouse>
+		<Id>4</Id>
+		<Stock />
+	</Warehouse>
+</ArrayOfWarehouse>

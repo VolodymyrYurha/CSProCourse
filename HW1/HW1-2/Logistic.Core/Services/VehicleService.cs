@@ -7,7 +7,7 @@ namespace Logistic.Core
 {
     public class VehicleService : IEntityLoadingService<Vehicle>
     {
-        private IInMemoryRepository<Vehicle> repository;
+        public IInMemoryRepository<Vehicle> repository;
 
         public VehicleService(IInMemoryRepository<Vehicle> repository)
         {

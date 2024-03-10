@@ -29,7 +29,7 @@ namespace Logistic.DAL
             string dateTime = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
             var jsonName = entityType + "_" + dateTime + ".json";
 
-            string savePath = path + jsonName;
+            string savePath = path + $"{entityType}\\" + jsonName;
 
             var json = JsonConvert.SerializeObject(entities, Formatting.Indented);
 
@@ -41,9 +41,14 @@ namespace Logistic.DAL
             return jsonName;
         }
 
+        public List<TEntity> Deserialize(string serializedData)
+        {
+            return JsonConvert.DeserializeObject<List<TEntity>>(serializedData);
+        }
+
         public List<TEntity> Read(string filename)
         {
-            string readPath = path + filename;
+            string readPath = path + $"{entityType}\\" + filename;
 
             if(filename.Contains('\\')|| filename.Contains('/'))
             {
@@ -55,6 +60,11 @@ namespace Logistic.DAL
                 string json = sr.ReadToEnd();
                 return JsonConvert.DeserializeObject<List<TEntity>>(json);
             }
+        }
+
+        public string Serialize(List<TEntity> entitiesList)
+        {
+            return JsonConvert.SerializeObject(entitiesList, Formatting.Indented);
         }
     }
 }

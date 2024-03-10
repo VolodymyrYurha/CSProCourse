@@ -30,6 +30,7 @@ namespace Logistic.DAL
                     entity.Id = NextId();
                 }
             }
+            currentID = entities.Count > 0 ? entities.Max(e => e.Id) : 0;
         }
 
         public TEntity Create(TEntity entity)

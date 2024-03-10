@@ -1,0 +1,104 @@
+[
+  {
+    "Id": 1,
+    "Cargoes": [
+      {
+        "Id": "52bd489a-c784-428d-ad24-1d535d01a738",
+        "Weight": 100,
+        "Volume": 120.0,
+        "Code": "#aaaa",
+        "Invoice": null
+      },
+      {
+        "Id": "67066753-5467-4c0f-8e94-909585b6c6a4",
+        "Weight": 150,
+        "Volume": 200.0,
+        "Code": "#bbbb",
+        "Invoice": null
+      },
+      {
+        "Id": "a6e29e4b-2247-426e-8a0a-49b8fe0e30a4",
+        "Weight": 170,
+        "Volume": 210.0,
+        "Code": "#cccc",
+        "Invoice": null
+      },
+      {
+        "Id": "ad892ba6-bde1-48c5-beee-225d602c422e",
+        "Weight": 80,
+        "Volume": 120.0,
+        "Code": "#dddd",
+        "Invoice": null
+      },
+      {
+        "Id": "0ea11dc0-a136-4d31-b837-5bc522827a2c",
+        "Weight": 140,
+        "Volume": 170.0,
+        "Code": "#eeee",
+        "Invoice": null
+      }
+    ],
+    "CargoCount": 5
+  },
+  {
+    "Id": 2,
+    "Cargoes": [
+      {
+        "Id": "10274842-91f5-4674-90ef-ebda39794efb",
+        "Weight": 120,
+        "Volume": 140.0,
+        "Code": "#1111",
+        "Invoice": null
+      },
+      {
+        "Id": "363d15ef-163e-439c-9345-ce15985ff50a",
+        "Weight": 123,
+        "Volume": 123.0,
+        "Code": "#2222",
+        "Invoice": null
+      },
+      {
+        "Id": "4a97273f-d111-45f8-a9d4-db2f5fe03c80",
+        "Weight": 200,
+        "Volume": 150.0,
+        "Code": "#3333",
+        "Invoice": null
+      }
+    ],
+    "CargoCount": 3
+  },
+  {
+    "Id": 3,
+    "Cargoes": [
+      {
+        "Id": "da23a1fd-68f9-453a-8c29-e977c5dc6e04",
+        "Weight": 120,
+        "Volume": 80.0,
+        "Code": "#aa11",
+        "Invoice": null
+      },
+      {
+        "Id": "39d23770-809c-46ed-b4dd-93512ad30428",
+        "Weight": 80,
+        "Volume": 80.0,
+        "Code": "#bb22",
+        "Invoice": null
+      },
+      {
+        "Id": "a2da4f15-8751-4a26-ad84-a99bc2073988",
+        "Weight": 70,
+        "Volume": 90.0,
+        "Code": "#cc33",
+        "Invoice": null
+      },
+      {
+        "Id": "6849e542-fc0a-4bd9-9ba0-79ba3937a540",
+        "Weight": 120,
+        "Volume": 140.0,
+        "Code": "#dd44",
+        "Invoice": null
+      }
+    ],
+    "CargoCount": 4
+  }
+]

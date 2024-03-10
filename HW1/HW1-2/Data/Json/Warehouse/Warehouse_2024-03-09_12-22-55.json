@@ -1,0 +1,49 @@
+[
+  {
+    "Id": 1,
+    "Stock": [
+      {
+        "Id": "d72ad424-69e7-42ff-a3a0-a0bad6eed2a4",
+        "Weight": 0,
+        "Volume": 0.0,
+        "Code": null,
+        "Invoice": null
+      },
+      {
+        "Id": "dd4d9b40-e8e4-4f8b-bfff-37e6c05cb748",
+        "Weight": 0,
+        "Volume": 0.0,
+        "Code": null,
+        "Invoice": null
+      },
+      {
+        "Id": "c461763b-7613-4239-b200-003397bbad40",
+        "Weight": 0,
+        "Volume": 0.0,
+        "Code": null,
+        "Invoice": null
+      }
+    ],
+    "CargoCount": 3
+  },
+  {
+    "Id": 2,
+    "Stock": [],
+    "CargoCount": 0
+  },
+  {
+    "Id": 3,
+    "Stock": [],
+    "CargoCount": 0
+  },
+  {
+    "Id": 4,
+    "Stock": [],
+    "CargoCount": 0
+  },
+  {
+    "Id": 5,
+    "Stock": [],
+    "CargoCount": 0
+  }
+]

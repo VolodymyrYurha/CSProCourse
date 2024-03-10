@@ -1,4 +1,6 @@
-﻿using System.Xml;
+﻿using System.IO;
+using System.Text.Json.Nodes;
+using System.Xml;
 using System.Xml.Serialization;
 using Logistic.DAL.Interfaces;
 
@@ -32,7 +34,7 @@ namespace Logistic.DAL
             string dateTime = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
             var xmlName = entityType + "_" + dateTime + ".xml";
 
-            string savePath = path + xmlName;
+            string savePath = path + $"{entityType}\\" + xmlName;
 
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<TEntity>));
 
@@ -49,16 +51,35 @@ namespace Logistic.DAL
             return xmlName;
         }
 
+        public List<TEntity> Deserialize(string serializedData)
+        {
+            var serializer = new XmlSerializer(typeof(List<TEntity>));
+            using (var reader = new StringReader(serializedData))
+            {
+                return (List<TEntity>)serializer.Deserialize(reader);
+            }
+        }
+
         public List<TEntity> Read(string filename)
         {
             var serializer = new XmlSerializer(typeof(List<TEntity>));
-            var readPath = path + filename;
+            var readPath = path + $"{entityType}\\" + filename;
             if (filename.Contains('\\') || filename.Contains('/'))
             {
                 readPath = filename;
             }
             using var stream = new FileStream(readPath, FileMode.Open);
             return (List<TEntity>)serializer.Deserialize(stream);
+        }
+
+        public string Serialize(List<TEntity> entitiesList)
+        {
+            var serializer = new XmlSerializer(typeof(List<TEntity>));
+            using (var writer = new StringWriter())
+            {
+                serializer.Serialize(writer, entitiesList);
+                return writer.ToString();
+            }
         }
     }
 }

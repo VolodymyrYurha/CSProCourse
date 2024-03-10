@@ -77,5 +77,28 @@ namespace Logistic.Core
             }
         }
 
+        public string Serialize(List<TEntity> entitiesList, ReportType reportType)
+        {
+            if(reportType == ReportType.Json)
+            {
+                return jsonRepository.Serialize(entitiesList);
+            }
+            else
+            {
+                return xmlRepository.Serialize(entitiesList);
+            }
+        }
+
+        public List<TEntity> Deserialize(string serializedData, ReportType reportType)
+        {
+            if (reportType == ReportType.Json)
+            {
+                return jsonRepository.Deserialize(serializedData);
+            }
+            else
+            {
+                return xmlRepository.Deserialize(serializedData);
+            }
+        }
     }
 }
