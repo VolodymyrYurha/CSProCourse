@@ -63,7 +63,7 @@ namespace Logistic.DAL
         public List<TEntity> Read(string filename)
         {
             var serializer = new XmlSerializer(typeof(List<TEntity>));
-            var readPath = path + filename;
+            var readPath = path + $"{entityType}\\" + filename;
             if (filename.Contains('\\') || filename.Contains('/'))
             {
                 readPath = filename;

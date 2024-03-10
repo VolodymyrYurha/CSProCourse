@@ -52,7 +52,7 @@ namespace Logistic.GUI.MVVM.ViewModel
             }
         }
 
-        public MainViewModel()
+        private void InitServicesViews()
         {
             jsonVehicleRepository = new JsonRepository<Vehicle>();
             xmlVehicleRepository = new XmlRepository<Vehicle>();
@@ -65,21 +65,36 @@ namespace Logistic.GUI.MVVM.ViewModel
             inMemoryVehicleRepository = new InMemoryRepository<Vehicle>();
             inMemoryWarehouseRepository = new InMemoryRepository<Warehouse>();
 
+            
+            //VehicleVM = new VehicleViewModel();
+            //WarehouseVM = new WarehouseViewModel();
+            
+        }
+
+        private void LoadDefaultRepositories()
+        {
+            var vehicles = reportVehicleService.LoadReport("Vehicle_default.json");
+            inMemoryVehicleRepository = new InMemoryRepository<Vehicle> (vehicles);
+
+            var warehouses = reportWarehouseService.LoadReport("Warehouse_default.json");
+            inMemoryWarehouseRepository = new InMemoryRepository<Warehouse> (warehouses);
+        }
+
+        public MainViewModel()
+        {
+            InitServicesViews();
+            LoadDefaultRepositories();
+
             vehicleService = new VehicleService(inMemoryVehicleRepository);
             warehouseService = new WarehouseService(inMemoryWarehouseRepository);
 
-            VehicleVM = new VehicleViewModel();
             _vehicleView = new VehicleView(vehicleService);
 
             _warehouseView = new WarehouseView(warehouseService);
-            WarehouseVM = new WarehouseViewModel();
 
             _reportView = new ReportsView();
             _reportView.InitServicesRepositories(reportVehicleService, reportWarehouseService, vehicleService, warehouseService, inMemoryVehicleRepository, inMemoryWarehouseRepository);
             CurrentView = _vehicleView;
-
-            //_vehicleView.InitServices(vehicleService);
-
 
             VehicleViewCommand = new RelayCommand(o =>
             {

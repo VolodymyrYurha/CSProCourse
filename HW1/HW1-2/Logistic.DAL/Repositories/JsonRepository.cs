@@ -48,7 +48,7 @@ namespace Logistic.DAL
 
         public List<TEntity> Read(string filename)
         {
-            string readPath = path + filename;
+            string readPath = path + $"{entityType}\\" + filename;
 
             if(filename.Contains('\\')|| filename.Contains('/'))
             {

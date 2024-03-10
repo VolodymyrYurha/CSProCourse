@@ -1,0 +1,139 @@
+[
+  {
+    "Id": 1,
+    "Type": 2,
+    "Number": "BC 0000 AK",
+    "MaxCargoWeightKg": 10000,
+    "MaxCargoWeightLbs": 22046.0,
+    "MaxCargoVolume": 10000.0,
+    "Cargoes": [
+      {
+        "Id": "846489a9-9d4c-47cf-aa4d-18146cc00ce9",
+        "Weight": 100,
+        "Volume": 100.0,
+        "Code": "#1111",
+        "Invoice": null
+      },
+      {
+        "Id": "3616a8ab-7889-4caf-8e60-ac24f9380c71",
+        "Weight": 200,
+        "Volume": 300.0,
+        "Code": "#111a",
+        "Invoice": null
+      }
+    ],
+    "CargoWeightCurrent": 300.0,
+    "CargoVolumeCurrent": 400.0
+  },
+  {
+    "Id": 2,
+    "Type": 1,
+    "Number": "AA 1111 AK",
+    "MaxCargoWeightKg": 50000,
+    "MaxCargoWeightLbs": 110230.01,
+    "MaxCargoVolume": 50000.0,
+    "Cargoes": [
+      {
+        "Id": "306e333b-6441-4577-a676-2ae8d1a06668",
+        "Weight": 500,
+        "Volume": 600.0,
+        "Code": "#a001",
+        "Invoice": null
+      },
+      {
+        "Id": "eafcdac0-7242-4dea-ac3d-56a5bfb0c43e",
+        "Weight": 600,
+        "Volume": 500.0,
+        "Code": "#a002",
+        "Invoice": null
+      }
+    ],
+    "CargoWeightCurrent": 1100.0,
+    "CargoVolumeCurrent": 1100.0
+  },
+  {
+    "Id": 3,
+    "Type": 3,
+    "Number": "BX 2222 KC",
+    "MaxCargoWeightKg": 800000,
+    "MaxCargoWeightLbs": 1763680.1,
+    "MaxCargoVolume": 800000.0,
+    "Cargoes": [
+      {
+        "Id": "355b15e3-4948-47b8-8515-c143782aa990",
+        "Weight": 1000,
+        "Volume": 1500.0,
+        "Code": "#xxl1",
+        "Invoice": null
+      },
+      {
+        "Id": "ce24127e-714d-421b-b6d4-4363f710941c",
+        "Weight": 2000,
+        "Volume": 2000.0,
+        "Code": "#xxl2",
+        "Invoice": null
+      },
+      {
+        "Id": "5c1ee1a5-9acc-413e-90e9-aa9ac46d5475",
+        "Weight": 10000,
+        "Volume": 12000.0,
+        "Code": "#xxxl",
+        "Invoice": null
+      }
+    ],
+    "CargoWeightCurrent": 13000.0,
+    "CargoVolumeCurrent": 15500.0
+  },
+  {
+    "Id": 4,
+    "Type": 0,
+    "Number": "HC 4444 AK",
+    "MaxCargoWeightKg": 500,
+    "MaxCargoWeightLbs": 1102.3,
+    "MaxCargoVolume": 500.0,
+    "Cargoes": [
+      {
+        "Id": "7d24f4dc-fc10-434d-a76a-39162754022b",
+        "Weight": 100,
+        "Volume": 120.0,
+        "Code": "#aaa1",
+        "Invoice": null
+      },
+      {
+        "Id": "3cb3492d-3fa3-4e62-985e-fa319209c2ea",
+        "Weight": 120,
+        "Volume": 150.0,
+        "Code": "#abcd",
+        "Invoice": null
+      }
+    ],
+    "CargoWeightCurrent": 220.0,
+    "CargoVolumeCurrent": 270.0
+  },
+  {
+    "Id": 5,
+    "Type": 0,
+    "Number": "KX 5555 AK",
+    "MaxCargoWeightKg": 700,
+    "MaxCargoWeightLbs": 1543.2201,
+    "MaxCargoVolume": 700.0,
+    "Cargoes": [
+      {
+        "Id": "d908dbc7-0ca0-4f51-8140-eba2deb4233e",
+        "Weight": 80,
+        "Volume": 100.0,
+        "Code": "#dcba",
+        "Invoice": null
+      },
+      {
+        "Id": "d7c9c64d-2c18-4250-a847-f63ffa5a0dc0",
+        "Weight": 120,
+        "Volume": 150.0,
+        "Code": "#4321",
+        "Invoice": null
+      }
+    ],
+    "CargoWeightCurrent": 200.0,
+    "CargoVolumeCurrent": 250.0
+  }
+]
