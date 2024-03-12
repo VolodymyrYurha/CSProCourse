@@ -1,0 +1,155 @@
+[
+  {
+    "Id": 73,
+    "Type": 0,
+    "Number": "Numberf0eb4b96-78e2-49dd-ad7b-73fc7d73ccf4",
+    "MaxCargoWeightKg": 128,
+    "MaxCargoWeightLbs": 29.0,
+    "MaxCargoVolume": 103.0,
+    "Cargoes": [
+      {
+        "Id": "76146ab3-8049-4812-a105-357e845c421b",
+        "Weight": 52,
+        "Volume": 166.0,
+        "Code": "Code29dad888-8ac8-4db7-a425-26127a6dcec8",
+        "Invoice": {
+          "Id": "625bcd96-19e9-4c19-93d1-efab56e3a162",
+          "RecipientAddress": "RecipientAddressd4fd69fa-4745-46af-a82c-81212ad79cd7",
+          "RecipientPhoneNumber": "RecipientPhoneNumber62d05fc6-ce59-441f-a082-8799264bc6d5",
+          "SenderAddress": "SenderAddressa98f8712-6b64-44d8-87b5-f5efc0ae4312",
+          "SenderPhoneNumber": "SenderPhoneNumberfbbd596b-676f-4716-b593-e545139308cb"
+        }
+      },
+      {
+        "Id": "058082a5-9da7-4f43-a869-ed38f03245d7",
+        "Weight": 247,
+        "Volume": 105.0,
+        "Code": "Codee5c638d0-5ede-4221-8d2a-e61c0378f477",
+        "Invoice": {
+          "Id": "bf06fd4a-fb47-45db-bf52-132b090cae28",
+          "RecipientAddress": "RecipientAddress9c6106be-585c-4bcd-950c-6476a834f2d6",
+          "RecipientPhoneNumber": "RecipientPhoneNumbera70abad4-3129-4948-800f-15a12773abb5",
+          "SenderAddress": "SenderAddress994060a2-aa8d-4c7d-a2b5-1826f9f73b61",
+          "SenderPhoneNumber": "SenderPhoneNumber6732cdd9-efe7-4394-a189-9bcd5a366ebb"
+        }
+      },
+      {
+        "Id": "6ddf03d3-ae3f-4f7b-b06d-8f760f59a96d",
+        "Weight": 8,
+        "Volume": 252.0,
+        "Code": "Codee6d60485-b578-4568-b5f7-1eed2ae0c3b6",
+        "Invoice": {
+          "Id": "36eb9112-eaf0-4364-b173-d57d194ee6dc",
+          "RecipientAddress": "RecipientAddress216abc8e-0611-4538-ab3d-d8b36082954d",
+          "RecipientPhoneNumber": "RecipientPhoneNumberbbb6aedf-079f-4944-9d08-fe81f59f4e7b",
+          "SenderAddress": "SenderAddress3c68324c-5913-4eb0-a387-200a5e829cc8",
+          "SenderPhoneNumber": "SenderPhoneNumbere8cd9a58-ebc3-469b-ab97-30720888c96b"
+        }
+      }
+    ],
+    "CargoWeightCurrent": 63.0,
+    "CargoVolumeCurrent": 59.0
+  },
+  {
+    "Id": 150,
+    "Type": 1,
+    "Number": "Number808f3b3c-13da-4f78-8151-bd5c140b9dac",
+    "MaxCargoWeightKg": 65,
+    "MaxCargoWeightLbs": 203.0,
+    "MaxCargoVolume": 90.0,
+    "Cargoes": [
+      {
+        "Id": "1f855607-72b9-4b56-a332-9dcf53896100",
+        "Weight": 48,
+        "Volume": 71.0,
+        "Code": "Codecdb105ce-2a41-4eef-9499-ba24af0229a6",
+        "Invoice": {
+          "Id": "2b68d853-c012-48ff-a3ba-bb10325afaae",
+          "RecipientAddress": "RecipientAddress1bee84fb-5203-46c9-9d69-88e346dd1e66",
+          "RecipientPhoneNumber": "RecipientPhoneNumber380fd869-bf6f-4631-aae7-7f822c55016a",
+          "SenderAddress": "SenderAddress4626c0c0-4f3f-46cf-97e4-b314dea9e5f7",
+          "SenderPhoneNumber": "SenderPhoneNumber165a347e-521d-480b-a1a8-57480839624d"
+        }
+      },
+      {
+        "Id": "b372ddcc-44e4-4ad8-82d9-e5c9ba519ca2",
+        "Weight": 86,
+        "Volume": 213.0,
+        "Code": "Code4c52a3aa-9969-406e-977f-529d11a10fd5",
+        "Invoice": {
+          "Id": "435f9be8-fe96-492c-a98a-6c67916a858a",
+          "RecipientAddress": "RecipientAddress03a8a525-f645-4bcc-a4bf-52e8d0b1ec1f",
+          "RecipientPhoneNumber": "RecipientPhoneNumber435ad050-103e-4a53-8e31-099224c2840f",
+          "SenderAddress": "SenderAddress7f99b25c-7e01-4791-9d48-5d1b3d7e70cb",
+          "SenderPhoneNumber": "SenderPhoneNumber39cab2a6-2e77-49d5-b3e4-3ab49633ad38"
+        }
+      },
+      {
+        "Id": "f4e55369-7f94-433e-8543-b0e00aba927e",
+        "Weight": 176,
+        "Volume": 85.0,
+        "Code": "Code566c7265-ea2b-4b59-bcaa-f53d384a08f8",
+        "Invoice": {
+          "Id": "f6b7ec85-e53c-4435-906e-795f05eeb7bf",
+          "RecipientAddress": "RecipientAddressf64a411d-485f-45aa-891c-1708a992eebf",
+          "RecipientPhoneNumber": "RecipientPhoneNumberdc01c47a-1ed8-4182-9c5d-e890eb12f8bc",
+          "SenderAddress": "SenderAddresse7d17c73-4987-47cb-b194-11b3c3a79753",
+          "SenderPhoneNumber": "SenderPhoneNumbere727465f-d20f-498e-bd6a-a14e5708fdb3"
+        }
+      }
+    ],
+    "CargoWeightCurrent": 9.0,
+    "CargoVolumeCurrent": 188.0
+  },
+  {
+    "Id": 121,
+    "Type": 2,
+    "Number": "Numbera18ee9b7-b868-4aa8-85fd-92166c0adf1a",
+    "MaxCargoWeightKg": 44,
+    "MaxCargoWeightLbs": 191.0,
+    "MaxCargoVolume": 160.0,
+    "Cargoes": [
+      {
+        "Id": "f65dc7ff-cad5-4463-a67f-99ca3f350967",
+        "Weight": 45,
+        "Volume": 27.0,
+        "Code": "Code51d920b1-1752-44da-a9aa-6455fb601d29",
+        "Invoice": {
+          "Id": "f23c90a1-9068-4749-812d-89fc2ede9659",
+          "RecipientAddress": "RecipientAddress233fe840-3b7b-4c78-891a-b02dec95ae6a",
+          "RecipientPhoneNumber": "RecipientPhoneNumber74a717d7-94c8-4eb9-bc89-b8d38c09393b",
+          "SenderAddress": "SenderAddressdef52ac7-ce21-4a8a-bd78-03eee0d670f9",
+          "SenderPhoneNumber": "SenderPhoneNumber3ec202f4-0b45-4b6b-bab7-974468e36828"
+        }
+      },
+      {
+        "Id": "5c77bfe8-b6f9-4a50-a200-20f7af39d79f",
+        "Weight": 72,
+        "Volume": 76.0,
+        "Code": "Code9d528d91-1d48-40e1-8241-676dc18fcf0e",
+        "Invoice": {
+          "Id": "62d88ff8-f126-4b68-b27e-c7caee914e0e",
+          "RecipientAddress": "RecipientAddress0477e5fe-4415-4d0f-b158-4dd156fc08e0",
+          "RecipientPhoneNumber": "RecipientPhoneNumbere43cc498-0e69-4a1c-beee-dfabf00c7be4",
+          "SenderAddress": "SenderAddress381fefa7-52f0-4f9c-8693-bae27e485d4b",
+          "SenderPhoneNumber": "SenderPhoneNumber61c27853-b68b-4d9a-904c-c75b97d0746b"
+        }
+      },
+      {
+        "Id": "8991123f-226f-415c-aa42-3edc1e6ddc6e",
+        "Weight": 58,
+        "Volume": 14.0,
+        "Code": "Codeff010fce-988d-41aa-b978-222ba8054858",
+        "Invoice": {
+          "Id": "21a08791-b05f-4745-a563-b5940284a0ad",
+          "RecipientAddress": "RecipientAddress67a92b27-8cc2-4fcd-8dda-8b9a03b515f3",
+          "RecipientPhoneNumber": "RecipientPhoneNumberd7606ebb-05ad-4f8a-b571-00db73448e7d",
+          "SenderAddress": "SenderAddress3c8aa1d7-e89d-42c7-a1a7-e98d7a4611b6",
+          "SenderPhoneNumber": "SenderPhoneNumberc9b30bf3-60d1-4585-9393-9647dda7c10d"
+        }
+      }
+    ],
+    "CargoWeightCurrent": 233.0,
+    "CargoVolumeCurrent": 56.0
+  }
+]

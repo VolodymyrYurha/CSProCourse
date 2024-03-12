@@ -1,6 +1,7 @@
 using AutoFixture.Xunit2;
 using Logistic.DAL.Interfaces;
 using Logistic.Models;
+using Logistic.Models.Models.Exceptions;
 using NSubstitute;
 
 namespace Logistic.Core.Tests
@@ -126,7 +127,7 @@ namespace Logistic.Core.Tests
             cargo.Volume = 1000;
 
             // Act + Assert
-            var ex = Assert.Throws<ArgumentException>(() => service.LoadCargo(cargo, vehicle.Id));
+            var ex = Assert.Throws<CustomException>(() => service.LoadCargo(cargo, vehicle.Id));
             Assert.Equal(ex.Message, $"Cargo's too heavy. Weight: {cargo.Weight} kg. Space: {vehicle.MaxCargoWeightKg - vehicle.CargoWeightCurrent} kg. Vehicle id: {vehicle.Id}");
         }
 
@@ -147,7 +148,7 @@ namespace Logistic.Core.Tests
             cargo.Volume = 1001;
 
             // Act + Assert
-            var ex = Assert.Throws<ArgumentException>(() => service.LoadCargo(cargo, vehicle.Id));
+            var ex = Assert.Throws<CustomException>(() => service.LoadCargo(cargo, vehicle.Id));
             Assert.Equal(ex.Message, $"Cargo's too voluminous. Volume: {cargo.Volume} cub. m. Space: {vehicle.MaxCargoVolume - vehicle.CargoVolumeCurrent} cub. m. Vehicle id: {vehicle.Id}");
         }
 
